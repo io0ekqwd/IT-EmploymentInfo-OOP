@@ -77,5 +77,4 @@ public class MainFrame extends JFrame {
 		MainFrame ex = new MainFrame();
 
 	}
-//test
 }
