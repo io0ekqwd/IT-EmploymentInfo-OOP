@@ -91,7 +91,7 @@ public class ApplicantDetails {
 	}
 	
 	
-	public ApplicantDetails(String n, int a, String em, String ph, String ad, String pos, Skills sk) 
+	public ApplicantDetails(String n, int a, String em, String ph, String ad, String pos, Skills sk, String status) 
 	{ 
 		this.name = n;
 		this.age = a;
@@ -100,6 +100,7 @@ public class ApplicantDetails {
 		this.address = ad;
 		this.position = pos;
 		this.skills = sk;
+		this.status = status;
 	}
 	
 	//Test

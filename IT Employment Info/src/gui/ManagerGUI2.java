@@ -62,7 +62,6 @@ public class ManagerGUI2 extends JPanel{
 				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
-				ApplicantDetails app = AppD[index];
 				main.getController().giveJob(index);
 				populateSAppDList();
 			}
@@ -71,10 +70,23 @@ public class ManagerGUI2 extends JPanel{
 		add(btnGiveOffer);
 		
 		JButton btnScheduleInterview = new JButton("Schedule Interview");
+		btnScheduleInterview.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnScheduleInterview.setBounds(136, 266, 166, 23);
 		add(btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
+		btnViewProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int index = appList.getSelectedIndex();
+				if (index == -1)
+					return;
+				ApplicantDetails app = AppD[index];
+				main.showDetailPage(index, app);
+			}
+		});
 		btnViewProfile.setBounds(0, 266, 126, 23);
 		add(btnViewProfile);
 		this.populateSAppDList();

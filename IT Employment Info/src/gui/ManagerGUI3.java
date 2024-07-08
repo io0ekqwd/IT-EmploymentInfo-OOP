@@ -7,6 +7,8 @@ import controller.MainFrame;
 import data.ApplicantDetails;
 
 import javax.swing.JLabel;
+
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,6 +56,15 @@ public class ManagerGUI3 extends JPanel{
 		add(btnBack);
 		
 		JButton btnViewProfile = new JButton("View Profile");
+		btnViewProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int index = appList.getSelectedIndex();
+				if (index == -1)
+					return;
+				ApplicantDetails app = AppD[index];
+				main.showDetailPage(index, app);
+			}
+		});
 		btnViewProfile.setBounds(10, 266, 140, 23);
 		add(btnViewProfile);
 		

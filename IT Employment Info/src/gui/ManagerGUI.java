@@ -51,7 +51,6 @@ public class ManagerGUI extends JPanel{
 				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
-				ApplicantDetails app = AppD[index];
 				main.getController().shortlistApp(index);
 				populateAppDList();
 			}
@@ -80,6 +79,15 @@ public class ManagerGUI extends JPanel{
 		add(btnBack);
 		
 		JButton btnViewProfile = new JButton("View Profile");
+		btnViewProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int index = appList.getSelectedIndex();
+				if (index == -1)
+					return;
+				ApplicantDetails app = AppD[index];
+				main.showDetailPage(index, app);
+			}
+		});
 		btnViewProfile.setBounds(29, 266, 125, 23);
 		add(btnViewProfile);
 		

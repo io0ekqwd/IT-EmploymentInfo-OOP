@@ -3,6 +3,8 @@ package controller;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 
+import data.ApplicantDetails;
+import gui.DetailPage;
 import gui.HRStaffGUI;
 import gui.HRStaffGUI2;
 import gui.Login;
@@ -69,6 +71,12 @@ public class MainFrame extends JFrame {
 		HRStaffGUI2 p8 = new HRStaffGUI2(this);
 		this.add(p8, "Panel 8");
 		this.card.show(this.getContentPane(), "Panel 8");
+	}
+	
+	public void showDetailPage(int index, ApplicantDetails det){
+		DetailPage p9 = new DetailPage(this, index, det);
+		this.add(p9, "Panel 9");
+		this.card.show(this.getContentPane(), "Panel 9");
 	}
 	
 	
