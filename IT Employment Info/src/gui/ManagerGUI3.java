@@ -25,6 +25,7 @@ public class ManagerGUI3 extends JPanel{
 		setLayout(null);
 		this.main = main;
 		//test
+		//test
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 54, 450, 189);
 		add(scrollPane);
