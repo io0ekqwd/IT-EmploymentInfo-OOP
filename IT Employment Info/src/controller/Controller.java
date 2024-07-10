@@ -22,11 +22,10 @@ public class Controller {
 	}
 	
 	//Test Code
-	public String addProfile(String n, String ps, String is) {
+	public void addProfile(String n, String ps, String is) {
 		Skills skill = new Skills(ps, is);
 		ApplicantDetails name = new ApplicantDetails(n, skill);
 		this.ds.addName(name);
-		return n;
 	}
     //Test Code	
 			

@@ -14,6 +14,7 @@ public class DetailPage extends JPanel {
 	private MainFrame main;
 	private int index;
 	private ApplicantDetails det;
+	
 	public DetailPage(MainFrame main, int ind, ApplicantDetails det) {
 		this.main = main;
 		this.index = ind;

@@ -20,9 +20,11 @@ public class ManagerGUI extends JPanel{
 	private MainFrame main;
 	private JList appList;
 	private int index;
+	
 	public ManagerGUI(MainFrame main) {
 		setLayout(null);
 		this.main = main;
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 54, 450, 189);
@@ -55,7 +57,7 @@ public class ManagerGUI extends JPanel{
 				populateAppDList();
 			}
 		});
-		btnShortlist.setBounds(279, 266, 125, 23);
+		btnShortlist.setBounds(280, 335, 125, 23);
 		add(btnShortlist);
 		/*
 		JButton btnTest = new JButton("Test");
@@ -86,9 +88,10 @@ public class ManagerGUI extends JPanel{
 					return;
 				ApplicantDetails app = AppD[index];
 				main.showDetailPage(index, app);
+				
 			}
 		});
-		btnViewProfile.setBounds(29, 266, 125, 23);
+		btnViewProfile.setBounds(29, 335, 125, 23);
 		add(btnViewProfile);
 		
 		this.populateAppDList();

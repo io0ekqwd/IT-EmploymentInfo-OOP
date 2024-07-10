@@ -21,9 +21,11 @@ public class ManagerGUI3 extends JPanel{
 	private ApplicantDetails AppD[];
 	private MainFrame main;
 	private JList appList;
+	
 	public ManagerGUI3(MainFrame main) {
 		setLayout(null);
 		this.main = main;
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 54, 450, 189);
 		add(scrollPane);
@@ -64,11 +66,11 @@ public class ManagerGUI3 extends JPanel{
 				main.showDetailPage(index, app);
 			}
 		});
-		btnViewProfile.setBounds(10, 266, 140, 23);
+		btnViewProfile.setBounds(10, 344, 140, 23);
 		add(btnViewProfile);
 		
 		JButton btnCountApplicants = new JButton("Count Applicants");
-		btnCountApplicants.setBounds(280, 266, 160, 23);
+		btnCountApplicants.setBounds(280, 344, 160, 23);
 		add(btnCountApplicants);
 		this.populateAppDList();
 	}

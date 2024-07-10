@@ -21,17 +21,15 @@ public class ManagerGUI2 extends JPanel{
 	private MainFrame main;
 	private JList appList;
 	private int index;
+
 	public ManagerGUI2(MainFrame main) {
 		setLayout(null);
 		this.main = main;
-	
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 54, 450, 189);
 		add(scrollPane);
-		
-		this.appList = new JList();
-		scrollPane.setViewportView(this.appList);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
@@ -67,7 +65,7 @@ public class ManagerGUI2 extends JPanel{
 				populateSAppDList();
 			}
 		});
-		btnGiveOffer.setBounds(312, 266, 138, 23);
+		btnGiveOffer.setBounds(312, 344, 138, 23);
 		add(btnGiveOffer);
 		
 		JButton btnScheduleInterview = new JButton("Schedule Interview");
@@ -75,7 +73,7 @@ public class ManagerGUI2 extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnScheduleInterview.setBounds(136, 266, 166, 23);
+		btnScheduleInterview.setBounds(136, 344, 166, 23);
 		add(btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
@@ -88,8 +86,12 @@ public class ManagerGUI2 extends JPanel{
 				main.showDetailPage(index, app);
 			}
 		});
-		btnViewProfile.setBounds(0, 266, 126, 23);
+		btnViewProfile.setBounds(0, 344, 126, 23);
 		add(btnViewProfile);
+		
+		this.appList = new JList();
+		appList.setBounds(2, 55, 448, 187);
+		add(appList);
 		this.populateSAppDList();
 	}
 	//Test
