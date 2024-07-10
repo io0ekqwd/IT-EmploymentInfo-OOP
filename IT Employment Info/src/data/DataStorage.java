@@ -58,7 +58,11 @@ public class DataStorage {
 			}
 		}
 		return null;
-}}
+}
+
+	public void addInteDate(int index, ApplicantDetails det) {
+		this.aListShort.set(index, det);
+	}}
 
 
 	

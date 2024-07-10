@@ -21,6 +21,8 @@ public class ManagerGUI2 extends JPanel{
 	private MainFrame main;
 	private JList appList;
 	private int index;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
 
 	public ManagerGUI2(MainFrame main) {
 		setLayout(null);
@@ -28,8 +30,11 @@ public class ManagerGUI2 extends JPanel{
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 54, 450, 189);
+		scrollPane.setBounds(0, 53, 450, 189);
 		add(scrollPane);
+		
+		this.appList = new JList();
+		scrollPane.setViewportView(appList);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
@@ -65,15 +70,17 @@ public class ManagerGUI2 extends JPanel{
 				populateSAppDList();
 			}
 		});
-		btnGiveOffer.setBounds(312, 344, 138, 23);
+		btnGiveOffer.setBounds(312, 323, 138, 23);
 		add(btnGiveOffer);
 		
 		JButton btnScheduleInterview = new JButton("Schedule Interview");
 		btnScheduleInterview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ApplicantDetails det = AppD[index];
+				main.showSchedulePage(index, det);
 			}
 		});
-		btnScheduleInterview.setBounds(136, 344, 166, 23);
+		btnScheduleInterview.setBounds(136, 323, 166, 23);
 		add(btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
@@ -86,12 +93,24 @@ public class ManagerGUI2 extends JPanel{
 				main.showDetailPage(index, app);
 			}
 		});
-		btnViewProfile.setBounds(0, 344, 126, 23);
+		btnViewProfile.setBounds(0, 323, 126, 23);
 		add(btnViewProfile);
 		
-		this.appList = new JList();
-		appList.setBounds(2, 55, 448, 187);
-		add(appList);
+		JLabel lblDate = new JLabel("Date:");
+		lblDate.setBounds(80, 263, 46, 14);
+		add(lblDate);
+		
+		JLabel lblVenue = new JLabel("Venue:");
+		lblVenue.setBounds(80, 288, 46, 14);
+		add(lblVenue);
+		
+		this.lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(157, 263, 46, 14);
+		add(lblNewLabel);
+		
+		this.lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setBounds(157, 288, 46, 14);
+		add(lblNewLabel_1);
 		this.populateSAppDList();
 	}
 	//Test

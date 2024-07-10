@@ -12,6 +12,7 @@ import gui.ManagerGUI;
 import gui.ManagerGUI2;
 import gui.ManagerGUI3;
 import gui.ManagerMainPage;
+import gui.SchedulePage;
 
 public class MainFrame extends JFrame {
 	private CardLayout card;
@@ -77,6 +78,11 @@ public class MainFrame extends JFrame {
 		DetailPage p9 = new DetailPage(this, index, det);
 		this.add(p9, "Panel 9");
 		this.card.show(this.getContentPane(), "Panel 9");
+	}
+	public void showSchedulePage(int index, ApplicantDetails det){
+		SchedulePage p10 = new SchedulePage(this, index, det);
+		this.add(p10, "Panel 10");
+		this.card.show(this.getContentPane(), "Panel 10");
 	}
 	
 	

@@ -23,8 +23,12 @@ public class Controller {
 	
 	//Test Code
 	public void addProfile(String n, String ps, String is) {
+		String v = null;
+		String d = null;
 		Skills skill = new Skills(ps, is);
 		ApplicantDetails name = new ApplicantDetails(n, skill);
+		name.setVenue(v);
+		name.setDate(d);
 		this.ds.addName(name);
 	}
     //Test Code	
@@ -80,6 +84,11 @@ public class Controller {
 				return null;
 		}
 		return null;
+	}
+
+	public void scheInte(int index, ApplicantDetails det) {
+		this.ds.addInteDate(index, det);
+		
 	}
 	}
 
