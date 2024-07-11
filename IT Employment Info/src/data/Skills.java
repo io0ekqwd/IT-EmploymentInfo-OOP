@@ -22,10 +22,5 @@ public class Skills {
 		 this.iskills = iskills; 
 	} 
 	
-	public Skills(String ps, String is)
-	{
-		this.pskills = ps;
-		this.iskills = is;
-	}
 
 }

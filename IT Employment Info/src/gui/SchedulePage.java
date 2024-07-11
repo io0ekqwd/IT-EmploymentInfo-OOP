@@ -36,32 +36,31 @@ public class SchedulePage extends JPanel{
 		add(lblSchedulingPage);
 		
 		JLabel lblDate = new JLabel("Date:");
-		lblDate.setBounds(36, 98, 56, 14);
+		lblDate.setBounds(26, 98, 56, 14);
 		add(lblDate);
 		
 		JLabel lblVenue = new JLabel("Venue:");
-		lblVenue.setBounds(36, 141, 46, 14);
+		lblVenue.setBounds(26, 141, 46, 14);
 		add(lblVenue);
 		
 		textFieldDay = new JTextField();
-		textFieldDay.setBounds(79, 95, 39, 20);
+		textFieldDay.setBounds(57, 95, 39, 20);
 		add(textFieldDay);
 		textFieldDay.setColumns(10);
 		
 		this.comboBoxMonth = new JComboBox(this.monthArr);
-		this.comboBoxMonth.setBounds(128, 95, 77, 20);
+		this.comboBoxMonth.setBounds(106, 95, 111, 20);
 		add(this.comboBoxMonth);
 		
 		textFieldYear = new JTextField();
-		textFieldYear.setBounds(215, 95, 56, 20);
+		textFieldYear.setBounds(226, 95, 56, 20);
 		add(textFieldYear);
 		textFieldYear.setColumns(10);
 		
 		textField = new JTextField();
-		textField.setBounds(79, 138, 86, 20);
+		textField.setBounds(74, 138, 86, 20);
 		add(textField);
 		textField.setColumns(10);
-		textField.setText(det.getVenue());
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -75,14 +74,15 @@ public class SchedulePage extends JPanel{
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String d = textFieldDay.getText() + comboBoxMonth.getToolTipText() + textFieldYear.getText();
+				String d = textFieldDay.getText();
+				String m = String.valueOf(comboBoxMonth.getSelectedItem());
+				int y =Integer.valueOf(textFieldYear.getText());
 				String v = textField.getText();
-				det.setDate(d);
-				det.setVenue(v);
-				main.getController().scheInte(ind, det);
+				main.getController().scheInte(ind, det, d, m, v, y);
+				main.showShortGUI();
 			}
 		});
-		btnSave.setBounds(212, 186, 89, 23);
+		btnSave.setBounds(183, 186, 89, 23);
 		add(btnSave);
 	}
 }

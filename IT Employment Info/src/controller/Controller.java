@@ -1,6 +1,7 @@
 package controller;
 import data.ApplicantDetails;
 import data.DataStorage;
+import data.InterviewDetails;
 import data.Skills;
 import data.User;
 
@@ -23,13 +24,13 @@ public class Controller {
 	
 	//Test Code
 	public void addProfile(String n, String ps, String is) {
-		String v = null;
-		String d = null;
-		Skills skill = new Skills(ps, is);
-		ApplicantDetails name = new ApplicantDetails(n, skill);
-		name.setVenue(v);
-		name.setDate(d);
-		this.ds.addName(name);
+		Skills skill = new Skills();
+		skill.setPskills(ps);
+		skill.setIskills(is);
+		ApplicantDetails prof = new ApplicantDetails();
+		prof.setSkills(skill);
+		prof.setName(n);
+		this.ds.addName(prof);
 	}
     //Test Code	
 			
@@ -86,9 +87,14 @@ public class Controller {
 		return null;
 	}
 
-	public void scheInte(int index, ApplicantDetails det) {
+	public void scheInte(int index, ApplicantDetails det, String d, String m, String v, int y) {
+		InterviewDetails intdet = new InterviewDetails();
+		intdet.setDay(d);
+		intdet.setMonth(m);
+		intdet.setYear(y);
+		intdet.setVenue(v);
+		det.setInterviewDetails(intdet);
 		this.ds.addInteDate(index, det);
-		
 	}
 	}
 

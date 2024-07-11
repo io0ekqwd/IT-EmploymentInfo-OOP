@@ -15,6 +15,8 @@ import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class ManagerGUI2 extends JPanel{
 	private ApplicantDetails[] AppD;
@@ -34,6 +36,18 @@ public class ManagerGUI2 extends JPanel{
 		add(scrollPane);
 		
 		this.appList = new JList();
+		appList.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				if(e.getValueIsAdjusting()){
+					int index = appList.getSelectedIndex();
+					if (index == -1) 
+						return;
+					ApplicantDetails app = AppD[index];
+					lblNewLabel.setText(app.getInterviewDetails().getDay()+" "+app.getInterviewDetails().getMonth()+" "+app.getInterviewDetails().getYear());
+					lblNewLabel_1.setText(app.getInterviewDetails().getVenue());
+				}
+			}
+		});
 		scrollPane.setViewportView(appList);
 		
 		JButton btnLogout = new JButton("Logout");
@@ -104,12 +118,12 @@ public class ManagerGUI2 extends JPanel{
 		lblVenue.setBounds(80, 288, 46, 14);
 		add(lblVenue);
 		
-		this.lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(157, 263, 46, 14);
+		this.lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(157, 263, 158, 14);
 		add(lblNewLabel);
 		
-		this.lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(157, 288, 46, 14);
+		this.lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(157, 288, 173, 14);
 		add(lblNewLabel_1);
 		this.populateSAppDList();
 	}
