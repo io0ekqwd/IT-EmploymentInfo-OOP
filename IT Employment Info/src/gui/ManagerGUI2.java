@@ -25,6 +25,7 @@ public class ManagerGUI2 extends JPanel{
 	private int index;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
+	private JButton btnScheduleInterview;
 
 	public ManagerGUI2(MainFrame main) {
 		setLayout(null);
@@ -43,8 +44,18 @@ public class ManagerGUI2 extends JPanel{
 					if (index == -1) 
 						return;
 					ApplicantDetails app = AppD[index];
-					lblNewLabel.setText(app.getInterviewDetails().getDay()+" "+app.getInterviewDetails().getMonth()+" "+app.getInterviewDetails().getYear());
-					lblNewLabel_1.setText(app.getInterviewDetails().getVenue());
+					if(app.getInterviewDetails()!=null)
+					{
+						btnScheduleInterview.setText("Reschedule Interview");
+						lblNewLabel.setText(app.getInterviewDetails().getDay()+" "+app.getInterviewDetails().getMonth()+" "+app.getInterviewDetails().getYear());
+					    lblNewLabel_1.setText(app.getInterviewDetails().getVenue());
+					}
+					else 
+					{
+						btnScheduleInterview.setText("Schedule Interview");
+						lblNewLabel.setText("(Please schedule date)");
+						lblNewLabel_1.setText("(Please schedule venue)");
+					}
 				}
 			}
 		});
@@ -87,15 +98,15 @@ public class ManagerGUI2 extends JPanel{
 		btnGiveOffer.setBounds(312, 323, 138, 23);
 		add(btnGiveOffer);
 		
-		JButton btnScheduleInterview = new JButton("Schedule Interview");
+		this.btnScheduleInterview = new JButton("Schedule Interview");
 		btnScheduleInterview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ApplicantDetails det = AppD[index];
 				main.showSchedulePage(index, det);
 			}
 		});
-		btnScheduleInterview.setBounds(136, 323, 166, 23);
-		add(btnScheduleInterview);
+		this.btnScheduleInterview.setBounds(136, 323, 166, 23);
+		add(this.btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.addActionListener(new ActionListener() {

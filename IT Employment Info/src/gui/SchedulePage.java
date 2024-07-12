@@ -47,6 +47,8 @@ public class SchedulePage extends JPanel{
 		textFieldDay.setBounds(57, 95, 39, 20);
 		add(textFieldDay);
 		textFieldDay.setColumns(10);
+		if(det.getInterviewDetails()!=null)
+			textFieldDay.setText(det.getInterviewDetails().getDay());
 		
 		this.comboBoxMonth = new JComboBox(this.monthArr);
 		this.comboBoxMonth.setBounds(106, 95, 111, 20);
@@ -56,11 +58,16 @@ public class SchedulePage extends JPanel{
 		textFieldYear.setBounds(226, 95, 56, 20);
 		add(textFieldYear);
 		textFieldYear.setColumns(10);
+		if(det.getInterviewDetails()!=null)
+			textFieldYear.setText(String.valueOf(det.getInterviewDetails().getYear()));
 		
 		textField = new JTextField();
 		textField.setBounds(74, 138, 86, 20);
 		add(textField);
 		textField.setColumns(10);
+		if(det.getInterviewDetails()!=null)
+			textField.setText(det.getInterviewDetails().getVenue());
+		
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
