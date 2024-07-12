@@ -8,6 +8,7 @@ import data.User;
 
 public class Controller {
 	private DataStorage ds = new DataStorage();
+	private String tt= "";
 	
 	public void addUser() {
 		User u1 = new User("HR", "PHR", "Staff");
@@ -61,6 +62,7 @@ public class Controller {
 		User t= ds.getUser(n);
 		if(t!=null) {
 			cc = t.getPassword().toString();
+			tt = t.getRole().toString();
 			if (real.equals(cc))
 				return true;
 			else
@@ -69,22 +71,8 @@ public class Controller {
 		return false;
 	}
 
-	public String verifyRole(String n, String pwd) {
-		String r = "";
-		User t = ds.getUser(n);
-		if (t!= null) 
-		{
-			r = t.getRole().toString();
-			if (r == "Staff")
-				return r;
-			else if (r == "Manager")
-				return r;
-			else if (r == "Admin")
-				return r;
-			else
-				return null;
-		}
-		return null;
+	public String verifyRole() {
+		return tt;
 	}
 
 	public void scheInte(int index, ApplicantDetails det, String d, String m, String v, int y) {

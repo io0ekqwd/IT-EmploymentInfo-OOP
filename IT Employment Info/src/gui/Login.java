@@ -12,12 +12,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
+import javax.swing.JRadioButton;
 
 public class Login extends JPanel{
 	private JTextField textField;
 	private MainFrame main;
 	private JLabel lblLoginStatus;
 	private JPasswordField passwordField;
+	private JRadioButton rdbtnStaff;
+	private JRadioButton rdbtnManager;
 	
 	public Login(MainFrame main) {
 		setLayout(null);
@@ -30,16 +33,16 @@ public class Login extends JPanel{
 		
 		JLabel lblUsername = new JLabel("Username:");
 		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblUsername.setBounds(76, 89, 67, 14);
+		lblUsername.setBounds(103, 127, 67, 14);
 		add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblPassword.setBounds(76, 141, 67, 14);
+		lblPassword.setBounds(103, 163, 67, 14);
 		add(lblPassword);
 		
 		textField = new JTextField();
-		textField.setBounds(201, 87, 86, 20);
+		textField.setBounds(201, 125, 86, 20);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -51,34 +54,32 @@ public class Login extends JPanel{
 				String pwd = String.valueOf(passwordField.getPassword()) ;
 				boolean validity = main.getController().verifyUser(n, pwd);
 				if (validity == true) {
-					String r = main.getController().verifyRole(n,pwd);
-					if (r == "Staff")
+					String r = main.getController().verifyRole();
+					if (r == "Staff"&& rdbtnStaff.isSelected())
 						main.showHRStaffGUI();
-					else if (r == "Manager")
+					else if (r == "Manager" && rdbtnManager.isSelected())
 						main.showMMainGUI();
 					else if (r == "Admin")
-						//Placeholder
-						System.out.println("Admin");
-					    //Placeholder
-					else
-					    lblLoginStatus.setText("Invalid Role. Please contact Administrator");
+						System.out.println("Admin");//Placeholder
 					    
+					else
+						lblLoginStatus.setText("Invalid Role Selection.");    
 				}
 				else
-					lblLoginStatus.setText("Invalid Username or Password. Please try again.");
+					lblLoginStatus.setText("<html>Invalid Username or Password.<br>Please Try Again.<html>");
 			}
 		});
 	
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnLogin.setBounds(201, 209, 89, 23);
+		btnLogin.setBounds(198, 217, 89, 23);
 		add(btnLogin);
 		
 		this.lblLoginStatus = new JLabel("");
-		this.lblLoginStatus.setBounds(103, 259, 337, 14);
+		this.lblLoginStatus.setBounds(176, 251, 187, 37);
 		add(lblLoginStatus);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(201, 141, 86, 18);
+		passwordField.setBounds(201, 162, 86, 18);
 		passwordField.setEchoChar('*');
 		add(passwordField);
 		
@@ -91,8 +92,28 @@ public class Login extends JPanel{
 					passwordField.setEchoChar('*');
 			}
 		});
-		chckbxShowPassword.setBounds(190, 166, 123, 23);
+		chckbxShowPassword.setBounds(189, 187, 123, 23);
 		add(chckbxShowPassword);
+		
+		this.rdbtnStaff = new JRadioButton("Staff");
+		rdbtnStaff.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(rdbtnStaff.isSelected())
+					rdbtnManager.setSelected(false);
+			}
+		});
+		this.rdbtnStaff.setBounds(111, 60, 109, 23);
+		add(this.rdbtnStaff);
+		
+		this.rdbtnManager = new JRadioButton("Manager");
+		rdbtnManager.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(rdbtnManager.isSelected())
+					rdbtnStaff.setSelected(false);
+			}
+		});
+		this.rdbtnManager.setBounds(241, 60, 109, 23);
+		add(this.rdbtnManager);
 		
 		this.main.getController().addUser();
 	}
