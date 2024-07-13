@@ -8,7 +8,10 @@ import data.ApplicantDetails;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DetailPage extends JPanel {
 	private MainFrame main;
@@ -55,10 +58,18 @@ public class DetailPage extends JPanel {
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+			String p = main.getController().getID();
+			if (p.equals("p1"))
 				main.showManagerGUI();
+			if (p.equals("p2"))
+				main.showShortGUI();
+			if (p.equals("p3"))
+				main.showJobGUI();
+			main.getController().clearID();
 			}
-		});
+			});
+		
 		btnBack.setBounds(10, 11, 89, 23);
 		add(btnBack);
 		

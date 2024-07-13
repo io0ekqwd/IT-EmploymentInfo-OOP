@@ -84,6 +84,18 @@ public class Controller {
 		det.setInterviewDetails(intdet);
 		this.ds.addInteDate(index, det);
 	}
+
+	public void addID(String p) {
+		this.ds.storeID(p);
+		
+	}
+	public String getID(){
+		return this.ds.getID();
+	}
+
+	public void clearID() {
+		this.ds.removeID();
+	}
 	}
 
 	

@@ -8,6 +8,7 @@ public class DataStorage {
 	private Vector<ApplicantDetails>aList = new Vector<ApplicantDetails>();
 	private Vector<ApplicantDetails>aListShort = new Vector<ApplicantDetails>();
 	private Vector<ApplicantDetails>jobList = new Vector<ApplicantDetails>();
+	private Vector<String> pageID = new Vector<String>();
 	
 	
 	
@@ -62,7 +63,19 @@ public class DataStorage {
 
 	public void addInteDate(int index, ApplicantDetails det) {
 		this.aListShort.set(index, det);
-	}}
+	}
 
+	public void storeID(String p) {
+		this.pageID.add(p);
+	}
+
+	public String getID() {
+		return pageID.elementAt(0);
+	}
+
+	public void removeID() {
+		this.pageID.clear();
+	}
+}
 
 	

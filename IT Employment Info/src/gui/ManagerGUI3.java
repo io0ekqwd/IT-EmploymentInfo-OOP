@@ -21,6 +21,7 @@ public class ManagerGUI3 extends JPanel{
 	private ApplicantDetails AppD[];
 	private MainFrame main;
 	private JList appList;
+	private String p = "";
 	
 	public ManagerGUI3(MainFrame main) {
 		setLayout(null);
@@ -59,6 +60,8 @@ public class ManagerGUI3 extends JPanel{
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				p = "p3";
+				main.getController().addID(p);
 				int index = appList.getSelectedIndex();
 				if (index == -1)
 					return;

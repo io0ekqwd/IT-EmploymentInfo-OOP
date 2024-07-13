@@ -20,6 +20,7 @@ public class ManagerGUI extends JPanel{
 	private MainFrame main;
 	private JList appList;
 	private int index;
+	private String p="";
 	
 	public ManagerGUI(MainFrame main) {
 		setLayout(null);
@@ -83,12 +84,13 @@ public class ManagerGUI extends JPanel{
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				p = "p1";
+				main.getController().addID(p);
 				int index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
 				ApplicantDetails app = AppD[index];
 				main.showDetailPage(index, app);
-				
 			}
 		});
 		btnViewProfile.setBounds(29, 335, 125, 23);
@@ -96,7 +98,7 @@ public class ManagerGUI extends JPanel{
 		
 		this.populateAppDList();
 	}
-	//Test
+	
 	private void populateAppDList() {
 		this.AppD = this.main.getController().getAppList();
 		DefaultListModel model = new DefaultListModel();
@@ -108,7 +110,7 @@ public class ManagerGUI extends JPanel{
 		}
 		this.appList.setModel(model);
 	} 
-	//Test
+	
 	public void showMMainGUI() {
 		this.main.showMMainGUI();
 	}

@@ -26,6 +26,7 @@ public class ManagerGUI2 extends JPanel{
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JButton btnScheduleInterview;
+	private String p = "";
 
 	public ManagerGUI2(MainFrame main) {
 		setLayout(null);
@@ -111,6 +112,8 @@ public class ManagerGUI2 extends JPanel{
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				p = "p2";
+				main.getController().addID(p);
 				int index = appList.getSelectedIndex();
 				if (index == -1)
 					return;

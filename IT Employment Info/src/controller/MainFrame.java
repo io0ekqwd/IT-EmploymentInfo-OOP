@@ -15,7 +15,7 @@ import gui.ManagerMainPage;
 import gui.SchedulePage;
 
 public class MainFrame extends JFrame {
-	private CardLayout card;
+    private CardLayout card;
 	private Controller cont;
 	public MainFrame() 
 	{
