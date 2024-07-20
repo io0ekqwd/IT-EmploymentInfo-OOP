@@ -96,6 +96,19 @@ public class Controller {
 	public void clearID() {
 		this.ds.removeID();
 	}
+
+	public void deleteProf(int index) {
+		String p = getID();
+		if (p.equals("p1"))
+			this.ds.deleteAProf(index);
+		if (p.equals("p2"))
+			this.ds.deleteSProf(index);
+		if (p.equals("p3"))
+			this.ds.deleteJProf(index);
+		clearID();
+		
+		
+	}
 	}
 
 	

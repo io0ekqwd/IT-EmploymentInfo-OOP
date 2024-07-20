@@ -12,12 +12,13 @@ import controller.MainFrame;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 public class HRStaffGUI2 extends JPanel{
 	private MainFrame main;
-	private JTextField textField;
-	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextArea textArea;
+	private JTextArea textArea_1;
 	public HRStaffGUI2(MainFrame main) {
 		setLayout(null);
 		this.main = main;
@@ -26,8 +27,8 @@ public class HRStaffGUI2 extends JPanel{
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String n = textField_2.getText();
-				String ps = textField.getText();
-				String is = textField_1.getText();
+				String ps = textArea.getText();
+				String is = textArea_1.getText();
 				main.getController().addProfile(n, ps, is);
 			}
 		});
@@ -52,27 +53,25 @@ public class HRStaffGUI2 extends JPanel{
 		lblAddApplicantPage.setBounds(153, 4, 141, 25);
 		add(lblAddApplicantPage);
 		
-		textField = new JTextField();
-		textField.setBounds(43, 59, 86, 20);
-		add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(43, 101, 86, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
-		
 		JLabel lblName = new JLabel("PS");
 		lblName.setBounds(10, 62, 46, 14);
 		add(lblName);
 		
 		JLabel lblAge = new JLabel("is");
-		lblAge.setBounds(10, 104, 46, 14);
+		lblAge.setBounds(10, 121, 26, 14);
 		add(lblAge);
 		
 		textField_2 = new JTextField();
 		textField_2.setBounds(247, 104, 86, 20);
 		add(textField_2);
 		textField_2.setColumns(10);
+		
+		textArea = new JTextArea();
+		textArea.setBounds(41, 57, 113, 36);
+		add(textArea);
+		
+		textArea_1 = new JTextArea();
+		textArea_1.setBounds(41, 116, 113, 36);
+		add(textArea_1);
 	}
 }

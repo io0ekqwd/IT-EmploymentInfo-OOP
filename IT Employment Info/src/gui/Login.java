@@ -13,6 +13,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
+import javax.swing.ImageIcon;
+import javax.swing.JSeparator;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.SwingConstants;
 
 public class Login extends JPanel{
 	private JTextField textField;
@@ -23,22 +28,23 @@ public class Login extends JPanel{
 	private JRadioButton rdbtnManager;
 	
 	public Login(MainFrame main) {
-		setLayout(null);
+		setBackground(Color.LIGHT_GRAY);
 		this.main = main;
+		setLayout(null);
 		
 		JLabel lblLoginScreen = new JLabel("Login Screen");
+		lblLoginScreen.setBounds(160, 22, 136, 31);
 		lblLoginScreen.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblLoginScreen.setBounds(151, 11, 136, 31);
 		add(lblLoginScreen);
 		
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblUsername.setBounds(103, 127, 67, 14);
+		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblPassword.setBounds(103, 163, 67, 14);
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		add(lblPassword);
 		
 		textField = new JTextField();
@@ -47,6 +53,7 @@ public class Login extends JPanel{
 		textField.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setBounds(201, 217, 89, 23);
 		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -71,11 +78,10 @@ public class Login extends JPanel{
 		});
 	
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnLogin.setBounds(198, 217, 89, 23);
 		add(btnLogin);
 		
 		this.lblLoginStatus = new JLabel("");
-		this.lblLoginStatus.setBounds(176, 251, 187, 37);
+		lblLoginStatus.setBounds(160, 251, 187, 37);
 		add(lblLoginStatus);
 		
 		passwordField = new JPasswordField();
@@ -84,6 +90,8 @@ public class Login extends JPanel{
 		add(passwordField);
 		
 		JCheckBox chckbxShowPassword = new JCheckBox("Show Password");
+		chckbxShowPassword.setBackground(Color.WHITE);
+		chckbxShowPassword.setBounds(189, 187, 123, 23);
 		chckbxShowPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (chckbxShowPassword.isSelected())
@@ -92,28 +100,34 @@ public class Login extends JPanel{
 					passwordField.setEchoChar('*');
 			}
 		});
-		chckbxShowPassword.setBounds(189, 187, 123, 23);
 		add(chckbxShowPassword);
 		
 		this.rdbtnStaff = new JRadioButton("Staff");
+		rdbtnStaff.setBackground(Color.WHITE);
+		rdbtnStaff.setBounds(100, 70, 109, 23);
 		rdbtnStaff.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(rdbtnStaff.isSelected())
 					rdbtnManager.setSelected(false);
 			}
 		});
-		this.rdbtnStaff.setBounds(111, 60, 109, 23);
 		add(this.rdbtnStaff);
 		
 		this.rdbtnManager = new JRadioButton("Manager");
+		rdbtnManager.setBackground(Color.WHITE);
+		rdbtnManager.setBounds(272, 70, 109, 23);
 		rdbtnManager.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(rdbtnManager.isSelected())
 					rdbtnStaff.setSelected(false);
 			}
 		});
-		this.rdbtnManager.setBounds(241, 60, 109, 23);
 		add(this.rdbtnManager);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(-32, -96, 520, 589);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\User\\Downloads\\Gradient (1).png"));
+		add(lblNewLabel);
 		
 		this.main.getController().addUser();
 	}

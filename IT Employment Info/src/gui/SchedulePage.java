@@ -13,6 +13,8 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class SchedulePage extends JPanel{
 	private int index;
@@ -28,41 +30,43 @@ public class SchedulePage extends JPanel{
 		this.det = det;
 		this.main = main;
 		setLayout(null);
-		this.setSize(313,248);
+		
 		
 		JLabel lblSchedulingPage = new JLabel("Scheduling Page");
-		lblSchedulingPage.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblSchedulingPage.setBounds(106, 22, 136, 25);
+		lblSchedulingPage.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblSchedulingPage.setBounds(155, 50, 145, 25);
 		add(lblSchedulingPage);
 		
 		JLabel lblDate = new JLabel("Date:");
-		lblDate.setBounds(26, 98, 56, 14);
+		lblDate.setBounds(71, 143, 56, 14);
 		add(lblDate);
 		
 		JLabel lblVenue = new JLabel("Venue:");
-		lblVenue.setBounds(26, 141, 46, 14);
+		lblVenue.setBounds(71, 181, 46, 14);
 		add(lblVenue);
 		
 		textFieldDay = new JTextField();
-		textFieldDay.setBounds(57, 95, 39, 20);
+		textFieldDay.setBounds(117, 140, 56, 20);
 		add(textFieldDay);
 		textFieldDay.setColumns(10);
 		if(det.getInterviewDetails()!=null)
 			textFieldDay.setText(det.getInterviewDetails().getDay());
 		
 		this.comboBoxMonth = new JComboBox(this.monthArr);
-		this.comboBoxMonth.setBounds(106, 95, 111, 20);
+		this.comboBoxMonth.setBounds(183, 140, 111, 20);
 		add(this.comboBoxMonth);
+		if(det.getInterviewDetails()!=null)
+			comboBoxMonth.setSelectedItem(det.getInterviewDetails().getMonth());
 		
 		textFieldYear = new JTextField();
-		textFieldYear.setBounds(226, 95, 56, 20);
+		textFieldYear.setBounds(304, 140, 56, 20);
 		add(textFieldYear);
 		textFieldYear.setColumns(10);
 		if(det.getInterviewDetails()!=null)
 			textFieldYear.setText(String.valueOf(det.getInterviewDetails().getYear()));
 		
 		textField = new JTextField();
-		textField.setBounds(74, 138, 86, 20);
+		textField.setBounds(117, 178, 86, 20);
 		add(textField);
 		textField.setColumns(10);
 		if(det.getInterviewDetails()!=null)
@@ -75,7 +79,7 @@ public class SchedulePage extends JPanel{
 				main.showShortGUI();
 			}
 		});
-		btnBack.setBounds(29, 186, 89, 23);
+		btnBack.setBounds(26, 243, 125, 43);
 		add(btnBack);
 		
 		JButton btnSave = new JButton("Save");
@@ -89,7 +93,7 @@ public class SchedulePage extends JPanel{
 				main.showShortGUI();
 			}
 		});
-		btnSave.setBounds(183, 186, 89, 23);
+		btnSave.setBounds(272, 243, 125, 43);
 		add(btnSave);
 	}
 }

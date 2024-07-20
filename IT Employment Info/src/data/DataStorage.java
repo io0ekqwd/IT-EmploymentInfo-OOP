@@ -76,6 +76,23 @@ public class DataStorage {
 	public void removeID() {
 		this.pageID.clear();
 	}
+
+	public void deleteAProf(int index) {
+		this.aList.remove(index);
+		
+	}
+
+	public void deleteSProf(int index) {
+		this.aListShort.remove(index);
+		
+	}
+
+	public void deleteJProf(int index) {
+		this.jobList.remove(index);
+		
+	}
+	
+	
 }
 
 	

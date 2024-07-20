@@ -31,7 +31,7 @@ public class ManagerGUI2 extends JPanel{
 	public ManagerGUI2(MainFrame main) {
 		setLayout(null);
 		this.main = main;
-		
+		this.setSize(450, 400);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 53, 450, 189);
@@ -93,6 +93,9 @@ public class ManagerGUI2 extends JPanel{
 				if (index == -1)
 					return;
 				main.getController().giveJob(index);
+				btnScheduleInterview.setText("Schedule Interview");
+				lblNewLabel.setText("(Please schedule date)");
+				lblNewLabel_1.setText("(Please schedule venue)");
 				populateSAppDList();
 			}
 		});
@@ -102,6 +105,7 @@ public class ManagerGUI2 extends JPanel{
 		this.btnScheduleInterview = new JButton("Schedule Interview");
 		btnScheduleInterview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				index = appList.getSelectedIndex();
 				ApplicantDetails det = AppD[index];
 				main.showSchedulePage(index, det);
 			}
@@ -139,6 +143,25 @@ public class ManagerGUI2 extends JPanel{
 		this.lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(157, 288, 173, 14);
 		add(lblNewLabel_1);
+		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				p = "p2";
+				main.getController().addID(p);
+				index = appList.getSelectedIndex();
+				if(index == -1)
+					return;
+				ApplicantDetails app = AppD[index];
+				main.getController().deleteProf(index);
+				btnScheduleInterview.setText("Schedule Interview");
+				lblNewLabel.setText("(Please schedule date)");
+				lblNewLabel_1.setText("(Please schedule venue)");
+				populateSAppDList();
+			}
+		});
+		btnDelete.setBounds(0, 357, 126, 23);
+		add(btnDelete);
 		this.populateSAppDList();
 	}
 	//Test

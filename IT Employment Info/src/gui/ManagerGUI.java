@@ -25,7 +25,7 @@ public class ManagerGUI extends JPanel{
 	public ManagerGUI(MainFrame main) {
 		setLayout(null);
 		this.main = main;
-		
+		this.setSize(450, 400);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 54, 450, 189);
@@ -58,7 +58,7 @@ public class ManagerGUI extends JPanel{
 				populateAppDList();
 			}
 		});
-		btnShortlist.setBounds(280, 335, 125, 23);
+		btnShortlist.setBounds(279, 328, 125, 23);
 		add(btnShortlist);
 		/*
 		JButton btnTest = new JButton("Test");
@@ -86,15 +86,32 @@ public class ManagerGUI extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				p = "p1";
 				main.getController().addID(p);
-				int index = appList.getSelectedIndex();
+				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
 				ApplicantDetails app = AppD[index];
 				main.showDetailPage(index, app);
 			}
 		});
-		btnViewProfile.setBounds(29, 335, 125, 23);
+		btnViewProfile.setBounds(29, 328, 125, 23);
 		add(btnViewProfile);
+		
+		JButton button = new JButton("Delete");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				p = "p1";
+				main.getController().addID(p);
+				index = appList.getSelectedIndex();
+				if(index == -1)
+					return;
+				ApplicantDetails app = AppD[index];
+				main.getController().deleteProf(index);
+				populateAppDList();
+				
+			}
+		});
+		button.setBounds(29, 294, 126, 23);
+		add(button);
 		
 		this.populateAppDList();
 	}

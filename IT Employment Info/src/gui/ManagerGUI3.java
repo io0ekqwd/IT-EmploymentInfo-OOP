@@ -22,10 +22,12 @@ public class ManagerGUI3 extends JPanel{
 	private MainFrame main;
 	private JList appList;
 	private String p = "";
+	private int index;
 	
 	public ManagerGUI3(MainFrame main) {
 		setLayout(null);
 		this.main = main;
+		this.setSize(450, 400);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 54, 450, 189);
@@ -75,6 +77,22 @@ public class ManagerGUI3 extends JPanel{
 		JButton btnCountApplicants = new JButton("Count Applicants");
 		btnCountApplicants.setBounds(280, 344, 160, 23);
 		add(btnCountApplicants);
+		
+		JButton button = new JButton("Delete");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				p = "p3";
+				main.getController().addID(p);
+				index = appList.getSelectedIndex();
+				if(index == -1)
+					return;
+				ApplicantDetails app = AppD[index];
+				main.getController().deleteProf(index);
+				populateAppDList();
+			}
+		});
+		button.setBounds(10, 310, 140, 23);
+		add(button);
 		this.populateAppDList();
 	}
 	//Test

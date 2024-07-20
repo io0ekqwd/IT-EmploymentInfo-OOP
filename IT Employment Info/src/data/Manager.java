@@ -27,26 +27,12 @@ public class Manager {
 		this.password = p;
 	 }
 	
-	/*
-	public void viewDetails() { 
-		// TODO Auto-generated method
-	 }
-	
-	public void generateListJO() { 
-		// TODO Auto-generated method
-	 }
 	
 	
 	
-	
-	
-	public void viewSummary() { 
-		// TODO Auto-generated method
-	 }
-	
-	public int viewTotal() { 
+	public int viewTotal(){ 
 		// TODO Auto-generated method
 		return 0;
-	 } */
+	 } 
 
 }

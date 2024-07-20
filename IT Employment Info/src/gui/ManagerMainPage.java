@@ -6,37 +6,28 @@ import controller.MainFrame;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+
+
 import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ManagerMainPage extends JPanel {
 	private MainFrame main;
-	private JComboBox cbPage;
-	private String[] valArr = {"Applicant Page", "Shortlist Page", "Job Offer Page"};
+	private ImageIcon img1, img2, img3;
+	//private String[] valArr = {"Applicant Page", "Shortlist Page", "Job Offer Page"};
 	public ManagerMainPage(MainFrame main) {
 		setLayout(null);
+		this.setSize(450, 400);
 		this.main = main;
 		
+		
 		JLabel lblManagerPage = new JLabel("Manager Page");
-		lblManagerPage.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblManagerPage.setBounds(171, 11, 102, 21);
+		lblManagerPage.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblManagerPage.setBounds(169, 11, 115, 21);
 		add(lblManagerPage);
-		
-		this.cbPage = new JComboBox(this.valArr);
-		cbPage.setBounds(143, 71, 139, 20);
-		add(cbPage);
-		
-		JButton btnGoToPage = new JButton("Go To Page");
-		btnGoToPage.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				openPage();
-			}
-		});
-		btnGoToPage.setBounds(154, 112, 119, 23);
-		add(btnGoToPage);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
@@ -44,16 +35,49 @@ public class ManagerMainPage extends JPanel {
 				main.showLogin();
 			}
 		});
-		btnLogout.setBounds(154, 190, 119, 23);
+		btnLogout.setBounds(154, 310, 139, 23);
 		add(btnLogout);
-	}
-	public void openPage() {
-		int pageIndex = this.cbPage.getSelectedIndex();
-		if (pageIndex == 0)
-			this.main.showManagerGUI();
-		else if (pageIndex == 1)
-			this.main.showShortGUI();
-		else if (pageIndex == 2)
-			this.main.showJobGUI();
+		
+		JButton btnApplicantPage = new JButton("Applicant Page");
+		btnApplicantPage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showManagerGUI();
+			}
+		});
+		btnApplicantPage.setBounds(10, 56, 119, 38);
+		add(btnApplicantPage);
+		
+		JButton btnShortlistPage = new JButton("Shortlist Page");
+		btnShortlistPage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showShortGUI();
+			}
+		});
+		btnShortlistPage.setBounds(158, 56, 135, 38);
+		add(btnShortlistPage);
+		
+		JButton btnJobPage = new JButton("Job Page");
+		btnJobPage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.showJobGUI();
+			}
+		});
+		btnJobPage.setBounds(322, 56, 118, 38);
+		add(btnJobPage);
+		
+		this.img1 = new ImageIcon("images/icons8-profile-100.png");
+		JLabel lblNewLabel = new JLabel(this.img1);
+		lblNewLabel.setBounds(10, 140, 119, 156);
+		add(lblNewLabel);
+		
+		this.img2 = new ImageIcon("images/icons8-shortlist-64.png");
+		JLabel lblNewLabel_1 = new JLabel(this.img2);
+		lblNewLabel_1.setBounds(158, 140, 135, 142);
+		add(lblNewLabel_1);
+		
+		this.img3 = new ImageIcon("images/icons8-job-100.png");
+		JLabel lblNewLabel_2 = new JLabel(this.img3);
+		lblNewLabel_2.setBounds(322, 140, 118, 142);
+		add(lblNewLabel_2);
 	}
 }
