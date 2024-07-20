@@ -100,6 +100,7 @@ public class Login extends JPanel{
 					passwordField.setEchoChar('*');
 			}
 		});
+		chckbxShowPassword.setOpaque(false);
 		add(chckbxShowPassword);
 		
 		this.rdbtnStaff = new JRadioButton("Staff");
@@ -111,6 +112,7 @@ public class Login extends JPanel{
 					rdbtnManager.setSelected(false);
 			}
 		});
+		this.rdbtnStaff.setOpaque(false);
 		add(this.rdbtnStaff);
 		
 		this.rdbtnManager = new JRadioButton("Manager");
@@ -122,11 +124,12 @@ public class Login extends JPanel{
 					rdbtnStaff.setSelected(false);
 			}
 		});
+		this.rdbtnManager.setOpaque(false);
 		add(this.rdbtnManager);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(-32, -96, 520, 589);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\User\\Downloads\\Gradient (1).png"));
+		lblNewLabel.setBounds(-34, -96, 520, 589);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\User\\Downloads\\Gradient (2).png"));
 		add(lblNewLabel);
 		
 		this.main.getController().addUser();
