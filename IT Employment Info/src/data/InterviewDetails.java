@@ -3,7 +3,7 @@ package data;
 public class InterviewDetails {
 	
 	private String venue;
-	private String day;
+	private int day;
 	private String month;
 	private int year;
 	
@@ -14,10 +14,10 @@ public class InterviewDetails {
 		 this.venue = venue; 
 	}
 	
-	public String getDay() {
+	public int getDay() {
 	 	 return day; 
 	}
-	public void setDay(String day) { 
+	public void setDay(int day) { 
 		 this.day = day; 
 	}
 	

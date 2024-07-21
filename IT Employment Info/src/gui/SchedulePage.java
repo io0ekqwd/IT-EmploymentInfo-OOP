@@ -50,7 +50,7 @@ public class SchedulePage extends JPanel{
 		add(textFieldDay);
 		textFieldDay.setColumns(10);
 		if(det.getInterviewDetails()!=null)
-			textFieldDay.setText(det.getInterviewDetails().getDay());
+			textFieldDay.setText(String.valueOf(det.getInterviewDetails().getDay()));
 		
 		this.comboBoxMonth = new JComboBox(this.monthArr);
 		this.comboBoxMonth.setBounds(183, 140, 111, 20);
@@ -85,7 +85,7 @@ public class SchedulePage extends JPanel{
 		JButton btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String d = textFieldDay.getText();
+				int d = Integer.valueOf(textFieldDay.getText());
 				String m = String.valueOf(comboBoxMonth.getSelectedItem());
 				int y =Integer.valueOf(textFieldYear.getText());
 				String v = textField.getText();

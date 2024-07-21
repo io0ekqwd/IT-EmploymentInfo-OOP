@@ -75,7 +75,7 @@ public class Controller {
 		return tt;
 	}
 
-	public void scheInte(int index, ApplicantDetails det, String d, String m, String v, int y) {
+	public void scheInte(int index, ApplicantDetails det, int d, String m, String v, int y) {
 		InterviewDetails intdet = new InterviewDetails();
 		intdet.setDay(d);
 		intdet.setMonth(m);
