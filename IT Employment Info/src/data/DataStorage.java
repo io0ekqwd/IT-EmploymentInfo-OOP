@@ -91,6 +91,11 @@ public class DataStorage {
 		this.jobList.remove(index);
 		
 	}
+
+	public void storeSalary(int index, ApplicantDetails det) {
+		this.jobList.set(index, det);
+		
+	}
 	
 	
 }

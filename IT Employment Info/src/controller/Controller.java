@@ -109,6 +109,11 @@ public class Controller {
 		
 		
 	}
+
+	public void addSalary(int index, ApplicantDetails det, int s) {
+		det.setSalary(s);
+		this.ds.storeSalary(index, det);
+	}
 	}
 
 	

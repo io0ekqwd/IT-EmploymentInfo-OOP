@@ -12,6 +12,7 @@ public class ApplicantDetails {
 	private String status;
 	private Skills skills;
 	private InterviewDetails intDet;
+	private int salary;
 
 	
 	public String getStatus() {
@@ -80,6 +81,14 @@ public class ApplicantDetails {
 	
 	public void setAge(int age) {
 		this.age = age;
+	}
+	
+	public int getSalary() {
+		return salary;
+	}
+	
+	public void setSalary(int salary) {
+		this.salary = salary;
 	}
 	
 	

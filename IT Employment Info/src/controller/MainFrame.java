@@ -63,26 +63,26 @@ public class MainFrame extends JFrame {
 	}
 
 	public void showHRStaffGUI() {
-		HRStaffGUI p7 = new HRStaffGUI(this);
+		HRStaffGUI p6 = new HRStaffGUI(this);
+		this.add(p6, "Panel 6");
+		this.card.show(this.getContentPane(), "Panel 6");
+	}
+	
+	public void showHRStaffGUI2() {
+		HRStaffGUI2 p7 = new HRStaffGUI2(this);
 		this.add(p7, "Panel 7");
 		this.card.show(this.getContentPane(), "Panel 7");
 	}
 	
-	public void showHRStaffGUI2() {
-		HRStaffGUI2 p8 = new HRStaffGUI2(this);
+	public void showDetailPage(int index, ApplicantDetails det){
+		DetailPage p8 = new DetailPage(this, index, det);
 		this.add(p8, "Panel 8");
 		this.card.show(this.getContentPane(), "Panel 8");
 	}
-	
-	public void showDetailPage(int index, ApplicantDetails det){
-		DetailPage p9 = new DetailPage(this, index, det);
+	public void showSchedulePage(int index, ApplicantDetails det){
+		SchedulePage p9 = new SchedulePage(this, index, det);
 		this.add(p9, "Panel 9");
 		this.card.show(this.getContentPane(), "Panel 9");
-	}
-	public void showSchedulePage(int index, ApplicantDetails det){
-		SchedulePage p10 = new SchedulePage(this, index, det);
-		this.add(p10, "Panel 10");
-		this.card.show(this.getContentPane(), "Panel 10");
 	}
 	
 	

@@ -15,14 +15,22 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JList;
+import javax.swing.JTextField;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class ManagerGUI3 extends JPanel{
+	private JButton btnAddSalary;
 	private ApplicantDetails AppD[];
 	private MainFrame main;
 	private JList appList;
 	private String p = "";
 	private int index;
+	private JTextField textField;
+	private int sal;
+	private JLabel lblNewLabel;
 	
 	public ManagerGUI3(MainFrame main) {
 		setLayout(null);
@@ -75,6 +83,10 @@ public class ManagerGUI3 extends JPanel{
 		add(btnViewProfile);
 		
 		JButton btnCountApplicants = new JButton("Count Applicants");
+		btnCountApplicants.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnCountApplicants.setBounds(280, 344, 160, 23);
 		add(btnCountApplicants);
 		
@@ -86,13 +98,49 @@ public class ManagerGUI3 extends JPanel{
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
-				ApplicantDetails app = AppD[index];
 				main.getController().deleteProf(index);
 				populateAppDList();
 			}
 		});
 		button.setBounds(10, 310, 140, 23);
 		add(button);
+		
+		JLabel lblSalary = new JLabel("Salary:");
+		lblSalary.setBounds(281, 279, 99, 14);
+		add(lblSalary);
+		
+		textField = new JTextField();
+		textField.setBounds(330, 276, 110, 20);
+		add(textField);
+		textField.setColumns(10);
+		
+		this.btnAddSalary = new JButton("Add Salary");
+		btnAddSalary.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				index = appList.getSelectedIndex();
+				if(index == -1)
+					return;
+				ApplicantDetails app = AppD[index];
+				if(textField.getText().isEmpty() == true)
+					lblNewLabel.setText("Please fill in salary.");
+				else
+				{
+					sal = Integer.valueOf(textField.getText());
+			        main.getController().addSalary(index, app, sal);
+				    textField.setText("");
+				    lblNewLabel.setText("");
+				}
+					
+				
+			populateAppDList();   
+			}
+		});
+		this.btnAddSalary.setBounds(280, 310, 160, 23);
+		add(this.btnAddSalary);
+		
+		this.lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(280, 375, 160, 14);
+		add(lblNewLabel);
 		this.populateAppDList();
 	}
 	//Test
@@ -102,7 +150,12 @@ public class ManagerGUI3 extends JPanel{
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails op = AppD[i];
-			model.addElement(op.getName());
+			if(op.getSalary()!=0)
+			{
+				model.addElement(op.getName()+"          "+op.getPosition()+"          "+"$"+op.getSalary());
+			}
+			else
+				model.addElement(op.getName()+"          "+op.getPosition());
 			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
 		}
 		this.appList.setModel(model);
