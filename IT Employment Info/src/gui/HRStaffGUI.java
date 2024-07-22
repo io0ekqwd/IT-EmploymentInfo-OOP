@@ -20,6 +20,7 @@ public class HRStaffGUI extends JPanel{
 	private MainFrame main;
 	private JList appList;
 	private int index;
+	private String p = "p1";
 	public HRStaffGUI(MainFrame main) {
 		setLayout(null);
 		this.main = main;
@@ -78,6 +79,7 @@ public class HRStaffGUI extends JPanel{
 	}
 	//Test
 	private void populateAppDList() {
+		main.getController().addID(p);
 		this.AppD = this.main.getController().getAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)

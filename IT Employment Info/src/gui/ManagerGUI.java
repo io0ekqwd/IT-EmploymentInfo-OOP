@@ -22,7 +22,7 @@ public class ManagerGUI extends JPanel{
 	private MainFrame main;
 	private JList appList;
 	private int index;
-	private String p="";
+	private String p="p1";
 	
 	public ManagerGUI(MainFrame main) {
 		setLayout(null);
@@ -59,13 +59,14 @@ public class ManagerGUI extends JPanel{
 		JButton btnShortlist = new JButton("Shortlist");
 		btnShortlist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to shortlist?","Shortlist", JOptionPane.YES_NO_OPTION);
 				if(opt == 0)
 				{
-					main.getController().shortlistApp(index);
+					main.getController().moveProf(index);
 					populateAppDList();
 				}
 				else
@@ -87,7 +88,6 @@ public class ManagerGUI extends JPanel{
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				p = "p1";
 				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if (index == -1)
@@ -102,7 +102,6 @@ public class ManagerGUI extends JPanel{
 		JButton button = new JButton("Delete");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				p = "p1";
 				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
@@ -124,6 +123,7 @@ public class ManagerGUI extends JPanel{
 	}
 	
 	private void populateAppDList() {
+		main.getController().addID(p);
 		this.AppD = this.main.getController().getAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)

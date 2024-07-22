@@ -38,21 +38,9 @@ public class Controller {
 	public ApplicantDetails[] getAppList() {
 		return this.ds.getAppList();
 	}
-	public ApplicantDetails[] getSAppList() {
-		return this.ds.getSAppList();
-	}
-	public ApplicantDetails[] getJobList() {
-		return this.ds.getJobList();
-	}
-	
-	
 
-
-	public void shortlistApp(int index) {
-		this.ds.shortlistApp(index);
-	}
-	public void giveJob(int index) {
-		this.ds.giveJob(index);
+	public void moveProf(int index) {
+		this.ds.moveProf(index);
 	}
 
 	
@@ -71,7 +59,7 @@ public class Controller {
 		return false;
 	}
 
-	public String verifyRole() {
+	public String getRole() {
 		return tt;
 	}
 
@@ -98,15 +86,7 @@ public class Controller {
 	}
 
 	public void deleteProf(int index) {
-		String p = getID();
-		if (p.equals("p1"))
-			this.ds.deleteAProf(index);
-		if (p.equals("p2"))
-			this.ds.deleteSProf(index);
-		if (p.equals("p3"))
-			this.ds.deleteJProf(index);
-		clearID();
-		
+		this.ds.deleteProf(index);
 		
 	}
 

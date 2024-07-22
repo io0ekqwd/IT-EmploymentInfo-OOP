@@ -13,20 +13,21 @@ public class DataStorage {
 	
 	
 	public ApplicantDetails[] getAppList() {
-		ApplicantDetails[] opArr = new ApplicantDetails[this.aList.size()];
-		this.aList.toArray(opArr);
-		return opArr;
-	}
-
-	public ApplicantDetails[] getSAppList() {
-		ApplicantDetails[] opArr = new ApplicantDetails[this.aListShort.size()];
-		this.aListShort.toArray(opArr);
-		return opArr;
-	}
-	
-	public ApplicantDetails[] getJobList() {
-		ApplicantDetails[] opArr = new ApplicantDetails[this.jobList.size()];
-		this.jobList.toArray(opArr);
+		String p = getID();
+		ApplicantDetails[] opArr = null;
+		if(p=="p1"){
+		    opArr = new ApplicantDetails[this.aList.size()];
+			this.aList.toArray(opArr);
+		}
+		else if(p=="p2"){
+			opArr = new ApplicantDetails[this.aListShort.size()];
+			this.aListShort.toArray(opArr);
+		}
+		else if(p=="p3"){
+			opArr = new ApplicantDetails[this.jobList.size()];
+			this.jobList.toArray(opArr);
+		}
+	    removeID();
 		return opArr;
 	}
 
@@ -37,15 +38,18 @@ public class DataStorage {
 	}
 	//Test
 
-	public void shortlistApp(int index) {
-		this.aListShort.add(aList.elementAt(index));
-		this.aList.remove(index);
+	public void moveProf(int index) {
+		String p = getID();
+		if(p=="p1"){
+			this.aListShort.add(aList.elementAt(index));
+			this.aList.remove(index);
+		}
+		else if (p=="p2"){
+			this.jobList.add(aListShort.elementAt(index));
+			this.aListShort.remove(index);
+		}
 	}
-
-	public void giveJob(int index) {
-		this.jobList.add(aListShort.elementAt(index));
-		this.aListShort.remove(index);
-	}
+		
 
 	public void addUser(User u) {
 		this.loginInfo.add(u);
@@ -77,24 +81,21 @@ public class DataStorage {
 		this.pageID.clear();
 	}
 
-	public void deleteAProf(int index) {
-		this.aList.remove(index);
-		
-	}
-
-	public void deleteSProf(int index) {
-		this.aListShort.remove(index);
-		
-	}
-
-	public void deleteJProf(int index) {
-		this.jobList.remove(index);
-		
-	}
 
 	public void storeSalary(int index, ApplicantDetails det) {
 		this.jobList.set(index, det);
 		
+	}
+
+	public void deleteProf(int index) {
+		String p = getID();
+		if (p.equals("p1"))
+			this.aList.remove(index);
+		if (p.equals("p2"))
+			this.aListShort.remove(index);
+		if (p.equals("p3"))
+			this.jobList.remove(index);
+		removeID();
 	}
 	
 	

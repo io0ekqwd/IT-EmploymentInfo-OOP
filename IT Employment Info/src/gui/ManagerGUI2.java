@@ -28,7 +28,7 @@ public class ManagerGUI2 extends JPanel{
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JButton btnScheduleInterview;
-	private String p = "";
+	private String p = "p2";
 
 	public ManagerGUI2(MainFrame main) {
 		setLayout(null);
@@ -97,13 +97,14 @@ public class ManagerGUI2 extends JPanel{
 		JButton btnGiveOffer = new JButton("Give Offer");
 		btnGiveOffer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to give offer?","Job Offer", JOptionPane.YES_NO_OPTION);
 				if(opt == 0)
 				{
-					main.getController().giveJob(index);
+					main.getController().moveProf(index);
 					btnScheduleInterview.setText("Schedule Interview");
 					lblNewLabel.setText("(Please schedule date)");
 					lblNewLabel_1.setText("(Please schedule venue)");
@@ -130,7 +131,6 @@ public class ManagerGUI2 extends JPanel{
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				p = "p2";
 				main.getController().addID(p);
 				int index = appList.getSelectedIndex();
 				if (index == -1)
@@ -161,7 +161,6 @@ public class ManagerGUI2 extends JPanel{
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				p = "p2";
 				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
@@ -185,7 +184,8 @@ public class ManagerGUI2 extends JPanel{
 	}
 	//Test
 	private void populateSAppDList() {
-		this.AppD = this.main.getController().getSAppList();
+		main.getController().addID(p);
+		this.AppD = this.main.getController().getAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)
 		{

@@ -63,7 +63,7 @@ public class Login extends JPanel{
 				String pwd = String.valueOf(passwordField.getPassword()) ;
 				boolean validity = main.getController().verifyUser(n, pwd);
 				if (validity == true) {
-					String r = main.getController().verifyRole();
+					String r = main.getController().getRole();
 					if (r == "Staff"&& rdbtnStaff.isSelected())
 						main.showHRStaffGUI();
 					else if (r == "Manager" && rdbtnManager.isSelected())

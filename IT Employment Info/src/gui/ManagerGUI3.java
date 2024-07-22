@@ -27,7 +27,7 @@ public class ManagerGUI3 extends JPanel{
 	private ApplicantDetails AppD[];
 	private MainFrame main;
 	private JList appList;
-	private String p = "";
+	private String p = "p3";
 	private int index;
 	private JTextField textField;
 	private int sal;
@@ -77,7 +77,6 @@ public class ManagerGUI3 extends JPanel{
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				p = "p3";
 				main.getController().addID(p);
 				int index = appList.getSelectedIndex();
 				if (index == -1)
@@ -100,7 +99,6 @@ public class ManagerGUI3 extends JPanel{
 		JButton button = new JButton("Delete");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				p = "p3";
 				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
@@ -158,7 +156,8 @@ public class ManagerGUI3 extends JPanel{
 	}
 	//Test
 	private void populateAppDList() {
-		this.AppD = this.main.getController().getJobList();
+		main.getController().addID(p);
+		this.AppD = this.main.getController().getAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)
 		{
