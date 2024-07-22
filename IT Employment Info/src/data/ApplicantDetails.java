@@ -99,13 +99,4 @@ public class ApplicantDetails {
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	
-	
-	//Test
-	/*public ApplicantDetails(String n, Skills sk) 
-	{
-		this.name = n;
-		this.skills = sk;
-	}*/
-	//Test
 }

@@ -100,7 +100,7 @@ public class ManagerGUI2 extends JPanel{
 				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
-				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to shortlist?","Shortlist", JOptionPane.YES_NO_OPTION);
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to give offer?","Job Offer", JOptionPane.YES_NO_OPTION);
 				if(opt == 0)
 				{
 					main.getController().giveJob(index);

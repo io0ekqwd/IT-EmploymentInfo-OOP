@@ -68,7 +68,7 @@ public class ManagerGUI3 extends JPanel{
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showMMainGUI();
+				main.showMMainGUI();
 			}
 		});
 		btnBack.setBounds(36, 8, 89, 23);
@@ -173,8 +173,4 @@ public class ManagerGUI3 extends JPanel{
 		}
 		this.appList.setModel(model);
 	} 
-	//Test
-	public void showMMainGUI() {
-		this.main.showMMainGUI();
-	}
 }

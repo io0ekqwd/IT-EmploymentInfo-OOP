@@ -74,17 +74,6 @@ public class ManagerGUI extends JPanel{
 		});
 		btnShortlist.setBounds(279, 328, 125, 23);
 		add(btnShortlist);
-		/*
-		JButton btnTest = new JButton("Test");
-		btnTest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				main.getController().addName();
-				populateAppDList();
-			}
-		});
-		btnTest.setBounds(177, 33, 89, 23);
-		add(btnTest);
-		*/
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
