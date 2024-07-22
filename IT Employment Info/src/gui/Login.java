@@ -2,6 +2,8 @@ package gui;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 
@@ -22,10 +24,10 @@ import javax.swing.SwingConstants;
 public class Login extends JPanel{
 	private JTextField textField;
 	private MainFrame main;
-	private JLabel lblLoginStatus;
 	private JPasswordField passwordField;
 	private JRadioButton rdbtnStaff;
 	private JRadioButton rdbtnManager;
+	private ImageIcon img;
 	
 	public Login(MainFrame main) {
 		setBackground(Color.LIGHT_GRAY);
@@ -70,19 +72,15 @@ public class Login extends JPanel{
 						System.out.println("Admin");//Placeholder
 					    
 					else
-						lblLoginStatus.setText("Invalid Role Selection.");    
+						JOptionPane.showMessageDialog(main, "Invalid Role Selection. Please try again.");   
 				}
 				else
-					lblLoginStatus.setText("<html>Invalid Username or Password.<br>Please Try Again.<html>");
+					JOptionPane.showMessageDialog(main, "Invalid Username and Password. Please try again.");
 			}
 		});
 	
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		add(btnLogin);
-		
-		this.lblLoginStatus = new JLabel("");
-		lblLoginStatus.setBounds(160, 251, 187, 37);
-		add(lblLoginStatus);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(201, 162, 86, 18);
@@ -127,9 +125,9 @@ public class Login extends JPanel{
 		this.rdbtnManager.setOpaque(false);
 		add(this.rdbtnManager);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(-34, -96, 520, 589);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\User\\Downloads\\Gradient (2).png"));
+		this.img = new ImageIcon("images/Gradient.png");
+		JLabel lblNewLabel = new JLabel(this.img);
+		lblNewLabel.setBounds(-34, -86, 520, 589);
 		add(lblNewLabel);
 		
 		this.main.getController().addUser();

@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import controller.MainFrame;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 
 
@@ -17,7 +19,6 @@ import java.awt.event.ActionEvent;
 public class ManagerMainPage extends JPanel {
 	private MainFrame main;
 	private ImageIcon img1, img2, img3;
-	//private String[] valArr = {"Applicant Page", "Shortlist Page", "Job Offer Page"};
 	public ManagerMainPage(MainFrame main) {
 		setLayout(null);
 		this.setSize(450, 400);
@@ -31,8 +32,14 @@ public class ManagerMainPage extends JPanel {
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				main.showLogin();
+			public void actionPerformed(ActionEvent e) {
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
+				if(opt==0)
+				{
+					main.showLogin();
+				}
+				else
+					return;
 			}
 		});
 		btnLogout.setBounds(154, 310, 139, 23);

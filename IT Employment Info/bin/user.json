@@ -1,0 +1,17 @@
+{
+"User" = "HR"
+"Password" = "PHR"
+"Role" = Staff
+}
+{
+"User2" = "M"
+"Password2" = "PM"
+"Role2" = "Manager"
+}
+{
+"User3" = "A"
+"Password3" = "PA"
+"Role3" = "Admin"
+}
+
+

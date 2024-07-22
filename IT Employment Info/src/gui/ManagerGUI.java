@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -42,7 +44,13 @@ public class ManagerGUI extends JPanel{
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.showLogin();
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
+				if(opt==0)
+				{
+					main.showLogin();
+				}
+				else
+					return;
 			}
 		});
 		btnLogout.setBounds(334, 8, 89, 23);
@@ -54,8 +62,14 @@ public class ManagerGUI extends JPanel{
 				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
-				main.getController().shortlistApp(index);
-				populateAppDList();
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to shortlist?","Shortlist", JOptionPane.YES_NO_OPTION);
+				if(opt == 0)
+				{
+					main.getController().shortlistApp(index);
+					populateAppDList();
+				}
+				else
+					return;
 			}
 		});
 		btnShortlist.setBounds(279, 328, 125, 23);
@@ -104,10 +118,14 @@ public class ManagerGUI extends JPanel{
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
-				ApplicantDetails app = AppD[index];
-				main.getController().deleteProf(index);
-				populateAppDList();
-				
+				int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
+				if(opt==0)
+				{
+					main.getController().deleteProf(index);
+					populateAppDList();
+				}
+				else
+					return;
 			}
 		});
 		button.setBounds(29, 294, 126, 23);

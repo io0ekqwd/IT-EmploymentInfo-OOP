@@ -1,5 +1,7 @@
 package data;
 
+import javax.swing.ImageIcon;
+
 public class ApplicantDetails {
 
 	
@@ -13,7 +15,14 @@ public class ApplicantDetails {
 	private Skills skills;
 	private InterviewDetails intDet;
 	private int salary;
+	private ImageIcon pImg;
 
+	public ImageIcon getImage(){
+		return pImg;
+	}
+	public void setImage(ImageIcon pImg){
+		this.pImg = pImg;
+	}
 	
 	public String getStatus() {
 	 	 return status; 

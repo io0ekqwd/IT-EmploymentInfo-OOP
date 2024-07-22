@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
@@ -65,7 +67,13 @@ public class ManagerGUI2 extends JPanel{
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.showLogin();
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
+				if(opt==0)
+				{
+					main.showLogin();
+				}
+				else
+					return;
 			}
 		});
 		btnLogout.setBounds(337, 8, 89, 23);
@@ -92,11 +100,17 @@ public class ManagerGUI2 extends JPanel{
 				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
-				main.getController().giveJob(index);
-				btnScheduleInterview.setText("Schedule Interview");
-				lblNewLabel.setText("(Please schedule date)");
-				lblNewLabel_1.setText("(Please schedule venue)");
-				populateSAppDList();
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to shortlist?","Shortlist", JOptionPane.YES_NO_OPTION);
+				if(opt == 0)
+				{
+					main.getController().giveJob(index);
+					btnScheduleInterview.setText("Schedule Interview");
+					lblNewLabel.setText("(Please schedule date)");
+					lblNewLabel_1.setText("(Please schedule venue)");
+					populateSAppDList();
+				}
+				else
+					return;
 			}
 		});
 		btnGiveOffer.setBounds(312, 323, 138, 23);
@@ -152,12 +166,17 @@ public class ManagerGUI2 extends JPanel{
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
-				ApplicantDetails app = AppD[index];
-				main.getController().deleteProf(index);
-				btnScheduleInterview.setText("Schedule Interview");
-				lblNewLabel.setText("(Please schedule date)");
-				lblNewLabel_1.setText("(Please schedule venue)");
-				populateSAppDList();
+				int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
+				if(opt==0)
+				{
+					main.getController().deleteProf(index);
+					btnScheduleInterview.setText("Schedule Interview");
+					lblNewLabel.setText("(Please schedule date)");
+					lblNewLabel_1.setText("(Please schedule venue)");
+					populateSAppDList();
+				}
+				else
+					return;
 			}
 		});
 		btnDelete.setBounds(0, 357, 126, 23);

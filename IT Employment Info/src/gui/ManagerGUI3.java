@@ -17,6 +17,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
@@ -47,7 +48,13 @@ public class ManagerGUI3 extends JPanel{
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.showLogin();
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
+				if(opt==0)
+				{
+					main.showLogin();
+				}
+				else
+					return;
 			}
 		});
 		btnLogout.setBounds(330, 8, 89, 23);
@@ -98,8 +105,14 @@ public class ManagerGUI3 extends JPanel{
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
-				main.getController().deleteProf(index);
-				populateAppDList();
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
+				if(opt==0)
+				{
+					main.getController().deleteProf(index);
+					populateAppDList();
+				}
+				else
+					return;
 			}
 		});
 		button.setBounds(10, 310, 140, 23);
