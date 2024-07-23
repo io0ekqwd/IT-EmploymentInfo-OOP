@@ -31,12 +31,6 @@ public class DataStorage {
 		return opArr;
 	}
 
-	//Test
-	public void addName(ApplicantDetails name) {
-		this.aList.add(name);
-		
-	}
-	//Test
 
 	public void moveProf(int index) {
 		String p = getID();
@@ -100,13 +94,13 @@ public class DataStorage {
 	
 	public void addApplicant(ApplicantDetails z) {
 		this.aList.add(z);
-			System.out.println("Name: " + z.getName());
+			/*System.out.println("Name: " + z.getName());
 			System.out.println("Age: " + z.getAge());
 			System.out.println("Phone Number: " + z.getPhone());
 			System.out.println("Email: " + z.getEmail());
 			System.out.println("Address: " + z.getAddress());
 			System.out.println("Position: " + z.getPosition());
-			System.out.println("Status: " + z.getStatus());
+			System.out.println("Status: " + z.getStatus());*/
 	}
 
 	public void editApplicant(int index, ApplicantDetails det) {

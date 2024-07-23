@@ -37,17 +37,6 @@ public class Controller {
 		this.ds.addApplicant(z);	
 	}
 	
-	//Test Code
-	public void addProfile(String n, String ps, String is) {
-		Skills skill = new Skills();
-		skill.setPskills(ps);
-		skill.setIskills(is);
-		ApplicantDetails prof = new ApplicantDetails();
-		prof.setSkills(skill);
-		prof.setName(n);
-		this.ds.addName(prof);
-	}
-    //Test Code	
 			
 	public ApplicantDetails[] getAppList() {
 		return this.ds.getAppList();

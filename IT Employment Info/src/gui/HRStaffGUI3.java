@@ -118,50 +118,43 @@ public class HRStaffGUI3 extends JPanel{
 		textName.setColumns(10);
 		textName.setBounds(111, 48, 86, 20);
 		add(textName);
-		if(det != null)
-			textName.setText(det.getName()); 
+	    textName.setText(det.getName()); 
 		
 		textAge = new JTextField();
 		textAge.setColumns(10);
 		textAge.setBounds(111, 76, 86, 20);
 		add(textAge);
-		if(det != null)
-			textAge.setText(String.valueOf(det.getAge())); 
+		textAge.setText(String.valueOf(det.getAge())); 
 		
 		textPhone = new JTextField();
 		textPhone.setColumns(10);
 		textPhone.setBounds(111, 104, 86, 20);
 		add(textPhone);
-		if(det != null)
-			textPhone.setText(det.getPhone()); 
+		textPhone.setText(det.getPhone()); 
 		
 		textEmail = new JTextField();
 		textEmail.setColumns(10);
 		textEmail.setBounds(111, 133, 116, 22);
 		add(textEmail);
-		if(det != null)
-			textEmail.setText(det.getEmail()); 
+	    textEmail.setText(det.getEmail()); 
 		
 		textAddress = new JTextField();
 		textAddress.setColumns(10);
 		textAddress.setBounds(111, 162, 116, 22);
 		add(textAddress);
-		if(det != null)
-			textAddress.setText(det.getAddress()); 
+		textAddress.setText(det.getAddress()); 
 		
 		textPosition = new JTextField();
 		textPosition.setColumns(10);
 		textPosition.setBounds(111, 191, 116, 22);
 		add(textPosition);
-		if(det != null)
-			textPosition.setText(det.getPosition()); 
+		textPosition.setText(det.getPosition()); 
 		
 		textPSkills = new JTextField();
 		textPSkills.setColumns(10);
 		textPSkills.setBounds(239, 78, 161, 34);
 		add(textPSkills);
-		/*if(det != null)
-			textPSkills.setText(det.getSkills().getPskills()); */
+	    textPSkills.setText(det.getSkills().getPskills());
 		
 		JLabel label_7 = new JLabel("Status:");
 		label_7.setBounds(239, 194, 56, 16);
@@ -171,8 +164,7 @@ public class HRStaffGUI3 extends JPanel{
 		textStatus.setColumns(10);
 		textStatus.setBounds(285, 191, 116, 22);
 		add(textStatus);
-		if(det != null)
-			textStatus.setText(det.getStatus()); 
+		textStatus.setText(det.getStatus()); 
 		
 		JLabel label_6 = new JLabel("Programming skills:\r\n\r\n");
 		label_6.setBounds(239, 51, 161, 16);
@@ -186,8 +178,7 @@ public class HRStaffGUI3 extends JPanel{
 		textISkills.setBounds(239, 136, 161, 42);
 		add(textISkills);
 		textISkills.setColumns(10);
-		/*if(det != null)
-			textISkills.setText(det.getSkills().getIskills());*/
+		textISkills.setText(det.getSkills().getIskills());
 			 
 	}
 }

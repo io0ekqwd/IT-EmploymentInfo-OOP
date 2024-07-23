@@ -43,7 +43,7 @@ public class HRStaffGUI2 extends JPanel{
 				String is = textIS.getText();
 				String status = textStatus.getText();
 				main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status);
-				//test
+				
 				textName.setText("");
 				textAge.setText("");
 				textEmail.setText("");

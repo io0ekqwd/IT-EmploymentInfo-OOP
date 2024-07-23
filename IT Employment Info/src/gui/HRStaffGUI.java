@@ -65,6 +65,8 @@ public class HRStaffGUI extends JPanel{
 		btnUpdateApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				index = appList.getSelectedIndex();
+				if(index == -1)
+					return;
 				ApplicantDetails det = AppD[index];
 				main.showHRStaffGUI3(index, det);
 			}
