@@ -7,6 +7,7 @@ import data.ApplicantDetails;
 import gui.DetailPage;
 import gui.HRStaffGUI;
 import gui.HRStaffGUI2;
+import gui.HRStaffGUI3;
 import gui.Login;
 import gui.ManagerGUI;
 import gui.ManagerGUI2;
@@ -83,6 +84,12 @@ public class MainFrame extends JFrame {
 		SchedulePage p9 = new SchedulePage(this, index, det);
 		this.add(p9, "Panel 9");
 		this.card.show(this.getContentPane(), "Panel 9");
+	}
+	
+	public void showHRStaffGUI3(int ind, ApplicantDetails det) {
+		HRStaffGUI3 p11 = new HRStaffGUI3(this, ind, det);
+		this.add(p11, "Panel 11");
+		this.card.show(this.getContentPane(), "Panel 11");
 	}
 	
 	

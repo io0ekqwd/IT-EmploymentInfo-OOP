@@ -20,7 +20,21 @@ public class Controller {
 		//test
 	}
 	
-	public Controller() {
+	public void addApplicant(String n, int a, String em, String ph, String ad, String pos, String ps, String is, String status) 
+	{ 
+		Skills skill = new Skills();
+		skill.setPskills(ps);
+		skill.setIskills(is);
+		ApplicantDetails z = new ApplicantDetails();
+		z.setName(n);
+		z.setAge(a);
+		z.setEmail(em);
+		z.setPhone(ph);
+		z.setAddress(ad);
+		z.setPosition(pos);
+		z.setSkills(skill);
+		z.setStatus(status);
+		this.ds.addApplicant(z);	
 	}
 	
 	//Test Code
@@ -93,6 +107,27 @@ public class Controller {
 	public void addSalary(int index, ApplicantDetails det, int s) {
 		det.setSalary(s);
 		this.ds.storeSalary(index, det);
+	}
+
+	public void editApplicant(int index, ApplicantDetails det, String name, int age, String email, String phone, String address, String position,
+			String ps, String is, String status) {
+		det.setName(name);
+		det.setAge(age);
+		det.setEmail(email);
+		det.setPhone(phone);
+		det.setAddress(address);
+		det.setPosition(position);
+		det.getSkills().setIskills(is);
+		det.getSkills().setPskills(ps);
+		det.setStatus(status);
+		this.ds.editApplicant(index, det);	
+		
+		
+		
+	}
+
+	public int getCount() {
+		return this.ds.getJobCount();
 	}
 	}
 

@@ -91,6 +91,8 @@ public class ManagerGUI3 extends JPanel{
 		JButton btnCountApplicants = new JButton("Count Applicants");
 		btnCountApplicants.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int cnt = main.getController().getCount();
+				JOptionPane.showMessageDialog(main, "Number of new hires: " + cnt);
 			}
 		});
 		btnCountApplicants.setBounds(280, 344, 160, 23);

@@ -2,16 +2,15 @@ package gui;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 import controller.MainFrame;
 import data.ApplicantDetails;
-
 import javax.swing.JLabel;
 import java.awt.Font;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -20,6 +19,7 @@ public class HRStaffGUI extends JPanel{
 	private MainFrame main;
 	private JList appList;
 	private int index;
+	private String aa="";
 	private String p = "p1";
 	public HRStaffGUI(MainFrame main) {
 		setLayout(null);
@@ -40,40 +40,57 @@ public class HRStaffGUI extends JPanel{
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.showLogin();
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
+				if(opt==0)
+				{
+					main.showLogin();
+				}
+				else
+					return;
 			}
 		});
 		btnLogout.setBounds(334, 8, 89, 23);
 		add(btnLogout);
 		
-		JButton btnViewlist = new JButton("List");
-		btnViewlist.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnViewlist.setBounds(279, 266, 125, 23);
-		add(btnViewlist);
-		
-		JButton btnAddApplicant = new JButton("Add");
+		JButton btnAddApplicant = new JButton("Add Applicant\r\n");
 		btnAddApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showHRStaffGUI2();
 			}
 		});
-		btnAddApplicant.setBounds(10, 266, 76, 23);
+		btnAddApplicant.setBounds(0, 266, 155, 25);
 		add(btnAddApplicant);
 		
-		JButton btnEdit = new JButton("Edit");
-		btnEdit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JButton btnUpdateApplicant = new JButton("Update Applicant");
+		btnUpdateApplicant.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				index = appList.getSelectedIndex();
+				ApplicantDetails det = AppD[index];
+				main.showHRStaffGUI3(index, det);
 			}
 		});
-		btnEdit.setBounds(91, 266, 76, 23);
-		add(btnEdit);
+		btnUpdateApplicant.setBounds(0, 342, 155, 25);
+		add(btnUpdateApplicant);
 		
-		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(177, 266, 76, 23);
-		add(btnDelete);
+		JButton btnDeleteApplicant = new JButton("Delete Applicant");
+		btnDeleteApplicant.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				main.getController().addID(p);
+				index = appList.getSelectedIndex();
+				if(index == -1)
+					return;
+				int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
+				if(opt==0)
+				{
+					main.getController().deleteProf(index);
+					populateAppDList();
+				}
+				else
+					return;
+			}
+		});
+		btnDeleteApplicant.setBounds(0, 304, 155, 25);
+		add(btnDeleteApplicant);
 		
 		this.populateAppDList();
 	}
