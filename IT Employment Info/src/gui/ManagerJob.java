@@ -21,8 +21,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import java.awt.Color;
 
-public class ManagerGUI3 extends JPanel{
+public class ManagerJob extends JPanel{
 	private JButton btnAddSalary;
 	private ApplicantDetails AppD[];
 	private MainFrame main;
@@ -33,7 +34,7 @@ public class ManagerGUI3 extends JPanel{
 	private int sal;
 	private JLabel lblNewLabel;
 	
-	public ManagerGUI3(MainFrame main) {
+	public ManagerJob(MainFrame main) {
 		setLayout(null);
 		this.main = main;
 		this.setSize(450, 400);
@@ -46,6 +47,7 @@ public class ManagerGUI3 extends JPanel{
 		scrollPane.setViewportView(this.appList);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.setBackground(Color.LIGHT_GRAY);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -66,6 +68,7 @@ public class ManagerGUI3 extends JPanel{
 		add(lblJobOfferPage);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.setBackground(Color.LIGHT_GRAY);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showMMainGUI();
@@ -75,6 +78,7 @@ public class ManagerGUI3 extends JPanel{
 		add(btnBack);
 		
 		JButton btnViewProfile = new JButton("View Profile");
+		btnViewProfile.setBackground(Color.LIGHT_GRAY);
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
@@ -89,6 +93,7 @@ public class ManagerGUI3 extends JPanel{
 		add(btnViewProfile);
 		
 		JButton btnCountApplicants = new JButton("Count Applicants");
+		btnCountApplicants.setBackground(Color.LIGHT_GRAY);
 		btnCountApplicants.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int cnt = main.getController().getCount();
@@ -99,6 +104,7 @@ public class ManagerGUI3 extends JPanel{
 		add(btnCountApplicants);
 		
 		JButton button = new JButton("Delete");
+		button.setBackground(Color.LIGHT_GRAY);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
@@ -128,6 +134,7 @@ public class ManagerGUI3 extends JPanel{
 		textField.setColumns(10);
 		
 		this.btnAddSalary = new JButton("Add Salary");
+		btnAddSalary.setBackground(Color.LIGHT_GRAY);
 		btnAddSalary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				index = appList.getSelectedIndex();

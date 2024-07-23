@@ -19,8 +19,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import java.awt.Color;
 
-public class ManagerGUI2 extends JPanel{
+public class ManagerShortlisted extends JPanel{
 	private ApplicantDetails[] AppD;
 	private MainFrame main;
 	private JList appList;
@@ -30,7 +31,7 @@ public class ManagerGUI2 extends JPanel{
 	private JButton btnScheduleInterview;
 	private String p = "p2";
 
-	public ManagerGUI2(MainFrame main) {
+	public ManagerShortlisted(MainFrame main) {
 		setLayout(null);
 		this.main = main;
 		this.setSize(450, 400);
@@ -65,6 +66,7 @@ public class ManagerGUI2 extends JPanel{
 		scrollPane.setViewportView(appList);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.setBackground(Color.LIGHT_GRAY);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -80,6 +82,7 @@ public class ManagerGUI2 extends JPanel{
 		add(btnLogout);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.setBackground(Color.LIGHT_GRAY);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showMMainGUI();
@@ -95,6 +98,7 @@ public class ManagerGUI2 extends JPanel{
 		add(lblShortlistPage);
 		
 		JButton btnGiveOffer = new JButton("Give Offer");
+		btnGiveOffer.setBackground(Color.LIGHT_GRAY);
 		btnGiveOffer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				main.getController().addID(p);
@@ -118,6 +122,7 @@ public class ManagerGUI2 extends JPanel{
 		add(btnGiveOffer);
 		
 		this.btnScheduleInterview = new JButton("Schedule Interview");
+		btnScheduleInterview.setBackground(Color.LIGHT_GRAY);
 		btnScheduleInterview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				index = appList.getSelectedIndex();
@@ -129,6 +134,7 @@ public class ManagerGUI2 extends JPanel{
 		add(this.btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
+		btnViewProfile.setBackground(Color.LIGHT_GRAY);
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
@@ -159,6 +165,8 @@ public class ManagerGUI2 extends JPanel{
 		add(lblNewLabel_1);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBackground(Color.LIGHT_GRAY);
+		btnDelete.setEnabled(false);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
@@ -178,7 +186,7 @@ public class ManagerGUI2 extends JPanel{
 					return;
 			}
 		});
-		btnDelete.setBounds(0, 357, 126, 23);
+		btnDelete.setBounds(157, 366, 126, 23);
 		add(btnDelete);
 		this.populateSAppDList();
 	}

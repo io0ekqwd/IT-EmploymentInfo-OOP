@@ -5,13 +5,13 @@ import javax.swing.JFrame;
 
 import data.ApplicantDetails;
 import gui.DetailPage;
-import gui.HRStaffGUI;
-import gui.HRStaffGUI2;
-import gui.HRStaffGUI3;
+import gui.HRStaffMain;
+import gui.HRStaffAdd;
+import gui.HRStaffUpdate;
 import gui.Login;
-import gui.ManagerGUI;
-import gui.ManagerGUI2;
-import gui.ManagerGUI3;
+import gui.ManagerApplicant;
+import gui.ManagerShortlisted;
+import gui.ManagerJob;
 import gui.ManagerMainPage;
 import gui.SchedulePage;
 
@@ -42,18 +42,18 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void showManagerGUI() {
-		ManagerGUI p2 = new ManagerGUI(this);
+		ManagerApplicant p2 = new ManagerApplicant(this);
 		this.add(p2, "Panel 2");
 		this.card.show(this.getContentPane(), "Panel 2");
 	}
 	
 	public void showShortGUI() {
-		ManagerGUI2 p3 = new ManagerGUI2(this);
+		ManagerShortlisted p3 = new ManagerShortlisted(this);
 		this.add(p3, "Panel 3");
 		this.card.show(this.getContentPane(), "Panel 3");
 	}
 	public void showJobGUI() {
-		ManagerGUI3 p4 = new ManagerGUI3(this);
+		ManagerJob p4 = new ManagerJob(this);
 		this.add(p4, "Panel 4");
 		this.card.show(this.getContentPane(), "Panel 4");
 	}
@@ -64,13 +64,13 @@ public class MainFrame extends JFrame {
 	}
 
 	public void showHRStaffGUI() {
-		HRStaffGUI p6 = new HRStaffGUI(this);
+		HRStaffMain p6 = new HRStaffMain(this);
 		this.add(p6, "Panel 6");
 		this.card.show(this.getContentPane(), "Panel 6");
 	}
 	
 	public void showHRStaffGUI2() {
-		HRStaffGUI2 p7 = new HRStaffGUI2(this);
+		HRStaffAdd p7 = new HRStaffAdd(this);
 		this.add(p7, "Panel 7");
 		this.card.show(this.getContentPane(), "Panel 7");
 	}
@@ -87,7 +87,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void showHRStaffGUI3(int ind, ApplicantDetails det) {
-		HRStaffGUI3 p11 = new HRStaffGUI3(this, ind, det);
+		HRStaffUpdate p11 = new HRStaffUpdate(this, ind, det);
 		this.add(p11, "Panel 11");
 		this.card.show(this.getContentPane(), "Panel 11");
 	}

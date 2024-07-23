@@ -13,15 +13,15 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
-public class HRStaffGUI extends JPanel{
+public class HRStaffMain extends JPanel{
 	private ApplicantDetails[] AppD;
 	private MainFrame main;
 	private JList appList;
 	private int index;
-	private String aa="";
 	private String p = "p1";
-	public HRStaffGUI(MainFrame main) {
+	public HRStaffMain(MainFrame main) {
 		setLayout(null);
 		this.main = main;
 		
@@ -38,6 +38,7 @@ public class HRStaffGUI extends JPanel{
 		add(lblApplicantPage);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.setBackground(Color.LIGHT_GRAY);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -53,6 +54,7 @@ public class HRStaffGUI extends JPanel{
 		add(btnLogout);
 		
 		JButton btnAddApplicant = new JButton("Add Applicant\r\n");
+		btnAddApplicant.setBackground(Color.LIGHT_GRAY);
 		btnAddApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showHRStaffGUI2();
@@ -62,6 +64,7 @@ public class HRStaffGUI extends JPanel{
 		add(btnAddApplicant);
 		
 		JButton btnUpdateApplicant = new JButton("Update Applicant");
+		btnUpdateApplicant.setBackground(Color.LIGHT_GRAY);
 		btnUpdateApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				index = appList.getSelectedIndex();
@@ -71,10 +74,11 @@ public class HRStaffGUI extends JPanel{
 				main.showHRStaffGUI3(index, det);
 			}
 		});
-		btnUpdateApplicant.setBounds(0, 342, 155, 25);
+		btnUpdateApplicant.setBounds(285, 266, 155, 25);
 		add(btnUpdateApplicant);
 		
 		JButton btnDeleteApplicant = new JButton("Delete Applicant");
+		btnDeleteApplicant.setBackground(Color.LIGHT_GRAY);
 		btnDeleteApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				main.getController().addID(p);
@@ -91,7 +95,7 @@ public class HRStaffGUI extends JPanel{
 					return;
 			}
 		});
-		btnDeleteApplicant.setBounds(0, 304, 155, 25);
+		btnDeleteApplicant.setBounds(144, 302, 155, 25);
 		add(btnDeleteApplicant);
 		
 		this.populateAppDList();

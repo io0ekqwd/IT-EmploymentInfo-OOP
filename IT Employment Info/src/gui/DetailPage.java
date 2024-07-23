@@ -12,6 +12,10 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextArea;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 public class DetailPage extends JPanel {
 	private MainFrame main;
@@ -57,6 +61,7 @@ public class DetailPage extends JPanel {
 		add(lblPSkills);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.setBackground(Color.LIGHT_GRAY);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String p = main.getController().getID();
@@ -78,8 +83,8 @@ public class DetailPage extends JPanel {
 		add(lblNameL);
 		lblNameL.setText(det.getName());
 		
-		JLabel lblAgeL = new JLabel("Test");
-		lblAgeL.setBounds(216, 81, 46, 14);
+		JLabel lblAgeL = new JLabel("");
+		lblAgeL.setBounds(204, 81, 46, 14);
 		add(lblAgeL);
 		lblAgeL.setText(String.valueOf(det.getAge()));
 		
@@ -89,41 +94,51 @@ public class DetailPage extends JPanel {
 		lblPhoneL.setText(det.getPhone());
 		
 		JLabel lblEmailL = new JLabel("");
-		lblEmailL.setBounds(216, 106, 83, 14);
+		lblEmailL.setBounds(216, 106, 143, 14);
 		add(lblEmailL);
 		lblEmailL.setText(det.getEmail());
-		
-		JLabel lblAddressL = new JLabel("");
-		lblAddressL.setBounds(244, 206, 115, 14);
-		add(lblAddressL);
-		lblAddressL.setText(det.getAddress());
 		
 		JLabel lblPosL = new JLabel("");
 		lblPosL.setBounds(226, 131, 143, 14);
 		add(lblPosL);
 		lblPosL.setText(det.getPosition());
 		
-		JLabel lblStatusL = new JLabel("Test");
-		lblStatusL.setBounds(230, 156, 46, 14);
+		JLabel lblStatusL = new JLabel("");
+		lblStatusL.setBounds(216, 156, 46, 14);
 		add(lblStatusL);
 		lblPosL.setText(det.getStatus());
-		
-		JLabel lblPSkillsL = new JLabel("");
-		lblPSkillsL.setBounds(113, 275, 107, 14);
-		add(lblPSkillsL);
-		lblPSkillsL.setText(det.getSkills().getPskills());
 		
 		JLabel lblIndustrialSkills = new JLabel("Industrial Skills:");
 		lblIndustrialSkills.setBounds(216, 275, 126, 14);
 		add(lblIndustrialSkills);
 		
-		JLabel lblISkillsL = new JLabel("");
-		lblISkillsL.setBounds(310, 275, 115, 14);
-		add(lblISkillsL);
-		lblISkillsL.setText(det.getSkills().getIskills());
-		
 		JLabel label = new JLabel("<image here>");
 		label.setBounds(10, 45, 154, 154);
 		add(label);
+		
+		JTextArea textAddress = new JTextArea();
+		textAddress.setForeground(SystemColor.desktop);
+		textAddress.setEditable(false);
+		textAddress.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textAddress.setBounds(226, 206, 133, 56);
+		textAddress.setOpaque(false);
+		add(textAddress);
+		textAddress.setText(det.getAddress());
+		
+		JTextArea textPSkills = new JTextArea();
+		textPSkills.setEditable(false);
+		textPSkills.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textPSkills.setBounds(137, 273, 126, 56);
+		textPSkills.setOpaque(false);
+		add(textPSkills);
+		textPSkills.setText(det.getSkills().getPskills());
+		
+		JTextArea textISkills = new JTextArea();
+		textISkills.setEditable(false);
+		textISkills.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textISkills.setBounds(317, 273, 133, 56);
+		textISkills.setOpaque(false);
+		add(textISkills);
+		textISkills.setText(det.getSkills().getIskills());
 	}
 }

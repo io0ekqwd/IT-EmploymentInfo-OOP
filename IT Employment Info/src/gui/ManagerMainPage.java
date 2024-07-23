@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class ManagerMainPage extends JPanel {
 	private MainFrame main;
@@ -31,6 +32,7 @@ public class ManagerMainPage extends JPanel {
 		add(lblManagerPage);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.setBackground(Color.LIGHT_GRAY);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -46,6 +48,7 @@ public class ManagerMainPage extends JPanel {
 		add(btnLogout);
 		
 		JButton btnApplicantPage = new JButton("Applicant Page");
+		btnApplicantPage.setBackground(Color.LIGHT_GRAY);
 		btnApplicantPage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showManagerGUI();
@@ -55,6 +58,7 @@ public class ManagerMainPage extends JPanel {
 		add(btnApplicantPage);
 		
 		JButton btnShortlistPage = new JButton("Shortlist Page");
+		btnShortlistPage.setBackground(Color.LIGHT_GRAY);
 		btnShortlistPage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showShortGUI();
@@ -64,6 +68,7 @@ public class ManagerMainPage extends JPanel {
 		add(btnShortlistPage);
 		
 		JButton btnJobPage = new JButton("Job Page");
+		btnJobPage.setBackground(Color.LIGHT_GRAY);
 		btnJobPage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showJobGUI();

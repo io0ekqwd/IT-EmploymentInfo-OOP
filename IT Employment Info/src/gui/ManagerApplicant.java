@@ -16,15 +16,16 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
-public class ManagerGUI extends JPanel{
+public class ManagerApplicant extends JPanel{
 	private ApplicantDetails[] AppD;
 	private MainFrame main;
 	private JList appList;
 	private int index;
 	private String p="p1";
 	
-	public ManagerGUI(MainFrame main) {
+	public ManagerApplicant(MainFrame main) {
 		setLayout(null);
 		this.main = main;
 		this.setSize(450, 400);
@@ -42,6 +43,7 @@ public class ManagerGUI extends JPanel{
 		add(lblApplicantPage);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.setBackground(Color.LIGHT_GRAY);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -57,6 +59,7 @@ public class ManagerGUI extends JPanel{
 		add(btnLogout);
 		
 		JButton btnShortlist = new JButton("Shortlist");
+		btnShortlist.setBackground(Color.LIGHT_GRAY);
 		btnShortlist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				main.getController().addID(p);
@@ -77,6 +80,7 @@ public class ManagerGUI extends JPanel{
 		add(btnShortlist);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.setBackground(Color.LIGHT_GRAY);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showMMainGUI();
@@ -86,6 +90,7 @@ public class ManagerGUI extends JPanel{
 		add(btnBack);
 		
 		JButton btnViewProfile = new JButton("View Profile");
+		btnViewProfile.setBackground(Color.LIGHT_GRAY);
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
@@ -100,6 +105,7 @@ public class ManagerGUI extends JPanel{
 		add(btnViewProfile);
 		
 		JButton button = new JButton("Delete");
+		button.setBackground(Color.LIGHT_GRAY);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				main.getController().addID(p);

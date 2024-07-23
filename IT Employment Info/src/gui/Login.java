@@ -20,6 +20,9 @@ import javax.swing.JSeparator;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.UIManager;
+import java.awt.Panel;
 
 public class Login extends JPanel{
 	private JTextField textField;
@@ -27,81 +30,15 @@ public class Login extends JPanel{
 	private JPasswordField passwordField;
 	private JRadioButton rdbtnStaff;
 	private JRadioButton rdbtnManager;
-	private ImageIcon img;
+	private ImageIcon img, img2, img3;
 	
 	public Login(MainFrame main) {
-		setBackground(Color.LIGHT_GRAY);
+		setForeground(SystemColor.desktop);
+		setBackground(SystemColor.textHighlight);
 		this.main = main;
 		setLayout(null);
 		
-		JLabel lblLoginScreen = new JLabel("Login Screen");
-		lblLoginScreen.setBounds(160, 22, 136, 31);
-		lblLoginScreen.setFont(new Font("Tahoma", Font.BOLD, 20));
-		add(lblLoginScreen);
-		
-		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(103, 127, 67, 14);
-		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		add(lblUsername);
-		
-		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(103, 163, 67, 14);
-		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		add(lblPassword);
-		
-		textField = new JTextField();
-		textField.setBounds(201, 125, 86, 20);
-		add(textField);
-		textField.setColumns(10);
-		
-		JButton btnLogin = new JButton("Login");
-		btnLogin.setBounds(201, 217, 89, 23);
-		
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String n = textField.getText();
-				String pwd = String.valueOf(passwordField.getPassword()) ;
-				boolean validity = main.getController().verifyUser(n, pwd);
-				if (validity == true) {
-					String r = main.getController().getRole();
-					if (r == "Staff"&& rdbtnStaff.isSelected())
-						main.showHRStaffGUI();
-					else if (r == "Manager" && rdbtnManager.isSelected())
-						main.showMMainGUI();
-					else if (r == "Admin")
-						System.out.println("Admin");//Placeholder
-					    
-					else
-						JOptionPane.showMessageDialog(main, "Invalid Role Selection. Please try again.");   
-				}
-				else
-					JOptionPane.showMessageDialog(main, "Invalid Username and Password. Please try again.");
-			}
-		});
-	
-		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		add(btnLogin);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(201, 162, 86, 18);
-		passwordField.setEchoChar('*');
-		add(passwordField);
-		
-		JCheckBox chckbxShowPassword = new JCheckBox("Show Password");
-		chckbxShowPassword.setBackground(Color.WHITE);
-		chckbxShowPassword.setBounds(189, 187, 123, 23);
-		chckbxShowPassword.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (chckbxShowPassword.isSelected())
-					passwordField.setEchoChar((char)0);
-				else 
-					passwordField.setEchoChar('*');
-			}
-		});
-		chckbxShowPassword.setOpaque(false);
-		add(chckbxShowPassword);
-		
-		this.rdbtnStaff = new JRadioButton("Staff");
+		/*this.rdbtnStaff = new JRadioButton("Staff");
 		rdbtnStaff.setBackground(Color.WHITE);
 		rdbtnStaff.setBounds(100, 70, 109, 23);
 		rdbtnStaff.addActionListener(new ActionListener() {
@@ -123,11 +60,95 @@ public class Login extends JPanel{
 			}
 		});
 		this.rdbtnManager.setOpaque(false);
-		add(this.rdbtnManager);
+		add(this.rdbtnManager);*/
 		
 		this.img = new ImageIcon("images/Gradient.png");
+		this.img2 = new ImageIcon("images/user.png");
+		this.img3 = new ImageIcon("images/lock.png");
+		
+		Panel panel = new Panel();
+		panel.setBackground(new Color(255, 255, 255, 255));
+		panel.setBounds(25, 25, 402, 338);
+		add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setBounds(103, 89, 58, 16);
+		panel.add(lblUsername);
+		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(103, 159, 55, 16);
+		panel.add(lblPassword);
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		
+		JLabel lblLoginScreen = new JLabel("Login");
+		lblLoginScreen.setBounds(172, 32, 55, 25);
+		panel.add(lblLoginScreen);
+		lblLoginScreen.setFont(new Font("Franklin Gothic Book", Font.BOLD, 20));
+		
+		JCheckBox chckbxShowPassword = new JCheckBox("Show Password");
+		chckbxShowPassword.setFont(new Font("Open Sans", Font.PLAIN, 11));
+		chckbxShowPassword.setBounds(142, 225, 159, 23);
+		panel.add(chckbxShowPassword);
+		chckbxShowPassword.setBackground(Color.WHITE);
+		chckbxShowPassword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (chckbxShowPassword.isSelected())
+					passwordField.setEchoChar((char)0);
+				else 
+					passwordField.setEchoChar('*');
+			}
+		});
+		chckbxShowPassword.setOpaque(false);
+		
+		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.setBounds(142, 256, 110, 32);
+		btnLogin.setForeground(Color.BLACK);
+		btnLogin.setBackground(SystemColor.control);
+		panel.add(btnLogin);
+		
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String n = textField.getText();
+				String pwd = String.valueOf(passwordField.getPassword()) ;
+				boolean validity = main.getController().verifyUser(n, pwd);
+				if (validity == true) {
+					String r = main.getController().getRole();
+					if (r == "Staff")
+						main.showHRStaffGUI();
+					else if (r == "Manager")
+						main.showMMainGUI();
+					else if (r == "Admin")
+						System.out.println("Admin");//Placeholder
+				}
+				else
+					JOptionPane.showMessageDialog(main, "Invalid Username and Password. Please try again.");
+			}
+		});
+		
+			btnLogin.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
+		
+		textField = new JTextField();
+		textField.setBounds(103, 116, 209, 32);
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(103, 186, 209, 32);
+		panel.add(passwordField);
+		passwordField.setEchoChar('*');
+		
+		JLabel lblNewLabel_1 = new JLabel(this.img2);
+		lblNewLabel_1.setBounds(41, 116, 46, 32);
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel(this.img3);
+		lblNewLabel_2.setBounds(41, 186, 46, 32);
+		panel.add(lblNewLabel_2);
+		
 		JLabel lblNewLabel = new JLabel(this.img);
-		lblNewLabel.setBounds(-34, -86, 520, 589);
+		lblNewLabel.setBounds(0, 0, 499, 418);
 		add(lblNewLabel);
 		
 		this.main.getController().addUser();
