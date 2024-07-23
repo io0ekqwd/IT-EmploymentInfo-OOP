@@ -166,7 +166,6 @@ public class ManagerShortlisted extends JPanel{
 		
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.setBackground(Color.LIGHT_GRAY);
-		btnDelete.setEnabled(false);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
