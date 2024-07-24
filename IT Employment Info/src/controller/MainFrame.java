@@ -22,7 +22,7 @@ public class MainFrame extends JFrame {
 	{
 		this.card = new CardLayout();
 		this.cont = new Controller();
-		this.setSize(470,450);
+		this.setSize(700,500);
 		this.setTitle("IT Employment Infobase");
 		getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

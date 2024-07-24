@@ -6,12 +6,33 @@ public class InterviewDetails {
 	private int day;
 	private String month;
 	private int year;
+	private int hour;
+	private int min;
+	private String ampm;
 	
 	public String getVenue() {
 	 	 return venue; 
 	}
 	public void setVenue(String venue) { 
 		 this.venue = venue; 
+	}
+	public String getAmpm() {
+	 	 return ampm; 
+	}
+	public void setAmpm(String ampm) { 
+		 this.ampm = ampm; 
+	}
+	public int getHour() {
+	 	 return hour; 
+	}
+	public void setHour(int hour) { 
+		 this.hour = hour; 
+	}
+	public int getMin() {
+	 	 return min; 
+	}
+	public void setMin(int min) { 
+		 this.min = min; 
 	}
 	
 	public int getDay() {

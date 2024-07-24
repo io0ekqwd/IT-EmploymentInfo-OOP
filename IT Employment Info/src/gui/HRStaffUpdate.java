@@ -149,7 +149,7 @@ public class HRStaffUpdate extends JPanel{
 		textPosition.setColumns(10);
 		textPosition.setBounds(242, 167, 116, 22);
 		add(textPosition);
-		textPosition.setText(det.getPosition());
+		textPosition.setText(det.getAPosition());
 		
 		JLabel label_7 = new JLabel("Status:");
 		label_7.setBounds(184, 197, 56, 16);

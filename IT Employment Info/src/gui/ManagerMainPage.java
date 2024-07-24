@@ -23,13 +23,13 @@ public class ManagerMainPage extends JPanel {
 	private ImageIcon img1, img2, img3;
 	public ManagerMainPage(MainFrame main) {
 		setLayout(null);
-		this.setSize(450, 400);
+		this.setSize(700, 400);
 		this.main = main;
 		
 		
 		JLabel lblManagerPage = new JLabel("Manager Page");
 		lblManagerPage.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblManagerPage.setBounds(169, 11, 115, 21);
+		lblManagerPage.setBounds(297, 11, 115, 21);
 		add(lblManagerPage);
 		
 		JButton btnLogout = new JButton("Logout");
@@ -45,7 +45,7 @@ public class ManagerMainPage extends JPanel {
 					return;
 			}
 		});
-		btnLogout.setBounds(154, 310, 139, 23);
+		btnLogout.setBounds(248, 308, 207, 60);
 		add(btnLogout);
 		
 		JButton btnApplicantPage = new JButton("Applicant Page");
@@ -55,7 +55,7 @@ public class ManagerMainPage extends JPanel {
 				main.showManagerGUI();
 			}
 		});
-		btnApplicantPage.setBounds(10, 56, 119, 38);
+		btnApplicantPage.setBounds(43, 56, 164, 38);
 		add(btnApplicantPage);
 		
 		JButton btnShortlistPage = new JButton("Shortlist Page");
@@ -65,7 +65,7 @@ public class ManagerMainPage extends JPanel {
 				main.showShortGUI();
 			}
 		});
-		btnShortlistPage.setBounds(158, 56, 135, 38);
+		btnShortlistPage.setBounds(275, 56, 155, 38);
 		add(btnShortlistPage);
 		
 		JButton btnJobPage = new JButton("Job Page");
@@ -75,22 +75,22 @@ public class ManagerMainPage extends JPanel {
 				main.showJobGUI();
 			}
 		});
-		btnJobPage.setBounds(322, 56, 118, 38);
+		btnJobPage.setBounds(493, 56, 170, 38);
 		add(btnJobPage);
 		
 		this.img1 = new ImageIcon("images/icons8-profile-100.png");
 		JLabel lblNewLabel = new JLabel(this.img1);
-		lblNewLabel.setBounds(10, 140, 119, 156);
+		lblNewLabel.setBounds(65, 116, 119, 156);
 		add(lblNewLabel);
 		
 		this.img2 = new ImageIcon("images/icons8-shortlist-64.png");
 		JLabel lblNewLabel_1 = new JLabel(this.img2);
-		lblNewLabel_1.setBounds(158, 140, 135, 142);
+		lblNewLabel_1.setBounds(286, 128, 135, 142);
 		add(lblNewLabel_1);
 		
 		this.img3 = new ImageIcon("images/icons8-job-100.png");
 		JLabel lblNewLabel_2 = new JLabel(this.img3);
-		lblNewLabel_2.setBounds(322, 140, 118, 142);
+		lblNewLabel_2.setBounds(505, 128, 155, 142);
 		add(lblNewLabel_2);
 	}
 }

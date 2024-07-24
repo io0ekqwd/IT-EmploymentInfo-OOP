@@ -34,18 +34,19 @@ public class ManagerJob extends JPanel{
 	private JTextField textField;
 	private int sal;
 	private JLabel lblNewLabel;
+	private JTextField textField_1;
 	
 	public ManagerJob(MainFrame main) {
 		setLayout(null);
 		this.main = main;
-		this.setSize(450, 400);
+		this.setSize(701, 463);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 54, 450, 189);
+		scrollPane.setBounds(20, 52, 646, 189);
 		add(scrollPane);
 		
 		this.appList = new JList();
-		scrollPane.setViewportView(this.appList);
+		scrollPane.setViewportView(appList);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBackground(SystemColor.controlHighlight);
@@ -60,12 +61,12 @@ public class ManagerJob extends JPanel{
 					return;
 			}
 		});
-		btnLogout.setBounds(330, 8, 89, 23);
+		btnLogout.setBounds(577, 8, 89, 33);
 		add(btnLogout);
 		
 		JLabel lblJobOfferPage = new JLabel("Job Offer Page");
 		lblJobOfferPage.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblJobOfferPage.setBounds(177, 11, 99, 14);
+		lblJobOfferPage.setBounds(304, 16, 99, 14);
 		add(lblJobOfferPage);
 		
 		JButton btnBack = new JButton("Back");
@@ -75,7 +76,7 @@ public class ManagerJob extends JPanel{
 				main.showMMainGUI();
 			}
 		});
-		btnBack.setBounds(36, 8, 89, 23);
+		btnBack.setBounds(20, 8, 114, 33);
 		add(btnBack);
 		
 		JButton btnViewProfile = new JButton("View Profile");
@@ -90,7 +91,7 @@ public class ManagerJob extends JPanel{
 				main.showDetailPage(index, app);
 			}
 		});
-		btnViewProfile.setBounds(10, 344, 140, 23);
+		btnViewProfile.setBounds(99, 350, 219, 50);
 		add(btnViewProfile);
 		
 		JButton btnCountApplicants = new JButton("Count Applicants");
@@ -101,7 +102,7 @@ public class ManagerJob extends JPanel{
 				JOptionPane.showMessageDialog(main, "Number of new hires: " + cnt);
 			}
 		});
-		btnCountApplicants.setBounds(280, 344, 160, 23);
+		btnCountApplicants.setBounds(99, 402, 219, 56);
 		add(btnCountApplicants);
 		
 		JButton button = new JButton("Delete");
@@ -122,16 +123,17 @@ public class ManagerJob extends JPanel{
 					return;
 			}
 		});
-		button.setBounds(10, 310, 140, 23);
+		button.setBounds(99, 296, 219, 50);
 		add(button);
 		
 		JLabel lblSalary = new JLabel("Salary:");
-		lblSalary.setBounds(281, 279, 99, 14);
+		lblSalary.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblSalary.setBounds(124, 241, 99, 50);
 		add(lblSalary);
 		
 		textField = new JTextField();
 		textField.setBackground(Color.WHITE);
-		textField.setBounds(330, 276, 110, 20);
+		textField.setBounds(177, 252, 110, 33);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -157,12 +159,28 @@ public class ManagerJob extends JPanel{
 			populateAppDList();   
 			}
 		});
-		this.btnAddSalary.setBounds(280, 310, 160, 23);
+		this.btnAddSalary.setBounds(328, 296, 241, 50);
 		add(this.btnAddSalary);
 		
 		this.lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(280, 375, 160, 14);
+		lblNewLabel.setBackground(SystemColor.controlHighlight);
+		lblNewLabel.setBounds(373, 411, 160, 36);
 		add(lblNewLabel);
+		
+		JLabel lblHiredPosition = new JLabel("Hired Position:");
+		lblHiredPosition.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblHiredPosition.setBounds(323, 241, 114, 50);
+		add(lblHiredPosition);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(417, 252, 140, 33);
+		add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnAdd = new JButton("Add Hired Position");
+		btnAdd.setBackground(SystemColor.controlHighlight);
+		btnAdd.setBounds(328, 350, 241, 50);
+		add(btnAdd);
 		this.populateAppDList();
 	}
 	//Test
@@ -175,10 +193,10 @@ public class ManagerJob extends JPanel{
 			ApplicantDetails op = AppD[i];
 			if(op.getSalary()!=0)
 			{
-				model.addElement(op.getName()+"          "+op.getPosition()+"          "+"$"+op.getSalary());
+				model.addElement(op.getName()+"          "+op.getHPosition()+"          "+"$"+op.getSalary());
 			}
 			else
-				model.addElement(op.getName()+"          "+op.getPosition());
+				model.addElement(op.getName()+"          "+op.getHPosition());
 			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
 		}
 		this.appList.setModel(model);

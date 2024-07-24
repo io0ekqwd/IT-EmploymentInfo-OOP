@@ -101,7 +101,7 @@ public class DetailPage extends JPanel {
 		JLabel lblPosL = new JLabel("");
 		lblPosL.setBounds(226, 131, 143, 14);
 		add(lblPosL);
-		lblPosL.setText(det.getPosition());
+		lblPosL.setText(det.getAPosition());
 		
 		JLabel lblStatusL = new JLabel("");
 		lblStatusL.setBounds(216, 156, 153, 14);

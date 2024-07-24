@@ -10,7 +10,8 @@ public class ApplicantDetails {
 	private String email;
 	private String phone;
 	private String address;
-	private String position;
+	private String Aposition;
+	private String Hposition;
 	private String status;
 	private Skills skills;
 	private InterviewDetails intDet;
@@ -76,12 +77,19 @@ public class ApplicantDetails {
 		 this.phone = phone; 
 	}
 	
-	public String getPosition() {
-	 	 return position; 
+	public String getAPosition() {
+	 	 return Aposition; 
 	}
 	
-	public void setPosition(String position) { 
-		 this.position = position; 
+	public void setAPosition(String Aposition) { 
+		 this.Aposition = Aposition; 
+	}
+	public String getHPosition() {
+	 	 return Hposition; 
+	}
+	
+	public void setHPosition(String Hposition) { 
+		 this.Hposition = Hposition; 
 	}
 	
 	public int getAge() {

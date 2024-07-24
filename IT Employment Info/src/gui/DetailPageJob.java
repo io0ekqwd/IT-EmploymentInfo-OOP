@@ -48,9 +48,9 @@ public class DetailPageJob extends JPanel {
 		lblAddress.setBounds(174, 206, 102, 14);
 		add(lblAddress);
 		
-		JLabel lblPosition = new JLabel("Position:");
-		lblPosition.setBounds(174, 131, 89, 14);
-		add(lblPosition);
+		JLabel lblPositionA = new JLabel("Applied Position:");
+		lblPositionA.setBounds(174, 131, 126, 14);
+		add(lblPositionA);
 		
 		JLabel lblStatus = new JLabel("Status:");
 		lblStatus.setBounds(174, 156, 46, 14);
@@ -99,9 +99,9 @@ public class DetailPageJob extends JPanel {
 		lblEmailL.setText(det.getEmail());
 		
 		JLabel lblPosL = new JLabel("");
-		lblPosL.setBounds(226, 131, 143, 14);
+		lblPosL.setBounds(310, 131, 143, 14);
 		add(lblPosL);
-		lblPosL.setText(det.getPosition());
+		lblPosL.setText(det.getAPosition());
 		
 		JLabel lblStatusL = new JLabel("");
 		lblStatusL.setBounds(216, 156, 153, 14);

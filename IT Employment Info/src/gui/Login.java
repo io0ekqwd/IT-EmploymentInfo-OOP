@@ -36,6 +36,7 @@ public class Login extends JPanel{
 		setForeground(SystemColor.desktop);
 		setBackground(SystemColor.textHighlight);
 		this.main = main;
+		this.setSize(700,500);
 		setLayout(null);
 		
 		/*this.rdbtnStaff = new JRadioButton("Staff");
@@ -62,13 +63,13 @@ public class Login extends JPanel{
 		this.rdbtnManager.setOpaque(false);
 		add(this.rdbtnManager);*/
 		
-		this.img = new ImageIcon("images/Gradient.png");
+		this.img = new ImageIcon("images/gradient3.jpg");
 		this.img2 = new ImageIcon("images/user.png");
 		this.img3 = new ImageIcon("images/lock.png");
 		
 		Panel panel = new Panel();
 		panel.setBackground(new Color(255, 255, 255, 255));
-		panel.setBounds(25, 25, 402, 338);
+		panel.setBounds(141, 37, 402, 382);
 		add(panel);
 		panel.setLayout(null);
 		
@@ -148,7 +149,7 @@ public class Login extends JPanel{
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel = new JLabel(this.img);
-		lblNewLabel.setBounds(0, 0, 499, 418);
+		lblNewLabel.setBounds(-14, -35, 797, 631);
 		add(lblNewLabel);
 		
 		this.main.getController().addUser();

@@ -35,7 +35,7 @@ public class ManagerShortlisted extends JPanel{
 	public ManagerShortlisted(MainFrame main) {
 		setLayout(null);
 		this.main = main;
-		this.setSize(450, 400);
+		this.setSize(700, 461);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 53, 450, 189);

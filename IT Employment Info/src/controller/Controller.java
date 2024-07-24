@@ -31,7 +31,7 @@ public class Controller {
 		z.setEmail(em);
 		z.setPhone(ph);
 		z.setAddress(ad);
-		z.setPosition(pos);
+		z.setAPosition(pos);
 		z.setSkills(skill);
 		z.setStatus(status);
 		this.ds.addApplicant(z);	
@@ -105,7 +105,7 @@ public class Controller {
 		det.setEmail(email);
 		det.setPhone(phone);
 		det.setAddress(address);
-		det.setPosition(position);
+		det.setAPosition(position);
 		det.getSkills().setIskills(is);
 		det.getSkills().setPskills(ps);
 		det.setStatus(status);

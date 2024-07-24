@@ -25,6 +25,9 @@ public class SchedulePage extends JPanel{
 	private MainFrame main;
 	private JComboBox comboBoxMonth;
 	private String[] monthArr = {"January", "Febuary", "March","April","May","June","July","August","September","October","November","December"};
+	private String[] ampmArr = {"AM","PM"};
+	private JTextField textField_1;
+	private JTextField textField_2;
 	public SchedulePage(MainFrame main, int ind, ApplicantDetails det) {
 		this.index = ind;
 		this.det = det;
@@ -38,35 +41,35 @@ public class SchedulePage extends JPanel{
 		add(lblSchedulingPage);
 		
 		JLabel lblDate = new JLabel("Date:");
-		lblDate.setBounds(71, 143, 56, 14);
+		lblDate.setBounds(73, 126, 56, 14);
 		add(lblDate);
 		
 		JLabel lblVenue = new JLabel("Venue:");
-		lblVenue.setBounds(71, 181, 46, 14);
+		lblVenue.setBounds(73, 154, 46, 14);
 		add(lblVenue);
 		
 		textFieldDay = new JTextField();
-		textFieldDay.setBounds(117, 140, 56, 20);
+		textFieldDay.setBounds(117, 123, 56, 20);
 		add(textFieldDay);
 		textFieldDay.setColumns(10);
 		if(det.getInterviewDetails()!=null)
 			textFieldDay.setText(String.valueOf(det.getInterviewDetails().getDay()));
 		
 		this.comboBoxMonth = new JComboBox(this.monthArr);
-		this.comboBoxMonth.setBounds(183, 140, 111, 20);
+		this.comboBoxMonth.setBounds(183, 123, 111, 20);
 		add(this.comboBoxMonth);
 		if(det.getInterviewDetails()!=null)
 			comboBoxMonth.setSelectedItem(det.getInterviewDetails().getMonth());
 		
 		textFieldYear = new JTextField();
-		textFieldYear.setBounds(304, 140, 56, 20);
+		textFieldYear.setBounds(304, 123, 56, 20);
 		add(textFieldYear);
 		textFieldYear.setColumns(10);
 		if(det.getInterviewDetails()!=null)
 			textFieldYear.setText(String.valueOf(det.getInterviewDetails().getYear()));
 		
 		textField = new JTextField();
-		textField.setBounds(117, 178, 86, 20);
+		textField.setBounds(117, 151, 86, 20);
 		add(textField);
 		textField.setColumns(10);
 		if(det.getInterviewDetails()!=null)
@@ -97,5 +100,27 @@ public class SchedulePage extends JPanel{
 		});
 		btnSave.setBounds(272, 243, 125, 43);
 		add(btnSave);
+		
+		JLabel lblTime = new JLabel("Time:");
+		lblTime.setBounds(73, 186, 46, 14);
+		add(lblTime);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(117, 183, 39, 20);
+		add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel label = new JLabel("  :");
+		label.setBounds(155, 186, 46, 14);
+		add(label);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(167, 182, 46, 21);
+		add(textField_2);
+		textField_2.setColumns(10);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(223, 183, 39, 20);
+		add(comboBox);
 	}
 }
