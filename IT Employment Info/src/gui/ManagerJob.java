@@ -105,7 +105,7 @@ public class ManagerJob extends JPanel{
 		add(btnCountApplicants);
 		
 		JButton button = new JButton("Delete");
-		button.setBackground(Color.LIGHT_GRAY);
+		button.setBackground(SystemColor.controlHighlight);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
