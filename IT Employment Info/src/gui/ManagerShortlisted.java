@@ -20,6 +20,7 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class ManagerShortlisted extends JPanel{
 	private ApplicantDetails[] AppD;
@@ -66,7 +67,7 @@ public class ManagerShortlisted extends JPanel{
 		scrollPane.setViewportView(appList);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBackground(Color.LIGHT_GRAY);
+		btnLogout.setBackground(SystemColor.controlHighlight);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -82,7 +83,7 @@ public class ManagerShortlisted extends JPanel{
 		add(btnLogout);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBackground(Color.LIGHT_GRAY);
+		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showMMainGUI();
@@ -98,7 +99,7 @@ public class ManagerShortlisted extends JPanel{
 		add(lblShortlistPage);
 		
 		JButton btnGiveOffer = new JButton("Give Offer");
-		btnGiveOffer.setBackground(Color.LIGHT_GRAY);
+		btnGiveOffer.setBackground(SystemColor.controlHighlight);
 		btnGiveOffer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				main.getController().addID(p);
@@ -122,7 +123,7 @@ public class ManagerShortlisted extends JPanel{
 		add(btnGiveOffer);
 		
 		this.btnScheduleInterview = new JButton("Schedule Interview");
-		btnScheduleInterview.setBackground(Color.LIGHT_GRAY);
+		btnScheduleInterview.setBackground(SystemColor.controlHighlight);
 		btnScheduleInterview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				index = appList.getSelectedIndex();
@@ -134,7 +135,7 @@ public class ManagerShortlisted extends JPanel{
 		add(this.btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
-		btnViewProfile.setBackground(Color.LIGHT_GRAY);
+		btnViewProfile.setBackground(SystemColor.controlHighlight);
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
@@ -165,14 +166,14 @@ public class ManagerShortlisted extends JPanel{
 		add(lblNewLabel_1);
 		
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBackground(Color.LIGHT_GRAY);
+		btnDelete.setBackground(SystemColor.controlHighlight);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
-				int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
 				if(opt==0)
 				{
 					main.getController().deleteProf(index);

@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class ManagerJob extends JPanel{
 	private JButton btnAddSalary;
@@ -47,7 +48,7 @@ public class ManagerJob extends JPanel{
 		scrollPane.setViewportView(this.appList);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBackground(Color.LIGHT_GRAY);
+		btnLogout.setBackground(SystemColor.controlHighlight);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -68,7 +69,7 @@ public class ManagerJob extends JPanel{
 		add(lblJobOfferPage);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBackground(Color.LIGHT_GRAY);
+		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showMMainGUI();
@@ -78,7 +79,7 @@ public class ManagerJob extends JPanel{
 		add(btnBack);
 		
 		JButton btnViewProfile = new JButton("View Profile");
-		btnViewProfile.setBackground(Color.LIGHT_GRAY);
+		btnViewProfile.setBackground(SystemColor.controlHighlight);
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
@@ -93,7 +94,7 @@ public class ManagerJob extends JPanel{
 		add(btnViewProfile);
 		
 		JButton btnCountApplicants = new JButton("Count Applicants");
-		btnCountApplicants.setBackground(Color.LIGHT_GRAY);
+		btnCountApplicants.setBackground(SystemColor.controlHighlight);
 		btnCountApplicants.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int cnt = main.getController().getCount();
@@ -129,12 +130,13 @@ public class ManagerJob extends JPanel{
 		add(lblSalary);
 		
 		textField = new JTextField();
+		textField.setBackground(Color.WHITE);
 		textField.setBounds(330, 276, 110, 20);
 		add(textField);
 		textField.setColumns(10);
 		
 		this.btnAddSalary = new JButton("Add Salary");
-		btnAddSalary.setBackground(Color.LIGHT_GRAY);
+		btnAddSalary.setBackground(SystemColor.controlHighlight);
 		btnAddSalary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				index = appList.getSelectedIndex();

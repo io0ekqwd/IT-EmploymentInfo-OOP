@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class HRStaffMain extends JPanel{
 	private ApplicantDetails[] AppD;
@@ -38,7 +39,7 @@ public class HRStaffMain extends JPanel{
 		add(lblApplicantPage);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBackground(Color.LIGHT_GRAY);
+		btnLogout.setBackground(SystemColor.controlHighlight);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -54,7 +55,7 @@ public class HRStaffMain extends JPanel{
 		add(btnLogout);
 		
 		JButton btnAddApplicant = new JButton("Add Applicant\r\n");
-		btnAddApplicant.setBackground(Color.LIGHT_GRAY);
+		btnAddApplicant.setBackground(SystemColor.controlHighlight);
 		btnAddApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showHRStaffGUI2();
@@ -64,7 +65,7 @@ public class HRStaffMain extends JPanel{
 		add(btnAddApplicant);
 		
 		JButton btnUpdateApplicant = new JButton("Update Applicant");
-		btnUpdateApplicant.setBackground(Color.LIGHT_GRAY);
+		btnUpdateApplicant.setBackground(SystemColor.controlHighlight);
 		btnUpdateApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				index = appList.getSelectedIndex();
@@ -78,14 +79,14 @@ public class HRStaffMain extends JPanel{
 		add(btnUpdateApplicant);
 		
 		JButton btnDeleteApplicant = new JButton("Delete Applicant");
-		btnDeleteApplicant.setBackground(Color.LIGHT_GRAY);
+		btnDeleteApplicant.setBackground(SystemColor.controlHighlight);
 		btnDeleteApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
-				int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
 				if(opt==0)
 				{
 					main.getController().deleteProf(index);

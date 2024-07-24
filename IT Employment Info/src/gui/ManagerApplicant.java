@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class ManagerApplicant extends JPanel{
 	private ApplicantDetails[] AppD;
@@ -43,7 +44,7 @@ public class ManagerApplicant extends JPanel{
 		add(lblApplicantPage);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBackground(Color.LIGHT_GRAY);
+		btnLogout.setBackground(SystemColor.controlHighlight);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -59,7 +60,7 @@ public class ManagerApplicant extends JPanel{
 		add(btnLogout);
 		
 		JButton btnShortlist = new JButton("Shortlist");
-		btnShortlist.setBackground(Color.LIGHT_GRAY);
+		btnShortlist.setBackground(SystemColor.controlHighlight);
 		btnShortlist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				main.getController().addID(p);
@@ -80,7 +81,7 @@ public class ManagerApplicant extends JPanel{
 		add(btnShortlist);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBackground(Color.LIGHT_GRAY);
+		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showMMainGUI();
@@ -90,7 +91,7 @@ public class ManagerApplicant extends JPanel{
 		add(btnBack);
 		
 		JButton btnViewProfile = new JButton("View Profile");
-		btnViewProfile.setBackground(Color.LIGHT_GRAY);
+		btnViewProfile.setBackground(SystemColor.controlHighlight);
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
@@ -105,14 +106,14 @@ public class ManagerApplicant extends JPanel{
 		add(btnViewProfile);
 		
 		JButton button = new JButton("Delete");
-		button.setBackground(Color.LIGHT_GRAY);
+		button.setBackground(SystemColor.controlHighlight);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
-				int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
 				if(opt==0)
 				{
 					main.getController().deleteProf(index);

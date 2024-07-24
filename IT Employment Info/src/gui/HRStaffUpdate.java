@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.DropMode;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class HRStaffUpdate extends JPanel{
 	private MainFrame main;
@@ -36,7 +37,7 @@ public class HRStaffUpdate extends JPanel{
 		this.main = main;
 		
 		JButton button = new JButton("Logout");
-		button.setBackground(Color.LIGHT_GRAY);
+		button.setBackground(SystemColor.controlHighlight);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -52,7 +53,7 @@ public class HRStaffUpdate extends JPanel{
 		add(button);
 		
 		JButton button_1 = new JButton("Back");
-		button_1.setBackground(Color.LIGHT_GRAY);
+		button_1.setBackground(SystemColor.controlHighlight);
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				main.showHRStaffGUI();
@@ -91,7 +92,7 @@ public class HRStaffUpdate extends JPanel{
 		add(label_5);
 		
 		JButton btnUpdate = new JButton("Update");
-		btnUpdate.setBackground(Color.LIGHT_GRAY);
+		btnUpdate.setBackground(SystemColor.controlHighlight);
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String name = textName.getText();

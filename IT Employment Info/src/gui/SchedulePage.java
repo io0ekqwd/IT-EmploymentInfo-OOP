@@ -74,7 +74,7 @@ public class SchedulePage extends JPanel{
 		
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBackground(Color.LIGHT_GRAY);
+		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showShortGUI();
@@ -84,7 +84,7 @@ public class SchedulePage extends JPanel{
 		add(btnBack);
 		
 		JButton btnSave = new JButton("Save");
-		btnSave.setBackground(Color.LIGHT_GRAY);
+		btnSave.setBackground(SystemColor.controlHighlight);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int d = Integer.valueOf(textFieldDay.getText());

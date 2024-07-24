@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class HRStaffAdd extends JPanel{
 	private MainFrame main;
@@ -33,7 +34,7 @@ public class HRStaffAdd extends JPanel{
 		this.main = main;
 		
 		JButton btnAdd = new JButton("Add");
-		btnAdd.setBackground(Color.LIGHT_GRAY);
+		btnAdd.setBackground(SystemColor.controlHighlight);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String name = textName.getText();
@@ -63,7 +64,7 @@ public class HRStaffAdd extends JPanel{
 		add(btnAdd);
 		
 		JButton btnLogout = new JButton("Logout");
-		btnLogout.setBackground(Color.LIGHT_GRAY);
+		btnLogout.setBackground(SystemColor.controlHighlight);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
@@ -79,7 +80,7 @@ public class HRStaffAdd extends JPanel{
 		add(btnLogout);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBackground(Color.LIGHT_GRAY);
+		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.showHRStaffGUI();

@@ -61,7 +61,7 @@ public class DetailPage extends JPanel {
 		add(lblPSkills);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBackground(Color.LIGHT_GRAY);
+		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String p = main.getController().getID();
