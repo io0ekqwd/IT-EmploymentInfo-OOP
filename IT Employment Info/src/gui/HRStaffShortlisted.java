@@ -35,13 +35,14 @@ public class HRStaffShortlisted extends JPanel{
 	public HRStaffShortlisted(MainFrame main) {
 		setLayout(null);
 		this.main = main;
-		this.setSize(450, 400);
+		this.setSize(700, 500);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 53, 450, 189);
+		scrollPane.setBounds(120, 76, 450, 189);
 		add(scrollPane);
 		
 		this.appList = new JList();
+		scrollPane.setViewportView(appList);
 		appList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				if(e.getValueIsAdjusting()){
@@ -64,7 +65,6 @@ public class HRStaffShortlisted extends JPanel{
 				}
 			}
 		});
-		scrollPane.setViewportView(appList);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBackground(SystemColor.controlHighlight);
@@ -79,48 +79,24 @@ public class HRStaffShortlisted extends JPanel{
 					return;
 			}
 		});
-		btnLogout.setBounds(337, 8, 89, 23);
+		btnLogout.setBounds(569, 13, 102, 46);
 		add(btnLogout);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showMMainGUI();
+				main.showHRStaffMainPage();
 			}
 		});
 		
-		btnBack.setBounds(22, 8, 89, 23);
+		btnBack.setBounds(32, 13, 102, 46);
 		add(btnBack);
 		
 		JLabel lblShortlistPage = new JLabel("Shortlist Page");
 		lblShortlistPage.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblShortlistPage.setBounds(177, 11, 89, 14);
+		lblShortlistPage.setBounds(305, 29, 93, 14);
 		add(lblShortlistPage);
-		
-		JButton btnGiveOffer = new JButton("Give Offer");
-		btnGiveOffer.setBackground(SystemColor.controlHighlight);
-		btnGiveOffer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				main.getController().addID(p);
-				index = appList.getSelectedIndex();
-				if (index == -1)
-					return;
-				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to give offer?","Job Offer", JOptionPane.YES_NO_OPTION);
-				if(opt == 0)
-				{
-					main.getController().moveProf(index);
-					btnScheduleInterview.setText("Schedule Interview");
-					lblNewLabel.setText("(Please schedule date)");
-					lblNewLabel_1.setText("(Please schedule venue)");
-					populateSAppDList();
-				}
-				else
-					return;
-			}
-		});
-		btnGiveOffer.setBounds(312, 323, 138, 23);
-		add(btnGiveOffer);
 		
 		this.btnScheduleInterview = new JButton("Schedule Interview");
 		btnScheduleInterview.setBackground(SystemColor.controlHighlight);
@@ -131,7 +107,7 @@ public class HRStaffShortlisted extends JPanel{
 				main.showSchedulePage(index, det);
 			}
 		});
-		this.btnScheduleInterview.setBounds(136, 323, 166, 23);
+		this.btnScheduleInterview.setBounds(254, 357, 192, 46);
 		add(this.btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
@@ -146,23 +122,25 @@ public class HRStaffShortlisted extends JPanel{
 				main.showDetailPage(index, app);
 			}
 		});
-		btnViewProfile.setBounds(0, 323, 126, 23);
+		btnViewProfile.setBounds(85, 362, 146, 37);
 		add(btnViewProfile);
 		
 		JLabel lblDate = new JLabel("Date:");
-		lblDate.setBounds(80, 263, 46, 14);
+		lblDate.setBounds(130, 287, 46, 14);
 		add(lblDate);
 		
 		JLabel lblVenue = new JLabel("Venue:");
-		lblVenue.setBounds(80, 288, 46, 14);
+		lblVenue.setBounds(130, 328, 46, 14);
 		add(lblVenue);
 		
 		this.lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(157, 263, 158, 14);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel.setBounds(178, 315, 173, 37);
 		add(lblNewLabel);
 		
 		this.lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(157, 288, 173, 14);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel_1.setBounds(168, 278, 192, 37);
 		add(lblNewLabel_1);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -186,7 +164,7 @@ public class HRStaffShortlisted extends JPanel{
 					return;
 			}
 		});
-		btnDelete.setBounds(157, 366, 126, 23);
+		btnDelete.setBounds(477, 362, 146, 37);
 		add(btnDelete);
 		this.populateSAppDList();
 	}

@@ -47,7 +47,7 @@ public class HRStaffAdd extends JPanel{
 				String is = textIS.getText();
 				String status = textStatus.getText();
 				main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status);
-				main.showHRStaffGUI();
+				main.showHRStaffApplicantPage();
 				/*textName.setText("");
 				textAge.setText("");
 				textEmail.setText("");
@@ -60,7 +60,7 @@ public class HRStaffAdd extends JPanel{
 				
 			}
 		});
-		btnAdd.setBounds(254, 339, 108, 49);
+		btnAdd.setBounds(421, 348, 108, 49);
 		add(btnAdd);
 		
 		JButton btnLogout = new JButton("Logout");
@@ -76,104 +76,104 @@ public class HRStaffAdd extends JPanel{
 					return;
 			}
 		});
-		btnLogout.setBounds(329, 9, 97, 25);
+		btnLogout.setBounds(570, 9, 108, 49);
 		add(btnLogout);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.showHRStaffGUI();
+				main.showHRStaffApplicantPage();
 			}
 		});
-		btnBack.setBounds(10, 9, 97, 25);
+		btnBack.setBounds(10, 9, 116, 49);
 		add(btnBack);
 		
 		JLabel lblAddApplicantPage = new JLabel("Add Applicant Page");
 		lblAddApplicantPage.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblAddApplicantPage.setBounds(153, 4, 141, 25);
+		lblAddApplicantPage.setBounds(285, 9, 141, 25);
 		add(lblAddApplicantPage);
 		
 		textName = new JTextField();
-		textName.setBounds(254, 54, 86, 20);
+		textName.setBounds(421, 54, 86, 20);
 		add(textName);
 		textName.setColumns(10);
 		
 		textAge = new JTextField();
-		textAge.setBounds(254, 82, 86, 20);
+		textAge.setBounds(421, 80, 86, 20);
 		add(textAge);
 		textAge.setColumns(10);
 		
 		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(217, 57, 46, 14);
+		lblName.setBounds(363, 57, 46, 14);
 		add(lblName);
 		
 		JLabel lblAge = new JLabel("Age:");
-		lblAge.setBounds(227, 82, 27, 16);
+		lblAge.setBounds(373, 82, 27, 16);
 		add(lblAge);
 		
 		textPhone = new JTextField();
-		textPhone.setBounds(254, 107, 86, 20);
+		textPhone.setBounds(421, 107, 86, 20);
 		add(textPhone);
 		textPhone.setColumns(10);
 		
 		JLabel lblPhoneNo = new JLabel("Phone Number:");
-		lblPhoneNo.setBounds(166, 109, 97, 16);
+		lblPhoneNo.setBounds(312, 111, 97, 16);
 		add(lblPhoneNo);
 		
 		textEmail = new JTextField();
-		textEmail.setBounds(253, 136, 116, 22);
+		textEmail.setBounds(421, 135, 116, 22);
 		add(textEmail);
 		textEmail.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(217, 138, 56, 16);
+		lblEmail.setBounds(363, 140, 56, 16);
 		add(lblEmail);
 		
 		JLabel lblAddress = new JLabel("Address:");
-		lblAddress.setBounds(217, 232, 56, 16);
+		lblAddress.setBounds(421, 232, 56, 16);
 		add(lblAddress);
 		
 		JLabel lblPosition = new JLabel("Position:");
-		lblPosition.setBounds(198, 168, 56, 16);
+		lblPosition.setBounds(353, 168, 56, 16);
 		add(lblPosition);
 		
 		textPostition = new JTextField();
-		textPostition.setBounds(253, 165, 116, 22);
+		textPostition.setBounds(421, 165, 116, 22);
 		add(textPostition);
 		textPostition.setColumns(10);
 		
 		JLabel lblSkills = new JLabel("Programming skills:\r\n\r\n");
-		lblSkills.setBounds(10, 232, 161, 16);
+		lblSkills.setBounds(193, 232, 161, 16);
 		add(lblSkills);
 		
 		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setBounds(207, 195, 56, 16);
+		lblStatus.setBounds(363, 197, 56, 16);
 		add(lblStatus);
 		
 		textStatus = new JTextField();
-		textStatus.setBounds(254, 192, 118, 22);
+		textStatus.setBounds(419, 192, 118, 22);
 		add(textStatus);
 		textStatus.setColumns(10);
 		
 		JLabel lblIndustrySkills = new JLabel("Industry skills:");
-		lblIndustrySkills.setBounds(10, 323, 82, 16);
+		lblIndustrySkills.setBounds(193, 329, 82, 16);
 		add(lblIndustrySkills);
 		
 		textPS = new JTextArea();
-		textPS.setBounds(10, 247, 182, 69);
+		textPS.setBounds(193, 252, 182, 69);
 		add(textPS);
 		
 		textIS = new JTextArea();
-		textIS.setBounds(10, 339, 182, 49);
+		textIS.setBounds(193, 348, 182, 49);
 		add(textIS);
 		
 		textAddress = new JTextArea();
-		textAddress.setBounds(217, 247, 209, 69);
+		textAddress.setBounds(421, 252, 209, 69);
 		add(textAddress);
 		
 		JLabel label = new JLabel("<Image>");
-		label.setBounds(51, 110, 46, 14);
+		label.setBounds(146, 110, 46, 14);
 		add(label);
 	}
 }

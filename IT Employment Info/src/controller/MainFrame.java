@@ -5,7 +5,9 @@ import javax.swing.JFrame;
 
 import data.ApplicantDetails;
 import gui.DetailPage;
-import gui.HRStaffMain;
+import gui.HRStaffApplicantPage;
+import gui.HRStaffMainPage;
+import gui.HRStaffShortlisted;
 import gui.HRStaffAdd;
 import gui.HRStaffUpdate;
 import gui.Login;
@@ -63,13 +65,13 @@ public class MainFrame extends JFrame {
 		this.card.show(this.getContentPane(), "Panel 5");
 	}
 
-	public void showHRStaffGUI() {
-		HRStaffMain p6 = new HRStaffMain(this);
+	public void showHRStaffMainPage() {
+		HRStaffMainPage p6 = new HRStaffMainPage(this);
 		this.add(p6, "Panel 6");
 		this.card.show(this.getContentPane(), "Panel 6");
 	}
 	
-	public void showHRStaffGUI2() {
+	public void showHRStaffAdd() {
 		HRStaffAdd p7 = new HRStaffAdd(this);
 		this.add(p7, "Panel 7");
 		this.card.show(this.getContentPane(), "Panel 7");
@@ -86,12 +88,23 @@ public class MainFrame extends JFrame {
 		this.card.show(this.getContentPane(), "Panel 9");
 	}
 	
-	public void showHRStaffGUI3(int ind, ApplicantDetails det) {
+	public void showHRStaffUpdate(int ind, ApplicantDetails det) {
 		HRStaffUpdate p11 = new HRStaffUpdate(this, ind, det);
 		this.add(p11, "Panel 11");
 		this.card.show(this.getContentPane(), "Panel 11");
 	}
 	
+	public void showHRStaffApplicantPage(){
+		HRStaffApplicantPage p12 = new HRStaffApplicantPage(this);
+		this.add(p12, "Panel 12");
+		this.card.show(this.getContentPane(), "Panel 12");
+	}
+	
+	public void showHRStaffShortlisted() {
+		HRStaffShortlisted p13 = new HRStaffShortlisted(this);
+		this.add(p13, "Panel 13");
+		this.card.show(this.getContentPane(), "Panel 13");
+	}
 	
 
 	public static void main(String[] args) {

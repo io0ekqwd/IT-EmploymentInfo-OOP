@@ -16,29 +16,30 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
 
-public class HRStaffMain extends JPanel{
+public class HRStaffApplicantPage extends JPanel{
 	private ApplicantDetails[] AppD;
 	private MainFrame main;
 	private JList appList;
 	private int index;
 	private String p = "p1";
-	public HRStaffMain(MainFrame main) {
-		setLayout(null);
+	public HRStaffApplicantPage(MainFrame main) {
 		this.main = main;
+		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 54, 450, 189);
+		scrollPane.setBounds(129, 72, 450, 189);
 		add(scrollPane);
 		
 		this.appList = new JList();
-		scrollPane.setViewportView(this.appList);
+		scrollPane.setViewportView(appList);
 		
 		JLabel lblApplicantPage = new JLabel("Applicant Page");
+		lblApplicantPage.setBounds(305, 29, 93, 14);
 		lblApplicantPage.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblApplicantPage.setBounds(173, 11, 93, 14);
 		add(lblApplicantPage);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.setBounds(569, 13, 102, 46);
 		btnLogout.setBackground(SystemColor.controlHighlight);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -51,20 +52,20 @@ public class HRStaffMain extends JPanel{
 					return;
 			}
 		});
-		btnLogout.setBounds(334, 8, 89, 23);
 		add(btnLogout);
 		
 		JButton btnAddApplicant = new JButton("Add Applicant\r\n");
+		btnAddApplicant.setBounds(129, 274, 155, 42);
 		btnAddApplicant.setBackground(SystemColor.controlHighlight);
 		btnAddApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.showHRStaffGUI2();
+				main.showHRStaffAdd();
 			}
 		});
-		btnAddApplicant.setBounds(0, 266, 155, 25);
 		add(btnAddApplicant);
 		
 		JButton btnUpdateApplicant = new JButton("Update Applicant");
+		btnUpdateApplicant.setBounds(424, 274, 155, 42);
 		btnUpdateApplicant.setBackground(SystemColor.controlHighlight);
 		btnUpdateApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -72,13 +73,13 @@ public class HRStaffMain extends JPanel{
 				if(index == -1)
 					return;
 				ApplicantDetails det = AppD[index];
-				main.showHRStaffGUI3(index, det);
+				main.showHRStaffUpdate(index, det);
 			}
 		});
-		btnUpdateApplicant.setBounds(285, 266, 155, 25);
 		add(btnUpdateApplicant);
 		
 		JButton btnDeleteApplicant = new JButton("Delete Applicant");
+		btnDeleteApplicant.setBounds(282, 329, 155, 42);
 		btnDeleteApplicant.setBackground(SystemColor.controlHighlight);
 		btnDeleteApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -96,8 +97,17 @@ public class HRStaffMain extends JPanel{
 					return;
 			}
 		});
-		btnDeleteApplicant.setBounds(144, 302, 155, 25);
 		add(btnDeleteApplicant);
+		
+		JButton btnBackButton = new JButton("Back");
+		btnBackButton.setBounds(32, 13, 102, 46);
+		btnBackButton.setBackground(SystemColor.controlHighlight);
+		btnBackButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				main.showHRStaffMainPage();
+			}
+		});
+		add(btnBackButton);
 		
 		this.populateAppDList();
 	}

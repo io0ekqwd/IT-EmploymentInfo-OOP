@@ -117,7 +117,7 @@ public class Login extends JPanel{
 				if (validity == true) {
 					String r = main.getController().getRole();
 					if (r == "Staff")
-						main.showHRStaffGUI();
+						main.showHRStaffMainPage();
 					else if (r == "Manager")
 						main.showMMainGUI();
 					else if (r == "Admin")
