@@ -203,7 +203,7 @@ public class ManagerJob extends JPanel{
 	}
 	//Test
 	private void populateAppDList() {
-		main.getController().addID(p);
+		//main.getController().addID(p);
 		this.AppD = this.main.getController().getAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)

@@ -7,12 +7,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 
 import controller.MainFrame;
 import data.Skills;
 
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.Color;
@@ -60,7 +64,7 @@ public class HRStaffAdd extends JPanel{
 				
 			}
 		});
-		btnAdd.setBounds(421, 348, 108, 49);
+		btnAdd.setBounds(421, 380, 97, 49);
 		add(btnAdd);
 		
 		JButton btnLogout = new JButton("Logout");
@@ -165,7 +169,7 @@ public class HRStaffAdd extends JPanel{
 		add(textPS);
 		
 		textIS = new JTextArea();
-		textIS.setBounds(193, 348, 182, 49);
+		textIS.setBounds(193, 348, 182, 81);
 		add(textIS);
 		
 		textAddress = new JTextArea();
@@ -175,5 +179,34 @@ public class HRStaffAdd extends JPanel{
 		JLabel label = new JLabel("<Image>");
 		label.setBounds(146, 110, 46, 14);
 		add(label);
+		
+		JButton btnReader = new JButton("Read");
+		btnReader.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser chooser = new JFileChooser();
+				chooser.showOpenDialog(chooser);
+				chooser.setVisible(true);
+				
+				File file = new File(chooser.getSelectedFile().toString());
+				try {
+					Scanner scanner = new Scanner(file);
+					while(scanner.hasNextLine()){
+						
+					}
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		btnReader.setBounds(546, 380, 82, 49);
+		add(btnReader);
+		
+		JButton btnAddImage = new JButton("Add Image");
+		btnAddImage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAddImage.setBounds(421, 440, 209, 49);
+		add(btnAddImage);
 	}
 }
