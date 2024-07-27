@@ -31,21 +31,22 @@ public class ManagerShortlisted extends JPanel{
 	private JLabel lblNewLabel_1;
 	private JButton btnScheduleInterview;
 	private String p = "p2";
+	private JLabel lblNewLabel_2;
 
 	public ManagerShortlisted(MainFrame main) {
 		setLayout(null);
 		this.main = main;
-		this.setSize(700, 461);
+		main.setSize(700,500);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 53, 450, 189);
+		scrollPane.setBounds(20, 53, 654, 189);
 		add(scrollPane);
 		
 		this.appList = new JList();
 		appList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				if(e.getValueIsAdjusting()){
-					int index = appList.getSelectedIndex();
+					index = appList.getSelectedIndex();
 					if (index == -1) 
 						return;
 					ApplicantDetails app = AppD[index];
@@ -54,12 +55,14 @@ public class ManagerShortlisted extends JPanel{
 						btnScheduleInterview.setText("Reschedule Interview");
 						lblNewLabel.setText(app.getInterviewDetails().getDay()+" "+app.getInterviewDetails().getMonth()+" "+app.getInterviewDetails().getYear());
 					    lblNewLabel_1.setText(app.getInterviewDetails().getVenue());
+					    lblNewLabel_2.setText(String.valueOf(app.getInterviewDetails().getHour())+":"+String.valueOf(app.getInterviewDetails().getMin()));
 					}
 					else 
 					{
 						btnScheduleInterview.setText("Schedule Interview");
 						lblNewLabel.setText("(Please schedule date)");
 						lblNewLabel_1.setText("(Please schedule venue)");
+						lblNewLabel_2.setText("(Please schedule date)");
 					}
 				}
 			}
@@ -79,7 +82,7 @@ public class ManagerShortlisted extends JPanel{
 					return;
 			}
 		});
-		btnLogout.setBounds(337, 8, 89, 23);
+		btnLogout.setBounds(585, 8, 89, 34);
 		add(btnLogout);
 		
 		JButton btnBack = new JButton("Back");
@@ -90,36 +93,37 @@ public class ManagerShortlisted extends JPanel{
 			}
 		});
 		
-		btnBack.setBounds(22, 8, 89, 23);
+		btnBack.setBounds(22, 8, 126, 34);
 		add(btnBack);
 		
 		JLabel lblShortlistPage = new JLabel("Shortlist Page");
-		lblShortlistPage.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblShortlistPage.setBounds(177, 11, 89, 14);
+		lblShortlistPage.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblShortlistPage.setBounds(286, 11, 120, 25);
 		add(lblShortlistPage);
 		
 		JButton btnGiveOffer = new JButton("Give Offer");
 		btnGiveOffer.setBackground(SystemColor.controlHighlight);
 		btnGiveOffer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to give offer?","Job Offer", JOptionPane.YES_NO_OPTION);
 				if(opt == 0)
 				{
-					main.getController().moveProf(index);
+					ApplicantDetails det = AppD[index];
+					main.getController().giveJob(index, det);
 					btnScheduleInterview.setText("Schedule Interview");
 					lblNewLabel.setText("(Please schedule date)");
 					lblNewLabel_1.setText("(Please schedule venue)");
-					populateSAppDList();
+					lblNewLabel_2.setText("(Please schedule date)");
+					main.showJobGUI();
 				}
 				else
 					return;
 			}
 		});
-		btnGiveOffer.setBounds(312, 323, 138, 23);
+		btnGiveOffer.setBounds(476, 384, 203, 62);
 		add(btnGiveOffer);
 		
 		this.btnScheduleInterview = new JButton("Schedule Interview");
@@ -127,11 +131,13 @@ public class ManagerShortlisted extends JPanel{
 		btnScheduleInterview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				index = appList.getSelectedIndex();
+				if(index == -1)
+					return;
 				ApplicantDetails det = AppD[index];
 				main.showSchedulePage(index, det);
 			}
 		});
-		this.btnScheduleInterview.setBounds(136, 323, 166, 23);
+		this.btnScheduleInterview.setBounds(508, 253, 166, 23);
 		add(this.btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
@@ -139,66 +145,84 @@ public class ManagerShortlisted extends JPanel{
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
-				int index = appList.getSelectedIndex();
+				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
 				ApplicantDetails app = AppD[index];
 				main.showDetailPage(index, app);
 			}
 		});
-		btnViewProfile.setBounds(0, 323, 126, 23);
+		btnViewProfile.setBounds(10, 384, 191, 62);
 		add(btnViewProfile);
 		
 		JLabel lblDate = new JLabel("Date:");
-		lblDate.setBounds(80, 263, 46, 14);
+		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDate.setBounds(207, 253, 52, 23);
 		add(lblDate);
 		
 		JLabel lblVenue = new JLabel("Venue:");
-		lblVenue.setBounds(80, 288, 46, 14);
+		lblVenue.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblVenue.setBounds(207, 287, 46, 23);
 		add(lblVenue);
 		
 		this.lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(157, 263, 158, 14);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setBounds(269, 253, 199, 23);
 		add(lblNewLabel);
 		
 		this.lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(157, 288, 173, 14);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(273, 287, 195, 23);
 		add(lblNewLabel_1);
 		
-		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBackground(SystemColor.controlHighlight);
-		btnDelete.addActionListener(new ActionListener() {
+		JButton btnUndo = new JButton("Undo");
+		btnUndo.setBackground(SystemColor.controlHighlight);
+		btnUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
-				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
+				ApplicantDetails det = AppD[index];
+				if(index == -1)
+					return;
+				int opt = JOptionPane.showConfirmDialog(main, "Do you want to undo?","Undo", JOptionPane.YES_NO_OPTION);
 				if(opt==0)
 				{
-					main.getController().deleteProf(index);
+					main.getController().undoShort(index, det);
 					btnScheduleInterview.setText("Schedule Interview");
 					lblNewLabel.setText("(Please schedule date)");
 					lblNewLabel_1.setText("(Please schedule venue)");
+					lblNewLabel_2.setText("(Please schedule date)");
 					populateSAppDList();
 				}
 				else
 					return;
+				
 			}
 		});
-		btnDelete.setBounds(157, 366, 126, 23);
-		add(btnDelete);
+		btnUndo.setBounds(226, 384, 228, 62);
+		add(btnUndo);
+		
+		JLabel lblTime = new JLabel("Time:");
+		lblTime.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTime.setBounds(207, 322, 46, 23);
+		add(lblTime);
+		
+		this.lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_2.setBounds(273, 321, 195, 24);
+		add(lblNewLabel_2);
 		this.populateSAppDList();
 	}
 	//Test
 	private void populateSAppDList() {
-		main.getController().addID(p);
 		this.AppD = this.main.getController().getAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails op = AppD[i];
-			model.addElement(op.getName());
+			if(op.getShortlist() == true && op.getJob() == false)
+				model.addElement(op.getName());
 			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
 		}
 		this.appList.setModel(model);

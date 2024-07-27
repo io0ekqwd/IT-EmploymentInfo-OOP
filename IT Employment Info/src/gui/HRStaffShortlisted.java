@@ -176,7 +176,8 @@ public class HRStaffShortlisted extends JPanel{
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails op = AppD[i];
-			model.addElement(op.getName());
+			if(op.getShortlist() == true && op.getJob()== false)
+				model.addElement(op.getName());
 			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
 		}
 		this.appList.setModel(model);

@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
 
 import controller.MainFrame;
 import data.ApplicantDetails;
@@ -29,18 +30,18 @@ public class ManagerApplicant extends JPanel{
 	public ManagerApplicant(MainFrame main) {
 		setLayout(null);
 		this.main = main;
-		this.setSize(450, 400);
+		main.setSize(700, 500);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 54, 450, 189);
+		scrollPane.setBounds(10, 54, 668, 217);
 		add(scrollPane);
 		
 		this.appList = new JList();
 		scrollPane.setViewportView(this.appList);
 		
 		JLabel lblApplicantPage = new JLabel("Applicant Page");
-		lblApplicantPage.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblApplicantPage.setBounds(173, 11, 93, 14);
+		lblApplicantPage.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblApplicantPage.setBounds(293, 10, 125, 26);
 		add(lblApplicantPage);
 		
 		JButton btnLogout = new JButton("Logout");
@@ -56,28 +57,28 @@ public class ManagerApplicant extends JPanel{
 					return;
 			}
 		});
-		btnLogout.setBounds(334, 8, 89, 23);
+		btnLogout.setBounds(571, 8, 107, 35);
 		add(btnLogout);
 		
 		JButton btnShortlist = new JButton("Shortlist");
 		btnShortlist.setBackground(SystemColor.controlHighlight);
 		btnShortlist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to shortlist?","Shortlist", JOptionPane.YES_NO_OPTION);
 				if(opt == 0)
 				{
-					main.getController().moveProf(index);
+					ApplicantDetails det = AppD[index];
+					main.getController().shortlistApp(index, det);
 					populateAppDList();
 				}
 				else
 					return;
 			}
 		});
-		btnShortlist.setBounds(279, 328, 125, 23);
+		btnShortlist.setBounds(474, 299, 140, 50);
 		add(btnShortlist);
 		
 		JButton btnBack = new JButton("Back");
@@ -87,7 +88,7 @@ public class ManagerApplicant extends JPanel{
 				showMMainGUI();
 			}
 		});
-		btnBack.setBounds(29, 8, 89, 23);
+		btnBack.setBounds(10, 8, 107, 35);
 		add(btnBack);
 		
 		JButton btnViewProfile = new JButton("View Profile");
@@ -102,14 +103,13 @@ public class ManagerApplicant extends JPanel{
 				main.showDetailPage(index, app);
 			}
 		});
-		btnViewProfile.setBounds(29, 328, 125, 23);
+		btnViewProfile.setBounds(276, 373, 135, 50);
 		add(btnViewProfile);
 		
 		JButton button = new JButton("Delete");
 		button.setBackground(SystemColor.controlHighlight);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
@@ -123,7 +123,7 @@ public class ManagerApplicant extends JPanel{
 					return;
 			}
 		});
-		button.setBounds(29, 294, 126, 23);
+		button.setBounds(85, 299, 135, 50);
 		add(button);
 		
 		this.populateAppDList();
@@ -136,7 +136,8 @@ public class ManagerApplicant extends JPanel{
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails det = AppD[i];
-			model.addElement(det.getName());
+			if (det.getShortlist() == false && det.getJob() == false)
+				model.addElement(det.getName());
 			/*model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());*/
 		}
 		this.appList.setModel(model);

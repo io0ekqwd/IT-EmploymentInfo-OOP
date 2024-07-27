@@ -1,4 +1,4 @@
-package gui;
+        package gui;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -39,7 +39,7 @@ public class ManagerJob extends JPanel{
 	public ManagerJob(MainFrame main) {
 		setLayout(null);
 		this.main = main;
-		this.setSize(701, 463);
+		main.setSize(700,500);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(20, 52, 646, 189);
@@ -83,12 +83,11 @@ public class ManagerJob extends JPanel{
 		btnViewProfile.setBackground(SystemColor.controlHighlight);
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.getController().addID(p);
-				int index = appList.getSelectedIndex();
+				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
 				ApplicantDetails app = AppD[index];
-				main.showDetailPage(index, app);
+				main.showDetailPageJob(index, app);
 			}
 		});
 		btnViewProfile.setBounds(99, 350, 219, 50);
@@ -105,26 +104,27 @@ public class ManagerJob extends JPanel{
 		btnCountApplicants.setBounds(99, 402, 219, 56);
 		add(btnCountApplicants);
 		
-		JButton button = new JButton("Delete");
-		button.setBackground(SystemColor.controlHighlight);
-		button.addActionListener(new ActionListener() {
+		JButton btnUndo = new JButton("Undo");
+		btnUndo.setBackground(SystemColor.controlHighlight);
+		btnUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
-				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
+				int opt = JOptionPane.showConfirmDialog(main, "Do you want to undo?","Undo", JOptionPane.YES_NO_OPTION);
 				if(opt==0)
 				{
-					main.getController().deleteProf(index);
+					ApplicantDetails det = AppD[index];
+					main.getController().undoJob(index,det);
 					populateAppDList();
 				}
 				else
 					return;
 			}
 		});
-		button.setBounds(99, 296, 219, 50);
-		add(button);
+		btnUndo.setBounds(99, 296, 219, 50);
+		add(btnUndo);
 		
 		JLabel lblSalary = new JLabel("Salary:");
 		lblSalary.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -178,6 +178,24 @@ public class ManagerJob extends JPanel{
 		textField_1.setColumns(10);
 		
 		JButton btnAdd = new JButton("Add Hired Position");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				index = appList.getSelectedIndex();
+				if(index == -1)
+					return;
+				ApplicantDetails app = AppD[index];
+				if(textField.getText().isEmpty() == true)
+					lblNewLabel.setText("Please fill in salary.");
+				else
+				{
+					String hp = textField_1.getText();
+			        main.getController().addHPos(index, app, hp);
+				    textField_1.setText("");
+				    //lblNewLabel.setText("");
+				}
+			populateAppDList();   
+			}
+		});
 		btnAdd.setBackground(SystemColor.controlHighlight);
 		btnAdd.setBounds(328, 350, 241, 50);
 		add(btnAdd);
@@ -191,12 +209,15 @@ public class ManagerJob extends JPanel{
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails op = AppD[i];
-			if(op.getSalary()!=0)
+			if(op.getShortlist() == true && op.getJob() == true)
 			{
-				model.addElement(op.getName()+"          "+op.getHPosition()+"          "+"$"+op.getSalary());
+				if(op.getSalary()!=0)
+				{
+					model.addElement(op.getName()+"          "+op.getHPosition()+"          "+"$"+op.getSalary());
+				}
+				else
+					model.addElement(op.getName()+"          "+op.getHPosition());
 			}
-			else
-				model.addElement(op.getName()+"          "+op.getHPosition());
 			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
 		}
 		this.appList.setModel(model);

@@ -42,10 +42,25 @@ public class Controller {
 		return this.ds.getAppList();
 	}
 
-	public void moveProf(int index) {
-		this.ds.moveProf(index);
+	public void shortlistApp(int index, ApplicantDetails det) {
+		det.setShortlist(true);
+		this.ds.editApplicant(index, det);	
 	}
-
+	
+	public void giveJob(int index, ApplicantDetails det) {
+		det.setJob(true);
+		this.ds.editApplicant(index, det);	
+	}
+	
+	public void undoJob(int index, ApplicantDetails det) {
+		det.setJob(false);
+		this.ds.editApplicant(index, det);
+	}
+	
+	public void undoShort(int index, ApplicantDetails det) {
+		det.setShortlist(false);
+		this.ds.editApplicant(index, det);
+	}
 	
 	public boolean verifyUser(String n, String pwd) {
 		String real = pwd;
@@ -66,14 +81,17 @@ public class Controller {
 		return tt;
 	}
 
-	public void scheInte(int index, ApplicantDetails det, int d, String m, String v, int y) {
+	public void scheInte(int index, ApplicantDetails det, int d, String m, String v, int y, int h, int min) {
 		InterviewDetails intdet = new InterviewDetails();
 		intdet.setDay(d);
 		intdet.setMonth(m);
 		intdet.setYear(y);
 		intdet.setVenue(v);
+		intdet.setHour(h);
+		intdet.setMin(min);
+		//intdet.setAmpm(ap);
 		det.setInterviewDetails(intdet);
-		this.ds.addInteDate(index, det);
+		this.ds.editApplicant(index, det);
 	}
 
 	public void addID(String p) {
@@ -95,7 +113,7 @@ public class Controller {
 
 	public void addSalary(int index, ApplicantDetails det, int s) {
 		det.setSalary(s);
-		this.ds.storeSalary(index, det);
+		this.ds.editApplicant(index, det);
 	}
 
 	public void editApplicant(int index, ApplicantDetails det, String name, int age, String email, String phone, String address, String position,
@@ -118,7 +136,14 @@ public class Controller {
 	public int getCount() {
 		return this.ds.getJobCount();
 	}
+
+	public void addHPos(int index, ApplicantDetails det, String hp) {
+		det.setHPosition(hp);
+		this.ds.editApplicant(index, det);
 	}
+
+	
+}
 
 	
 

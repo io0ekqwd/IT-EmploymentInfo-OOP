@@ -16,6 +16,8 @@ public class ApplicantDetails {
 	private Skills skills;
 	private InterviewDetails intDet;
 	private int salary;
+	private boolean shortlist;
+	private boolean job;
 	private ImageIcon pImg;
 
 	public ImageIcon getImage(){
@@ -106,5 +108,21 @@ public class ApplicantDetails {
 	
 	public void setSalary(int salary) {
 		this.salary = salary;
+	}
+	
+	public boolean getShortlist() {
+		return shortlist;
+	}
+	
+	public void setShortlist(boolean shortlist) {
+		this.shortlist = shortlist;
+	}
+	
+	public boolean getJob() {
+		return job;
+	}
+	
+	public void setJob(boolean job) {
+		this.job = job;
 	}
 }

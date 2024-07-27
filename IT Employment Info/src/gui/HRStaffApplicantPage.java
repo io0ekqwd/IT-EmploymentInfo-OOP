@@ -21,7 +21,6 @@ public class HRStaffApplicantPage extends JPanel{
 	private MainFrame main;
 	private JList appList;
 	private int index;
-	private String p = "p1";
 	public HRStaffApplicantPage(MainFrame main) {
 		this.main = main;
 		setLayout(null);
@@ -83,7 +82,6 @@ public class HRStaffApplicantPage extends JPanel{
 		btnDeleteApplicant.setBackground(SystemColor.controlHighlight);
 		btnDeleteApplicant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
@@ -113,7 +111,6 @@ public class HRStaffApplicantPage extends JPanel{
 	}
 	//Test
 	private void populateAppDList() {
-		main.getController().addID(p);
 		this.AppD = this.main.getController().getAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)

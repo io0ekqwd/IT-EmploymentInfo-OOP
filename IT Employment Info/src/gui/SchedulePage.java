@@ -32,6 +32,7 @@ public class SchedulePage extends JPanel{
 		this.index = ind;
 		this.det = det;
 		this.main = main;
+		main.setSize(450,350);
 		setLayout(null);
 		
 		
@@ -94,7 +95,10 @@ public class SchedulePage extends JPanel{
 				String m = String.valueOf(comboBoxMonth.getSelectedItem());
 				int y =Integer.valueOf(textFieldYear.getText());
 				String v = textField.getText();
-				main.getController().scheInte(ind, det, d, m, v, y);
+		        int h = Integer.valueOf(textField_1.getText());
+		        int min = Integer.valueOf(textField_2.getText());
+		       // String ap = String.valueOf(comboBoxAMPM.getSelectedItem());
+				main.getController().scheInte(ind, det, d, m, v, y, h, min);
 				main.showShortGUI();
 			}
 		});
@@ -118,9 +122,5 @@ public class SchedulePage extends JPanel{
 		textField_2.setBounds(167, 182, 46, 21);
 		add(textField_2);
 		textField_2.setColumns(10);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(223, 183, 39, 20);
-		add(comboBox);
 	}
 }

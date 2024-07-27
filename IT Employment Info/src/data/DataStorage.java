@@ -6,42 +6,15 @@ public class DataStorage {
 	
 	private Vector<User> loginInfo = new Vector<User>();
 	private Vector<ApplicantDetails>aList = new Vector<ApplicantDetails>();
-	private Vector<ApplicantDetails>aListShort = new Vector<ApplicantDetails>();
-	private Vector<ApplicantDetails>jobList = new Vector<ApplicantDetails>();
-	private Vector<String> pageID = new Vector<String>();
+	private Vector<String> pageID = new Vector<String>(1);
 	
 	
 	
 	public ApplicantDetails[] getAppList() {
-		String p = getID();
 		ApplicantDetails[] opArr = null;
-		if(p=="p1"){
-		    opArr = new ApplicantDetails[this.aList.size()];
-			this.aList.toArray(opArr);
-		}
-		else if(p=="p2"){
-			opArr = new ApplicantDetails[this.aListShort.size()];
-			this.aListShort.toArray(opArr);
-		}
-		else if(p=="p3"){
-			opArr = new ApplicantDetails[this.jobList.size()];
-			this.jobList.toArray(opArr);
-		}
-	    removeID();
+		opArr = new ApplicantDetails[this.aList.size()];
+	    this.aList.toArray(opArr);
 		return opArr;
-	}
-
-
-	public void moveProf(int index) {
-		String p = getID();
-		if(p=="p1"){
-			this.aListShort.add(aList.elementAt(index));
-			this.aList.remove(index);
-		}
-		else if (p=="p2"){
-			this.jobList.add(aListShort.elementAt(index));
-			this.aListShort.remove(index);
-		}
 	}
 		
 
@@ -60,9 +33,9 @@ public class DataStorage {
 }
 
 	public void addInteDate(int index, ApplicantDetails det) {
-		this.aListShort.set(index, det);
+		this.aList.set(index, det);
 	}
-
+//ID
 	public void storeID(String p) {
 		this.pageID.add(p);
 	}
@@ -74,22 +47,15 @@ public class DataStorage {
 	public void removeID() {
 		this.pageID.clear();
 	}
-
+//ID
 
 	public void storeSalary(int index, ApplicantDetails det) {
-		this.jobList.set(index, det);
+		this.aList.set(index, det);
 		
 	}
 
 	public void deleteProf(int index) {
-		String p = getID();
-		if (p.equals("p1"))
 			this.aList.remove(index);
-		if (p.equals("p2"))
-			this.aListShort.remove(index);
-		if (p.equals("p3"))
-			this.jobList.remove(index);
-		removeID();
 	}
 	
 	public void addApplicant(ApplicantDetails z) {
@@ -109,7 +75,13 @@ public class DataStorage {
 	}
 
 	public int getJobCount() {
-		return this.jobList.size();
+		int cnt = 0;
+		for(int i=0;i<aList.size();i++){
+			ApplicantDetails a = aList.get(i);
+			if(a.getJob() == true)
+				cnt++;
+		}
+		return cnt;
 	}
 	
 	

@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 
 import data.ApplicantDetails;
 import gui.DetailPage;
+import gui.DetailPageJob;
 import gui.HRStaffApplicantPage;
 import gui.HRStaffMainPage;
 import gui.HRStaffShortlisted;
@@ -88,6 +89,12 @@ public class MainFrame extends JFrame {
 		this.card.show(this.getContentPane(), "Panel 9");
 	}
 	
+	public void showDetailPageJob(int index, ApplicantDetails det){
+		DetailPageJob p10 = new DetailPageJob(this, index, det);
+		this.add(p10, "Panel 10");
+		this.card.show(this.getContentPane(), "Panel 10");
+	}
+	
 	public void showHRStaffUpdate(int ind, ApplicantDetails det) {
 		HRStaffUpdate p11 = new HRStaffUpdate(this, ind, det);
 		this.add(p11, "Panel 11");
@@ -105,6 +112,8 @@ public class MainFrame extends JFrame {
 		this.add(p13, "Panel 13");
 		this.card.show(this.getContentPane(), "Panel 13");
 	}
+	
+	
 	
 
 	public static void main(String[] args) {
