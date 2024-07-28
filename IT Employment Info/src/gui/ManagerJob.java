@@ -1,4 +1,4 @@
-        package gui;
+package gui;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -83,10 +83,12 @@ public class ManagerJob extends JPanel{
 		btnViewProfile.setBackground(SystemColor.controlHighlight);
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				index = appList.getSelectedIndex();
-				if (index == -1)
+				main.getController().addID(p);
+				int pIndex = appList.getSelectedIndex();
+				if (pIndex == -1)
 					return;
-				ApplicantDetails app = AppD[index];
+				ApplicantDetails app = AppD[pIndex];
+				index = main.getController().getProfIndex(app);
 				main.showDetailPageJob(index, app);
 			}
 		});
@@ -108,15 +110,14 @@ public class ManagerJob extends JPanel{
 		btnUndo.setBackground(SystemColor.controlHighlight);
 		btnUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.getController().addID(p);
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
+				ApplicantDetails det = AppD[index];
 				int opt = JOptionPane.showConfirmDialog(main, "Do you want to undo?","Undo", JOptionPane.YES_NO_OPTION);
 				if(opt==0)
 				{
-					ApplicantDetails det = AppD[index];
-					main.getController().undoJob(index,det);
+					main.getController().undoJob(det);
 					populateAppDList();
 				}
 				else
@@ -203,21 +204,16 @@ public class ManagerJob extends JPanel{
 	}
 	//Test
 	private void populateAppDList() {
-		//main.getController().addID(p);
-		this.AppD = this.main.getController().getAppList();
+		this.AppD = this.main.getController().getJAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails op = AppD[i];
-			if(op.getShortlist() == true && op.getJob() == true)
-			{
-				if(op.getSalary()!=0)
-				{
-					model.addElement(op.getName()+"          "+op.getHPosition()+"          "+"$"+op.getSalary());
-				}
-				else
-					model.addElement(op.getName()+"          "+op.getHPosition());
-			}
+			if(op.getSalary()!=0)
+				model.addElement(op.getName()+"          "+op.getHPosition()+"          "+"$"+op.getSalary());
+		    else
+				model.addElement(op.getName()+"          "+op.getHPosition());
+		
 			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
 		}
 		this.appList.setModel(model);

@@ -34,6 +34,8 @@ public class Controller {
 		z.setAPosition(pos);
 		z.setSkills(skill);
 		z.setStatus(status);
+		z.setShortlist(false);
+		z.setJob(false);
 		this.ds.addApplicant(z);	
 	}
 	
@@ -41,25 +43,33 @@ public class Controller {
 	public ApplicantDetails[] getAppList() {
 		return this.ds.getAppList();
 	}
+	
+	public ApplicantDetails[] getSAppList() {
+		return this.ds.getSAppList();
+	}
+	
+	public ApplicantDetails[] getJAppList() {
+		return this.ds.getJAppList();
+	}
 
-	public void shortlistApp(int index, ApplicantDetails det) {
+	public void shortlistApp(ApplicantDetails det) {
 		det.setShortlist(true);
-		this.ds.editApplicant(index, det);	
+		this.ds.managerEditApp(det);	
 	}
 	
-	public void giveJob(int index, ApplicantDetails det) {
+	public void giveJob(ApplicantDetails det) {
 		det.setJob(true);
-		this.ds.editApplicant(index, det);	
+		this.ds.managerEditApp(det);	
 	}
 	
-	public void undoJob(int index, ApplicantDetails det) {
+	public void undoJob(ApplicantDetails det) {
 		det.setJob(false);
-		this.ds.editApplicant(index, det);
+		this.ds.managerEditApp(det);
 	}
 	
-	public void undoShort(int index, ApplicantDetails det) {
+	public void undoShort(ApplicantDetails det) {
 		det.setShortlist(false);
-		this.ds.editApplicant(index, det);
+		this.ds.managerEditApp(det);
 	}
 	
 	public boolean verifyUser(String n, String pwd) {
@@ -106,8 +116,8 @@ public class Controller {
 		this.ds.removeID();
 	}
 
-	public void deleteProf(int index) {
-		this.ds.deleteProf(index);
+	public void deleteProf(ApplicantDetails det) {
+		this.ds.deleteProf(det);
 		
 	}
 
@@ -128,9 +138,6 @@ public class Controller {
 		det.getSkills().setPskills(ps);
 		det.setStatus(status);
 		this.ds.editApplicant(index, det);	
-		
-		
-		
 	}
 
 	public int getCount() {
@@ -142,9 +149,15 @@ public class Controller {
 		this.ds.editApplicant(index, det);
 	}
 
+	public int getProfIndex(ApplicantDetails det) {
+		return this.ds.getProfIndex(det);
+	}
+
+	/*public void readFile(){
+		ObjectMapper mapper = new ObjectMapper();
+	}*/
+
+	
+
 	
 }
-
-	
-
-

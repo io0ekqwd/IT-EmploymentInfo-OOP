@@ -1,5 +1,6 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class DataStorage {
@@ -11,10 +12,56 @@ public class DataStorage {
 	
 	
 	public ApplicantDetails[] getAppList() {
-		ApplicantDetails[] opArr = null;
-		opArr = new ApplicantDetails[this.aList.size()];
+		/*ApplicantDetails[] opArr = new ApplicantDetails[this.aList.size()];
 	    this.aList.toArray(opArr);
+		return opArr;*/
+		ArrayList<ApplicantDetails> arr = new ArrayList<ApplicantDetails>();
+		for(int i=0;i<aList.size();i++){
+			ApplicantDetails det = aList.get(i);
+			if(det.getShortlist()==false && det.getJob()==false){
+				arr.add(det);
+			}
+		}
+		ApplicantDetails[] opArr = new ApplicantDetails[arr.size()];
+	    arr.toArray(opArr);
 		return opArr;
+	}
+	
+	public ApplicantDetails[] getSAppList() {
+		ArrayList<ApplicantDetails> arr = new ArrayList<ApplicantDetails>();
+		for(int i=0;i<aList.size();i++){
+			ApplicantDetails det = aList.get(i);
+			if(det.getShortlist()==true && det.getJob()==false){
+				arr.add(det);
+			}
+		}
+		ApplicantDetails[] opArr = new ApplicantDetails[arr.size()];
+	    arr.toArray(opArr);
+		return opArr;
+	}
+	
+	public ApplicantDetails[] getJAppList() {
+		ArrayList<ApplicantDetails> arr = new ArrayList<ApplicantDetails>();
+		for(int i=0;i<aList.size();i++){
+			ApplicantDetails det = aList.get(i);
+			if(det.getShortlist()==true && det.getJob()==true){
+				arr.add(det);
+			}
+		}
+		ApplicantDetails[] opArr = new ApplicantDetails[arr.size()];
+	    arr.toArray(opArr);
+		return opArr;
+	}
+	
+	public void addApplicant(ApplicantDetails z) {
+		this.aList.add(z);
+			/*System.out.println("Name: " + z.getName());
+			System.out.println("Age: " + z.getAge());
+			System.out.println("Phone Number: " + z.getPhone());
+			System.out.println("Email: " + z.getEmail());
+			System.out.println("Address: " + z.getAddress());
+			System.out.println("Position: " + z.getPosition());
+			System.out.println("Status: " + z.getStatus());*/
 	}
 		
 
@@ -32,9 +79,9 @@ public class DataStorage {
 		return null;
 }
 
-	public void addInteDate(int index, ApplicantDetails det) {
+	/*public void addInteDate(int index, ApplicantDetails det) {
 		this.aList.set(index, det);
-	}
+	}*/
 //ID
 	public void storeID(String p) {
 		this.pageID.add(p);
@@ -49,25 +96,18 @@ public class DataStorage {
 	}
 //ID
 
-	public void storeSalary(int index, ApplicantDetails det) {
-		this.aList.set(index, det);
+	/*public void storeSalary(ApplicantDetails det) {
+		int index = 
+		this.aList.set(index);
 		
-	}
+	}*/
 
-	public void deleteProf(int index) {
+	public void deleteProf(ApplicantDetails det) {
+			int index = this.aList.indexOf(det);
 			this.aList.remove(index);
 	}
 	
-	public void addApplicant(ApplicantDetails z) {
-		this.aList.add(z);
-			/*System.out.println("Name: " + z.getName());
-			System.out.println("Age: " + z.getAge());
-			System.out.println("Phone Number: " + z.getPhone());
-			System.out.println("Email: " + z.getEmail());
-			System.out.println("Address: " + z.getAddress());
-			System.out.println("Position: " + z.getPosition());
-			System.out.println("Status: " + z.getStatus());*/
-	}
+	
 
 	public void editApplicant(int index, ApplicantDetails det) {
 		this.aList.set(index, det);
@@ -83,8 +123,15 @@ public class DataStorage {
 		}
 		return cnt;
 	}
-	
-	
+
+	public void managerEditApp(ApplicantDetails det) {
+		int index = this.aList.indexOf(det);
+		this.aList.set(index, det);
+	}
+
+	public int getProfIndex(ApplicantDetails det) {
+		return this.aList.indexOf(det);
+	}
 }
 
 	

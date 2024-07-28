@@ -112,7 +112,7 @@ public class ManagerShortlisted extends JPanel{
 				if(opt == 0)
 				{
 					ApplicantDetails det = AppD[index];
-					main.getController().giveJob(index, det);
+					main.getController().giveJob(det);
 					btnScheduleInterview.setText("Schedule Interview");
 					lblNewLabel.setText("(Please schedule date)");
 					lblNewLabel_1.setText("(Please schedule venue)");
@@ -130,11 +130,13 @@ public class ManagerShortlisted extends JPanel{
 		btnScheduleInterview.setBackground(SystemColor.controlHighlight);
 		btnScheduleInterview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				index = appList.getSelectedIndex();
-				if(index == -1)
+				main.getController().addID(p);
+				int pIndex = appList.getSelectedIndex();
+				if (pIndex == -1)
 					return;
-				ApplicantDetails det = AppD[index];
-				main.showSchedulePage(index, det);
+				ApplicantDetails app = AppD[pIndex];
+				index = main.getController().getProfIndex(app);
+				main.showSchedulePage(index, app);
 			}
 		});
 		this.btnScheduleInterview.setBounds(508, 253, 166, 23);
@@ -145,11 +147,12 @@ public class ManagerShortlisted extends JPanel{
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
-				index = appList.getSelectedIndex();
-				if (index == -1)
+				int pIndex = appList.getSelectedIndex();
+				if (pIndex == -1)
 					return;
-				ApplicantDetails app = AppD[index];
-				main.showDetailPage(index, app);
+				ApplicantDetails app = AppD[pIndex];
+				index = main.getController().getProfIndex(app);
+				main.showDetailPage(index, app); 
 			}
 		});
 		btnViewProfile.setBounds(10, 384, 191, 62);
@@ -183,12 +186,10 @@ public class ManagerShortlisted extends JPanel{
 				if(index == -1)
 					return;
 				ApplicantDetails det = AppD[index];
-				if(index == -1)
-					return;
 				int opt = JOptionPane.showConfirmDialog(main, "Do you want to undo?","Undo", JOptionPane.YES_NO_OPTION);
 				if(opt==0)
 				{
-					main.getController().undoShort(index, det);
+					main.getController().undoShort(det);
 					btnScheduleInterview.setText("Schedule Interview");
 					lblNewLabel.setText("(Please schedule date)");
 					lblNewLabel_1.setText("(Please schedule venue)");
@@ -216,13 +217,12 @@ public class ManagerShortlisted extends JPanel{
 	}
 	//Test
 	private void populateSAppDList() {
-		this.AppD = this.main.getController().getAppList();
+		this.AppD = this.main.getController().getSAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails op = AppD[i];
-			if(op.getShortlist() == true && op.getJob() == false)
-				model.addElement(op.getName());
+			model.addElement(op.getName());
 			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
 		}
 		this.appList.setModel(model);

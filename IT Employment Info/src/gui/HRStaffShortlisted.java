@@ -102,12 +102,15 @@ public class HRStaffShortlisted extends JPanel{
 		btnScheduleInterview.setBackground(SystemColor.controlHighlight);
 		btnScheduleInterview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				index = appList.getSelectedIndex();
-				ApplicantDetails det = AppD[index];
-				main.showSchedulePage(index, det);
+				int pIndex = appList.getSelectedIndex();
+				if (pIndex == -1)
+					return;
+				ApplicantDetails app = AppD[pIndex];
+				index = main.getController().getProfIndex(app);
+				main.showSchedulePage(index, app);
 			}
 		});
-		this.btnScheduleInterview.setBounds(254, 357, 192, 46);
+		this.btnScheduleInterview.setBounds(378, 362, 192, 37);
 		add(this.btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
@@ -122,7 +125,7 @@ public class HRStaffShortlisted extends JPanel{
 				main.showDetailPage(index, app);
 			}
 		});
-		btnViewProfile.setBounds(85, 362, 146, 37);
+		btnViewProfile.setBounds(95, 362, 146, 37);
 		add(btnViewProfile);
 		
 		JLabel lblDate = new JLabel("Date:");
@@ -142,42 +145,16 @@ public class HRStaffShortlisted extends JPanel{
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblNewLabel_1.setBounds(168, 278, 192, 37);
 		add(lblNewLabel_1);
-		
-		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBackground(SystemColor.controlHighlight);
-		btnDelete.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				main.getController().addID(p);
-				index = appList.getSelectedIndex();
-				if(index == -1)
-					return;
-				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
-				if(opt==0)
-				{
-					main.getController().deleteProf(index);
-					btnScheduleInterview.setText("Schedule Interview");
-					lblNewLabel.setText("(Please schedule date)");
-					lblNewLabel_1.setText("(Please schedule venue)");
-					populateSAppDList();
-				}
-				else
-					return;
-			}
-		});
-		btnDelete.setBounds(477, 362, 146, 37);
-		add(btnDelete);
 		this.populateSAppDList();
 	}
 	//Test
 	private void populateSAppDList() {
-		main.getController().addID(p);
-		this.AppD = this.main.getController().getAppList();
+		this.AppD = this.main.getController().getSAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails op = AppD[i];
-			if(op.getShortlist() == true && op.getJob()== false)
-				model.addElement(op.getName());
+			model.addElement(op.getName());
 			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
 		}
 		this.appList.setModel(model);

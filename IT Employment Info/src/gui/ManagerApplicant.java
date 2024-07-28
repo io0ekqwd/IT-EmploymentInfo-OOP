@@ -67,11 +67,11 @@ public class ManagerApplicant extends JPanel{
 				index = appList.getSelectedIndex();
 				if (index == -1)
 					return;
+				ApplicantDetails det = AppD[index];
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to shortlist?","Shortlist", JOptionPane.YES_NO_OPTION);
 				if(opt == 0)
 				{
-					ApplicantDetails det = AppD[index];
-					main.getController().shortlistApp(index, det);
+					main.getController().shortlistApp(det);
 					populateAppDList();
 				}
 				else
@@ -96,10 +96,11 @@ public class ManagerApplicant extends JPanel{
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				main.getController().addID(p);
-				index = appList.getSelectedIndex();
-				if (index == -1)
+				int pIndex = appList.getSelectedIndex();
+				if (pIndex == -1)
 					return;
-				ApplicantDetails app = AppD[index];
+				ApplicantDetails app = AppD[pIndex];
+				index = main.getController().getProfIndex(app);
 				main.showDetailPage(index, app);
 			}
 		});
@@ -113,10 +114,11 @@ public class ManagerApplicant extends JPanel{
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
+				ApplicantDetails det = AppD[index];
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
 				if(opt==0)
 				{
-					main.getController().deleteProf(index);
+					main.getController().deleteProf(det);
 					populateAppDList();
 				}
 				else
@@ -130,14 +132,12 @@ public class ManagerApplicant extends JPanel{
 	}
 	
 	private void populateAppDList() {
-		//main.getController().addID(p);
 		this.AppD = this.main.getController().getAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails det = AppD[i];
-			if (det.getShortlist() == false && det.getJob() == false)
-				model.addElement(det.getName());
+		    model.addElement(det.getName());
 			/*model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());*/
 		}
 		this.appList.setModel(model);

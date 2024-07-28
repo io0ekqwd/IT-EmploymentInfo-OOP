@@ -23,6 +23,7 @@ public class HRStaffApplicantPage extends JPanel{
 	private int index;
 	public HRStaffApplicantPage(MainFrame main) {
 		this.main = main;
+		main.setSize(700,500);
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -88,7 +89,8 @@ public class HRStaffApplicantPage extends JPanel{
 				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to delete?","Delete", JOptionPane.YES_NO_OPTION);
 				if(opt==0)
 				{
-					main.getController().deleteProf(index);
+					ApplicantDetails det = AppD[index];
+					main.getController().deleteProf(det);
 					populateAppDList();
 				}
 				else
