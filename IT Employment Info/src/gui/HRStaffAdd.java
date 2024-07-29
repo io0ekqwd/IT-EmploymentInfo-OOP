@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.MainFrame;
 import data.Skills;
@@ -28,7 +29,7 @@ public class HRStaffAdd extends JPanel{
 	private JTextField textAge;
 	private JTextField textPhone;
 	private JTextField textEmail;
-	private JTextField textPostition;
+	private JTextField textPosition;
 	private JTextField textStatus;
 	private JTextArea textPS;
 	private JTextArea textIS;
@@ -46,25 +47,18 @@ public class HRStaffAdd extends JPanel{
 				String email = textEmail.getText();
 				String phone = textPhone.getText();
 				String address = textAddress.getText();
-				String position = textPostition.getText();
+				String position = textPosition.getText();
 				String ps = textPS.getText();
 				String is = textIS.getText();
 				String status = textStatus.getText();
 				main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status);
+				System.out.println(address);
+				System.out.println(ps);
+				System.out.println(is);
 				main.showHRStaffApplicantPage();
-				/*textName.setText("");
-				textAge.setText("");
-				textEmail.setText("");
-				textPhone.setText("");
-				textAddress.setText("");
-				textPostition.setText("");
-				textPS.setText("");
-				textIS.setText("");
-				textStatus.setText("");*/
-				
 			}
 		});
-		btnAdd.setBounds(421, 380, 97, 49);
+		btnAdd.setBounds(464, 84, 86, 49);
 		add(btnAdd);
 		
 		JButton btnLogout = new JButton("Logout");
@@ -99,114 +93,129 @@ public class HRStaffAdd extends JPanel{
 		add(lblAddApplicantPage);
 		
 		textName = new JTextField();
-		textName.setBounds(421, 54, 86, 20);
+		textName.setBounds(310, 67, 116, 20);
 		add(textName);
 		textName.setColumns(10);
 		
 		textAge = new JTextField();
-		textAge.setBounds(421, 80, 86, 20);
+		textAge.setBounds(310, 98, 116, 20);
 		add(textAge);
 		textAge.setColumns(10);
 		
 		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(363, 57, 46, 14);
+		lblName.setBounds(267, 70, 46, 14);
 		add(lblName);
 		
 		JLabel lblAge = new JLabel("Age:");
-		lblAge.setBounds(373, 82, 27, 16);
+		lblAge.setBounds(273, 100, 27, 16);
 		add(lblAge);
 		
 		textPhone = new JTextField();
-		textPhone.setBounds(421, 107, 86, 20);
+		textPhone.setBounds(310, 127, 116, 20);
 		add(textPhone);
 		textPhone.setColumns(10);
 		
 		JLabel lblPhoneNo = new JLabel("Phone Number:");
-		lblPhoneNo.setBounds(312, 111, 97, 16);
+		lblPhoneNo.setBounds(216, 129, 98, 16);
 		add(lblPhoneNo);
 		
 		textEmail = new JTextField();
-		textEmail.setBounds(421, 135, 116, 22);
+		textEmail.setBounds(310, 158, 116, 22);
 		add(textEmail);
 		textEmail.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(363, 140, 56, 16);
+		lblEmail.setBounds(267, 161, 46, 16);
 		add(lblEmail);
 		
 		JLabel lblAddress = new JLabel("Address:");
-		lblAddress.setBounds(421, 232, 56, 16);
+		lblAddress.setBounds(10, 228, 56, 16);
 		add(lblAddress);
 		
-		JLabel lblPosition = new JLabel("Position:");
-		lblPosition.setBounds(353, 168, 56, 16);
+		JLabel lblPosition = new JLabel("Applied Position:");
+		lblPosition.setBounds(210, 195, 116, 16);
 		add(lblPosition);
 		
-		textPostition = new JTextField();
-		textPostition.setBounds(421, 165, 116, 22);
-		add(textPostition);
-		textPostition.setColumns(10);
+		textPosition = new JTextField();
+		textPosition.setBounds(310, 192, 116, 22);
+		add(textPosition);
+		textPosition.setColumns(10);
 		
 		JLabel lblSkills = new JLabel("Programming skills:\r\n\r\n");
-		lblSkills.setBounds(193, 232, 161, 16);
+		lblSkills.setBounds(10, 333, 161, 16);
 		add(lblSkills);
 		
 		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setBounds(363, 197, 56, 16);
+		lblStatus.setBounds(257, 228, 56, 16);
 		add(lblStatus);
 		
 		textStatus = new JTextField();
-		textStatus.setBounds(419, 192, 118, 22);
+		textStatus.setBounds(310, 225, 116, 22);
 		add(textStatus);
 		textStatus.setColumns(10);
 		
 		JLabel lblIndustrySkills = new JLabel("Industry skills:");
-		lblIndustrySkills.setBounds(193, 329, 82, 16);
+		lblIndustrySkills.setBounds(216, 333, 82, 16);
 		add(lblIndustrySkills);
 		
 		textPS = new JTextArea();
-		textPS.setBounds(193, 252, 182, 69);
+		textPS.setBounds(10, 350, 182, 69);
 		add(textPS);
 		
 		textIS = new JTextArea();
-		textIS.setBounds(193, 348, 182, 81);
+		textIS.setBounds(10, 247, 182, 81);
 		add(textIS);
 		
 		textAddress = new JTextArea();
-		textAddress.setBounds(421, 252, 209, 69);
+		textAddress.setBounds(217, 350, 209, 69);
 		add(textAddress);
 		
 		JLabel label = new JLabel("<Image>");
-		label.setBounds(146, 110, 46, 14);
+		label.setBounds(31, 69, 161, 159);
 		add(label);
 		
 		JButton btnReader = new JButton("Read");
+		btnReader.setBackground(SystemColor.controlHighlight);
 		btnReader.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser chooser = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt", "txt");
+				chooser.setFileFilter(filter);
 				chooser.showOpenDialog(chooser);
 				chooser.setVisible(true);
-				
+				if(chooser.getSelectedFile() == null)
+					return;
 				File file = new File(chooser.getSelectedFile().toString());
 				try {
 					Scanner scanner = new Scanner(file);
-					while(scanner.hasNextLine()){
-						
-					}
+				    String name = scanner.next();
+				    String age = scanner.next();
+				    String phone = scanner.next();
+				    String email = scanner.next();
+				    String pos = scanner.next();
+				    String status = scanner.next();
+				    scanner.close();
+				    textName.setText(name);
+				    textAge.setText(age);
+				    textPhone.setText(phone);
+				    textEmail.setText(email);
+				    textPosition.setText(pos);
+				    textStatus.setText(status);
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		btnReader.setBounds(546, 380, 82, 49);
+		btnReader.setBounds(578, 84, 86, 49);
 		add(btnReader);
 		
 		JButton btnAddImage = new JButton("Add Image");
+		btnAddImage.setBackground(SystemColor.controlHighlight);
 		btnAddImage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAddImage.setBounds(421, 440, 209, 49);
+		btnAddImage.setBounds(464, 144, 200, 49);
 		add(btnAddImage);
 	}
 }

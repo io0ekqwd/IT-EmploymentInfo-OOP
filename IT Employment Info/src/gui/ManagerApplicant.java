@@ -132,7 +132,7 @@ public class ManagerApplicant extends JPanel{
 	}
 	
 	private void populateAppDList() {
-		this.AppD = this.main.getController().getAppList();
+		this.AppD = this.main.getController().getMAppList();
 		DefaultListModel model = new DefaultListModel();
 		for (int i=0; i<AppD.length;i++)
 		{

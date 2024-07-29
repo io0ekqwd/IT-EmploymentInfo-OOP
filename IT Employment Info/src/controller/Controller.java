@@ -44,6 +44,10 @@ public class Controller {
 		return this.ds.getAppList();
 	}
 	
+	public ApplicantDetails[] getMAppList() {
+		return this.ds.getMAppList();
+	}
+	
 	public ApplicantDetails[] getSAppList() {
 		return this.ds.getSAppList();
 	}
@@ -121,8 +125,9 @@ public class Controller {
 		
 	}
 
-	public void addSalary(int index, ApplicantDetails det, int s) {
+	public void addSalary(ApplicantDetails det, int s) {
 		det.setSalary(s);
+	    int index = this.ds.getProfIndex(det);
 		this.ds.editApplicant(index, det);
 	}
 
@@ -144,8 +149,9 @@ public class Controller {
 		return this.ds.getJobCount();
 	}
 
-	public void addHPos(int index, ApplicantDetails det, String hp) {
+	public void addHPos(ApplicantDetails det, String hp) {
 		det.setHPosition(hp);
+		int index = this.ds.getProfIndex(det);
 		this.ds.editApplicant(index, det);
 	}
 

@@ -10,11 +10,12 @@ public class DataStorage {
 	private Vector<String> pageID = new Vector<String>(1);
 	
 	
-	
 	public ApplicantDetails[] getAppList() {
-		/*ApplicantDetails[] opArr = new ApplicantDetails[this.aList.size()];
+		ApplicantDetails[] opArr = new ApplicantDetails[this.aList.size()];
 	    this.aList.toArray(opArr);
-		return opArr;*/
+		return opArr;
+	}
+	public ApplicantDetails[] getMAppList() {
 		ArrayList<ApplicantDetails> arr = new ArrayList<ApplicantDetails>();
 		for(int i=0;i<aList.size();i++){
 			ApplicantDetails det = aList.get(i);
@@ -94,13 +95,6 @@ public class DataStorage {
 	public void removeID() {
 		this.pageID.clear();
 	}
-//ID
-
-	/*public void storeSalary(ApplicantDetails det) {
-		int index = 
-		this.aList.set(index);
-		
-	}*/
 
 	public void deleteProf(ApplicantDetails det) {
 			int index = this.aList.indexOf(det);

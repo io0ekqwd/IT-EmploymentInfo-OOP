@@ -142,18 +142,17 @@ public class ManagerJob extends JPanel{
 		btnAddSalary.setBackground(SystemColor.controlHighlight);
 		btnAddSalary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				index = appList.getSelectedIndex();
-				if(index == -1)
+				int pIndex = appList.getSelectedIndex();
+				if(pIndex == -1)
 					return;
-				ApplicantDetails app = AppD[index];
+				ApplicantDetails app = AppD[pIndex];
 				if(textField.getText().isEmpty() == true)
-					lblNewLabel.setText("Please fill in salary.");
+					JOptionPane.showMessageDialog(main, "Please add salary");
 				else
 				{
 					sal = Integer.valueOf(textField.getText());
-			        main.getController().addSalary(index, app, sal);
+			        main.getController().addSalary(app, sal);
 				    textField.setText("");
-				    lblNewLabel.setText("");
 				}
 					
 				
@@ -181,18 +180,16 @@ public class ManagerJob extends JPanel{
 		JButton btnAdd = new JButton("Add Hired Position");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				index = appList.getSelectedIndex();
-				if(index == -1)
+				int pIndex = appList.getSelectedIndex();
+				if(pIndex == -1)
 					return;
-				ApplicantDetails app = AppD[index];
-				if(textField.getText().isEmpty() == true)
-					lblNewLabel.setText("Please fill in salary.");
+				ApplicantDetails app = AppD[pIndex];
+				if(textField_1.getText().isEmpty() == true)
+					JOptionPane.showMessageDialog(main, "Please add hired position");
 				else
 				{
 					String hp = textField_1.getText();
-			        main.getController().addHPos(index, app, hp);
-				    textField_1.setText("");
-				    //lblNewLabel.setText("");
+			        main.getController().addHPos(app, hp);
 				}
 			populateAppDList();   
 			}
@@ -209,11 +206,14 @@ public class ManagerJob extends JPanel{
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails op = AppD[i];
-			if(op.getSalary()!=0)
-				model.addElement(op.getName()+"          "+op.getHPosition()+"          "+"$"+op.getSalary());
+			if(op.getSalary() == 0 && op.getHPosition() == null)
+				model.addElement(op.getName());
+		    else if(op.getHPosition() == null && op.getSalary() != 0)
+				model.addElement(op.getName()+"          "+op.getSalary());
+		    else if(op.getSalary() == 0 && op.getHPosition() != null)
+		    	model.addElement(op.getName()+"          "+op.getHPosition());
 		    else
-				model.addElement(op.getName()+"          "+op.getHPosition());
-		
+		    	model.addElement(op.getName()+"          "+op.getHPosition()+"          "+"$"+op.getSalary());
 			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
 		}
 		this.appList.setModel(model);
