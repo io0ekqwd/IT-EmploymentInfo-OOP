@@ -81,7 +81,7 @@ public class SchedulePage extends JPanel{
 		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.showShortGUI();
+				main.showHRStaffShortlisted();
 			}
 		});
 		btnBack.setBounds(26, 243, 125, 43);
@@ -99,7 +99,7 @@ public class SchedulePage extends JPanel{
 		        int min = Integer.valueOf(textField_2.getText());
 		       // String ap = String.valueOf(comboBoxAMPM.getSelectedItem());
 				main.getController().scheInte(ind, det, d, m, v, y, h, min);
-				main.showShortGUI();
+				main.showHRStaffShortlisted();
 			}
 		});
 		btnSave.setBounds(272, 243, 125, 43);
@@ -113,6 +113,8 @@ public class SchedulePage extends JPanel{
 		textField_1.setBounds(117, 183, 39, 20);
 		add(textField_1);
 		textField_1.setColumns(10);
+		if(det.getInterviewDetails()!=null)
+			textField_1.setText(String.valueOf(det.getInterviewDetails().getHour()));
 		
 		JLabel label = new JLabel("  :");
 		label.setBounds(155, 186, 46, 14);
@@ -122,5 +124,7 @@ public class SchedulePage extends JPanel{
 		textField_2.setBounds(167, 182, 46, 21);
 		add(textField_2);
 		textField_2.setColumns(10);
+		if(det.getInterviewDetails()!=null)
+			textField_2.setText(String.valueOf(det.getInterviewDetails().getMin()));
 	}
 }

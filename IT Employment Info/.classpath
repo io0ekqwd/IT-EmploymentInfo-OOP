@@ -5,7 +5,6 @@
 	<classpathentry kind="src" path="json"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="D:/GitRepo/IT-EmploymentInfo-OOP/IT Employment Info/miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
-	<classpathentry exported="true" kind="lib" path="D:/GitRepo/IT-EmploymentInfo-OOP/IT Employment Info/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/cozzy/git/IT-EmploymentInfo-OOP/IT Employment Info/miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

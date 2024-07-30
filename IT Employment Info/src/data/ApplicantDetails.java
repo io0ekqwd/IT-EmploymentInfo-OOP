@@ -19,6 +19,7 @@ public class ApplicantDetails {
 	private boolean shortlist;
 	private boolean job;
 	private ImageIcon pImg;
+	private String imagePath;
 
 	public ImageIcon getImage(){
 		return pImg;
@@ -124,5 +125,12 @@ public class ApplicantDetails {
 	
 	public void setJob(boolean job) {
 		this.job = job;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+		
+	}
+	public String getImagePath() {
+        return imagePath;
 	}
 }

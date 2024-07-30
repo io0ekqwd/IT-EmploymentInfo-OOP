@@ -1,4 +1,6 @@
 package controller;
+import javax.swing.ImageIcon;
+
 import data.ApplicantDetails;
 import data.DataStorage;
 import data.InterviewDetails;
@@ -20,7 +22,7 @@ public class Controller {
 		//test
 	}
 	
-	public void addApplicant(String n, int a, String em, String ph, String ad, String pos, String ps, String is, String status) 
+	public void addApplicant(String n, int a, String em, String ph, String ad, String pos, String ps, String is, String status, String imagePath) 
 	{ 
 		Skills skill = new Skills();
 		skill.setPskills(ps);
@@ -36,6 +38,7 @@ public class Controller {
 		z.setStatus(status);
 		z.setShortlist(false);
 		z.setJob(false);
+		z.setImagePath(imagePath);
 		this.ds.addApplicant(z);	
 	}
 	
@@ -132,7 +135,7 @@ public class Controller {
 	}
 
 	public void editApplicant(int index, ApplicantDetails det, String name, int age, String email, String phone, String address, String position,
-			String ps, String is, String status) {
+			String ps, String is, String status, String imagePath) {
 		det.setName(name);
 		det.setAge(age);
 		det.setEmail(email);
@@ -142,6 +145,7 @@ public class Controller {
 		det.getSkills().setIskills(is);
 		det.getSkills().setPskills(ps);
 		det.setStatus(status);
+		det.setImagePath(imagePath);
 		this.ds.editApplicant(index, det);	
 	}
 
@@ -158,6 +162,7 @@ public class Controller {
 	public int getProfIndex(ApplicantDetails det) {
 		return this.ds.getProfIndex(det);
 	}
+
 
 	/*public void readFile(){
 		ObjectMapper mapper = new ObjectMapper();

@@ -29,13 +29,14 @@ public class HRStaffShortlisted extends JPanel{
 	private int index;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
 	private JButton btnScheduleInterview;
 	private String p = "p2";
 
 	public HRStaffShortlisted(MainFrame main) {
 		setLayout(null);
 		this.main = main;
-		this.setSize(700, 500);
+		main.setSize(700, 500);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(120, 76, 450, 189);
@@ -55,12 +56,14 @@ public class HRStaffShortlisted extends JPanel{
 						btnScheduleInterview.setText("Reschedule Interview");
 						lblNewLabel.setText(app.getInterviewDetails().getDay()+" "+app.getInterviewDetails().getMonth()+" "+app.getInterviewDetails().getYear());
 					    lblNewLabel_1.setText(app.getInterviewDetails().getVenue());
+					    lblNewLabel_2.setText(app.getInterviewDetails().getHour()+" "+app.getInterviewDetails().getMin());
 					}
 					else 
 					{
 						btnScheduleInterview.setText("Schedule Interview");
 						lblNewLabel.setText("(Please schedule date)");
 						lblNewLabel_1.setText("(Please schedule venue)");
+						lblNewLabel_2.setText("(Please schedule tine)");
 					}
 				}
 			}
@@ -110,7 +113,7 @@ public class HRStaffShortlisted extends JPanel{
 				main.showSchedulePage(index, app);
 			}
 		});
-		this.btnScheduleInterview.setBounds(378, 362, 192, 37);
+		this.btnScheduleInterview.setBounds(378, 407, 192, 37);
 		add(this.btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
@@ -125,26 +128,34 @@ public class HRStaffShortlisted extends JPanel{
 				main.showDetailPage(index, app);
 			}
 		});
-		btnViewProfile.setBounds(95, 362, 146, 37);
+		btnViewProfile.setBounds(103, 407, 146, 37);
 		add(btnViewProfile);
 		
 		JLabel lblDate = new JLabel("Date:");
-		lblDate.setBounds(130, 287, 46, 14);
+		lblDate.setBounds(140, 315, 46, 14);
 		add(lblDate);
 		
 		JLabel lblVenue = new JLabel("Venue:");
-		lblVenue.setBounds(130, 328, 46, 14);
+		lblVenue.setBounds(130, 283, 46, 14);
 		add(lblVenue);
 		
 		this.lblNewLabel = new JLabel("");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel.setBounds(178, 315, 173, 37);
+		lblNewLabel.setBounds(178, 315, 173, 22);
 		add(lblNewLabel);
 		
 		this.lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_1.setBounds(168, 278, 192, 37);
+		lblNewLabel_1.setBounds(178, 273, 173, 29);
 		add(lblNewLabel_1);
+		
+		JLabel lblTime = new JLabel("Time:");
+		lblTime.setBounds(140, 350, 56, 16);
+		add(lblTime);
+		
+		this.lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(178, 350, 56, 16);
+		add(lblNewLabel_2);
 		this.populateSAppDList();
 	}
 	//Test
