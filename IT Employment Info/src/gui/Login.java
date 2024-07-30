@@ -116,12 +116,14 @@ public class Login extends JPanel{
 				boolean validity = main.getController().verifyUser(n, pwd);
 				if (validity == true) {
 					String r = main.getController().getRole();
-					if (r == "Staff")
+					if (r.equals("Staff"))
 						main.showHRStaffMainPage();
-					else if (r == "Manager")
+					else if (r.equals("Manager"))
 						main.showMMainGUI();
-					else if (r == "Admin")
+					else if (r.equals("Admin"))
 						System.out.println("Admin");//Placeholder
+					else
+						JOptionPane.showMessageDialog(main, "Invalid Role.");
 				}
 				else
 					JOptionPane.showMessageDialog(main, "Invalid Username and Password. Please try again.");
@@ -152,6 +154,6 @@ public class Login extends JPanel{
 		lblNewLabel.setBounds(-14, -35, 797, 631);
 		add(lblNewLabel);
 		
-		this.main.getController().addUser();
+		this.main.getController().readFile();
 	}
 }

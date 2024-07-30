@@ -1,0 +1,69 @@
+[
+  {
+    "name": "John Doe",
+    "age": 30,
+    "phone": "123-456-7890",
+    "email": "johndoe@example.com",
+    "address": "123 Main St, Anytown, USA",
+    "aposition": "Software Engineer",
+    "hposition": "Backend Developer",
+    "status": "Active",
+    "skills": {
+      "pskills": "2024-08-01",
+      "iskills": "10:00 AM"
+    },
+    "interviewDetails": {
+      "day": 1,
+      "min": 1,
+      "venue": "Company HQ"
+    },
+    "salary": 90000,
+    "shortlist": true,
+    "job": false
+  },
+  {
+    "name": "Jane Smith",
+    "age": 28,
+    "phone": "987-654-3210",
+    "email": "janesmith@example.com",
+    "address": "456 Elm St, Othertown, USA",
+    "aposition": "Product Manager",
+    "hposition": "Senior Product Manager",
+    "status": "Inactive",
+    "skills": {
+      "pskills": "2024-08-01",
+      "iskills": "10:00 AM"
+    },
+    "interviewDetails": {
+      "day": 2,
+      "min": 1,
+      "venue": "Remote"
+    },
+    "salary": 105000,
+    "shortlist": false,
+    "job": false
+  },
+  {
+    "name": "Emily Johnson",
+    "age": 35,
+    "phone": "555-123-4567",
+    "email": "emilyjohnson@example.com",
+    "address": "789 Oak St, Newcity, USA",
+    "aposition": "Data Scientist",
+    "hposition": "Lead Data Scientist",
+    "status": "Active",
+    "skills": {
+      "pskills": "2024-08-01",
+      "iskills": "10:00 AM"
+    },
+    "interviewDetails": {
+      "day": 3,
+      "min": 1,
+      "venue": "Company HQ"
+    },
+    "salary": 120000,
+    "shortlist": true,
+    "job": true
+  }
+]
+

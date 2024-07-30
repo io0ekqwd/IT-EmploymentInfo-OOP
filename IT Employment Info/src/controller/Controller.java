@@ -12,7 +12,7 @@ public class Controller {
 	private DataStorage ds = new DataStorage();
 	private String tt= "";
 	
-	public void addUser() {
+	/*public void addUser() {
 		User u1 = new User("HR", "PHR", "Staff");
 		User u2 = new User("M", "PM", "Manager");
 		User u3 = new User("A" , "ADM", "Admin");
@@ -20,6 +20,10 @@ public class Controller {
 		this.ds.addUser(u2);
 		this.ds.addUser(u3);
 		//test
+	}*/
+	
+	public void readFile() {
+		this.ds.readFile();
 	}
 	
 	public void addApplicant(String n, int a, String em, String ph, String ad, String pos, String ps, String is, String status, String imagePath) 

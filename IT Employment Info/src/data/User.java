@@ -29,11 +29,7 @@ public class User {
 		public void setRole(String role) { 
 			 this.role = role; 
 		}
+	
 		
-		public User(String u, String p, String r){
-			this.username = u;
-			this.password = p;
-			this.role = r;
-		}
 
 }

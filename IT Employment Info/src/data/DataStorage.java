@@ -1,7 +1,14 @@
 package data;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
+
+import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DataStorage {
 	
@@ -9,6 +16,19 @@ public class DataStorage {
 	private Vector<ApplicantDetails>aList = new Vector<ApplicantDetails>();
 	private Vector<String> pageID = new Vector<String>(1);
 	
+	public void readFile() {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			this.loginInfo = mapper.readValue(new File("json//user.json"), new TypeReference <Vector<User>>(){});
+			this.aList = mapper.readValue(new File("json//applicant.json"), new TypeReference <Vector<ApplicantDetails>>(){});
+		} catch (StreamReadException e) {
+			e.printStackTrace();
+		} catch (DatabindException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+			}
+	}
 	
 	public ApplicantDetails[] getAppList() {
 		ApplicantDetails[] opArr = new ApplicantDetails[this.aList.size()];
