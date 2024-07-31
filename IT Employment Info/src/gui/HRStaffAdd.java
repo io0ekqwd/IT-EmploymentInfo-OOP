@@ -17,8 +17,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import controller.MainFrame;
 
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
@@ -175,11 +178,11 @@ public class HRStaffAdd extends JPanel {
         add(textPS);
 
         textIS = new JTextArea();
-        textIS.setBounds(10, 247, 182, 81);
+        textIS.setBounds(216, 350, 182, 69);
         add(textIS);
 
         textAddress = new JTextArea();
-        textAddress.setBounds(217, 350, 209, 69);
+        textAddress.setBounds(10, 244, 182, 78);
         add(textAddress);
 
         // Label to display the image
@@ -199,9 +202,47 @@ public class HRStaffAdd extends JPanel {
                 chooser.setVisible(true);
                 if (chooser.getSelectedFile() == null)
                     return;
-                File file = new File(chooser.getSelectedFile().toString());
+                //File file = new File(chooser.getSelectedFile().toString());
                 try {
-                    Scanner scanner = new Scanner(file);
+                	BufferedReader in = new BufferedReader(new FileReader(chooser.getSelectedFile()));
+                	String line;
+                	int lineCnt = 0;
+                	try {
+						while((line = in.readLine()) != null){
+							if (line.contains("Name:")){
+								line.replace("Name:", "");
+								textName.setText(line);
+							}
+							else if(line.contains("Age:")){
+								line.replace("Age:", "");
+								textAge.setText(line);
+							}
+							else if(line.contains("Phone Number:")){
+								line.replace("Phone Number:", "");
+								textPhone.setText(line);
+							}
+							else if(line.contains("Email:")){
+								line.replace("Email:", "");
+								textEmail.setText(line);
+							}
+							else if(line.contains("Position:")){
+								line.replace("Position:", "");
+								textPosition.setText(line);
+							}
+							else if(line.contains("Status:")){
+								line.replace("Status:", "");
+								textStatus.setText(line);
+							}
+							/*else if(line.contains("Age:")){
+								line.replace("Age:", "");
+								textAge.setText(line);
+							}*/
+						}
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+                    /*Scanner scanner = new Scanner(file);
                     String name = scanner.next();
                     String age = scanner.next();
                     String phone = scanner.next();
@@ -214,7 +255,7 @@ public class HRStaffAdd extends JPanel {
                     textPhone.setText(phone);
                     textEmail.setText(email);
                     textPosition.setText(pos);
-                    textStatus.setText(status);
+                    textStatus.setText(status);*/
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
