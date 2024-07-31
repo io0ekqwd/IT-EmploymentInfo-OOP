@@ -26,7 +26,7 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class HRStaffAdd extends JPanel {
-    private MainFrame main;
+    private MainFrame main; // Reference to the main frame
     private JTextField textName;
     private JTextField textAge;
     private JTextField textPhone;
@@ -36,17 +36,20 @@ public class HRStaffAdd extends JPanel {
     private JTextArea textPS;
     private JTextArea textIS;
     private JTextArea textAddress;
-    private ImageIcon img;
-    private String imagePath; // Add this field
+    private ImageIcon img; // Image icon for the applicant's photo
+    private String imagePath; // Path to the applicant's photo
 
+    // Constructor to initialize the panel
     public HRStaffAdd(MainFrame main) {
         setLayout(null);
         this.main = main;
 
+        // Add button to add applicant details
         JButton btnAdd = new JButton("Add");
         btnAdd.setBackground(SystemColor.controlHighlight);
         btnAdd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // Collect data from text fields
                 String name = textName.getText();
                 int age = Integer.valueOf(textAge.getText());
                 String email = textEmail.getText();
@@ -56,16 +59,18 @@ public class HRStaffAdd extends JPanel {
                 String ps = textPS.getText();
                 String is = textIS.getText();
                 String status = textStatus.getText();
+                // Call controller to add applicant
                 main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status, imagePath);
                 System.out.println(address);
                 System.out.println(ps);
                 System.out.println(is);
-                main.showHRStaffApplicantPage();
+                main.showHRStaffApplicantPage(); // Show applicant page after adding
             }
         });
         btnAdd.setBounds(464, 84, 86, 49);
         add(btnAdd);
 
+        // Logout button
         JButton btnLogout = new JButton("Logout");
         btnLogout.setBackground(SystemColor.controlHighlight);
         btnLogout.addActionListener(new ActionListener() {
@@ -80,6 +85,7 @@ public class HRStaffAdd extends JPanel {
         btnLogout.setBounds(570, 9, 108, 49);
         add(btnLogout);
 
+        // Back button
         JButton btnBack = new JButton("Back");
         btnBack.setBackground(SystemColor.controlHighlight);
         btnBack.addActionListener(new ActionListener() {
@@ -90,11 +96,13 @@ public class HRStaffAdd extends JPanel {
         btnBack.setBounds(10, 9, 116, 49);
         add(btnBack);
 
+        // Label for the page title
         JLabel lblAddApplicantPage = new JLabel("Add Applicant Page");
         lblAddApplicantPage.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblAddApplicantPage.setBounds(285, 9, 141, 25);
         add(lblAddApplicantPage);
 
+        // Text fields for applicant details
         textName = new JTextField();
         textName.setBounds(310, 67, 116, 20);
         add(textName);
@@ -105,6 +113,7 @@ public class HRStaffAdd extends JPanel {
         add(textAge);
         textAge.setColumns(10);
 
+        // Labels for text fields
         JLabel lblName = new JLabel("Name:");
         lblName.setBounds(267, 70, 46, 14);
         add(lblName);
@@ -119,7 +128,7 @@ public class HRStaffAdd extends JPanel {
         textPhone.setColumns(10);
 
         JLabel lblPhoneNo = new JLabel("Phone Number:");
-        lblPhoneNo.setBounds(216, 129, 98, 16);
+        lblPhoneNo.setBounds(216, 129, 98,16);
         add(lblPhoneNo);
 
         textEmail = new JTextField();
@@ -144,7 +153,7 @@ public class HRStaffAdd extends JPanel {
         add(textPosition);
         textPosition.setColumns(10);
 
-        JLabel lblSkills = new JLabel("Programming skills:\r\n\r\n");
+        JLabel lblSkills = new JLabel("Programming skills:");
         lblSkills.setBounds(10, 333, 161, 16);
         add(lblSkills);
 
@@ -173,10 +182,12 @@ public class HRStaffAdd extends JPanel {
         textAddress.setBounds(217, 350, 209, 69);
         add(textAddress);
 
+        // Label to display the image
         JLabel label = new JLabel(img);
         label.setBounds(31, 69, 161, 159);
         add(label);
 
+        // Button to read applicant details from a file
         JButton btnReader = new JButton("Read");
         btnReader.setBackground(SystemColor.controlHighlight);
         btnReader.addActionListener(new ActionListener() {
@@ -212,6 +223,7 @@ public class HRStaffAdd extends JPanel {
         btnReader.setBounds(578, 84, 86, 49);
         add(btnReader);
 
+        // Button to add an image for the applicant
         JButton btnAddImage = new JButton("Add Image");
         btnAddImage.setBackground(SystemColor.controlHighlight);
         btnAddImage.addActionListener(new ActionListener() {
