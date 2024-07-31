@@ -8,7 +8,7 @@ public class InterviewDetails {
 	private int year;
 	private int hour;
 	private int min;
-	private String ampm;
+	//private String ampm;
 	
 	public String getVenue() {
 	 	 return venue; 
@@ -16,12 +16,12 @@ public class InterviewDetails {
 	public void setVenue(String venue) { 
 		 this.venue = venue; 
 	}
-	public String getAmpm() {
+	/*public String getAmpm() {
 	 	 return ampm; 
 	}
 	public void setAmpm(String ampm) { 
 		 this.ampm = ampm; 
-	}
+	}*/
 	public int getHour() {
 	 	 return hour; 
 	}

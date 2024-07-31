@@ -38,8 +38,10 @@ public class HRStaffAdd extends JPanel {
     private JTextField textStatus;
     private JTextArea textPS;
     private JTextArea textIS;
+    private JTextArea textExp;
     private JTextArea textAddress;
-    private ImageIcon img; // Image icon for the applicant's photo
+    private ImageIcon imgI; // Image icon for the applicant's photo
+    private Image img;
     private String imagePath; // Path to the applicant's photo
 
     // Constructor to initialize the panel
@@ -62,15 +64,14 @@ public class HRStaffAdd extends JPanel {
                 String ps = textPS.getText();
                 String is = textIS.getText();
                 String status = textStatus.getText();
+                String exp = textExp.getText();
                 // Call controller to add applicant
-                main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status, imagePath);
-                System.out.println(address);
-                System.out.println(ps);
-                System.out.println(is);
+                main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status, exp, imagePath);
+                main.getController().writeFile(); // Write applicant profile to json file
                 main.showHRStaffApplicantPage(); // Show applicant page after adding
             }
         });
-        btnAdd.setBounds(464, 84, 86, 49);
+        btnAdd.setBounds(464, 113, 86, 49);
         add(btnAdd);
 
         // Logout button
@@ -174,11 +175,11 @@ public class HRStaffAdd extends JPanel {
         add(lblIndustrySkills);
 
         textPS = new JTextArea();
-        textPS.setBounds(10, 350, 182, 69);
+        textPS.setBounds(10, 350, 182, 78);
         add(textPS);
 
         textIS = new JTextArea();
-        textIS.setBounds(216, 350, 182, 69);
+        textIS.setBounds(216, 350, 182, 78);
         add(textIS);
 
         textAddress = new JTextArea();
@@ -186,7 +187,7 @@ public class HRStaffAdd extends JPanel {
         add(textAddress);
 
         // Label to display the image
-        JLabel label = new JLabel(img);
+        JLabel label = new JLabel(imgI);
         label.setBounds(31, 69, 161, 159);
         add(label);
 
@@ -206,39 +207,64 @@ public class HRStaffAdd extends JPanel {
                 try {
                 	BufferedReader in = new BufferedReader(new FileReader(chooser.getSelectedFile()));
                 	String line;
-                	int lineCnt = 0;
                 	try {
+                		textName.setText("");
+                		textAge.setText("");
+                		textPhone.setText("");
+                		textEmail.setText("");
+                		textPosition.setText("");
+                		textStatus.setText("");
+                		textAddress.setText("");
+                		textIS.setText("");
+                		textPS.setText("");
+                		textExp.setText("");
 						while((line = in.readLine()) != null){
-							if (line.contains("Name:")){
-								line.replace("Name:", "");
-								textName.setText(line);
-							}
-							else if(line.contains("Age:")){
-								line.replace("Age:", "");
-								textAge.setText(line);
-							}
-							else if(line.contains("Phone Number:")){
-								line.replace("Phone Number:", "");
-								textPhone.setText(line);
-							}
-							else if(line.contains("Email:")){
-								line.replace("Email:", "");
-								textEmail.setText(line);
-							}
-							else if(line.contains("Position:")){
-								line.replace("Position:", "");
-								textPosition.setText(line);
-							}
-							else if(line.contains("Status:")){
-								line.replace("Status:", "");
-								textStatus.setText(line);
-							}
-							/*else if(line.contains("Age:")){
-								line.replace("Age:", "");
-								textAge.setText(line);
-							}*/
-						}
-					} catch (IOException e) {
+							 if (line.contains("Name")) 
+		                        textName.setText(line.replace("Name:", "").trim());
+		                     else if (line.contains("Age")) 
+		                        textAge.setText(line.replace("Age:", "").trim());
+		                     else if (line.contains("Phone Number")) 
+		                        textPhone.setText(line.replace("Phone Number:", "").trim());
+		                     else if (line.contains("Email")) 
+		                        textEmail.setText(line.replace("Email:", "").trim());
+		                     else if (line.contains("Position")) 
+		                        textPosition.setText(line.replace("Position:", "").trim());
+		                     else if (line.contains("Status")) 
+		                        textStatus.setText(line.replace("Status:", "").trim());
+		                     else if (line.contains("Address")||line.contains("."))
+		                     {
+		                    	 if(line.contains("Address"))
+		                    	     textAddress.append(line.replace("Address:", "").trim()+"\n");
+		                    	 else if(line.contains("."))
+		                    		 textAddress.append(line.replace(".", "").trim()+"\n");
+		                     }
+		                     else if (line.contains("Programming")||line.contains(",")) 
+		                     {
+		                    	 if(line.contains("Programming"))
+		                    		 textPS.append(line.replace("Programming Skills:", "").trim()+"\n");
+		                    	 else if(line.contains(","))
+		                    		 textPS.append(line.replace(",", "").trim()+"\n");
+		                     }
+			                    //textPS.append(line.replace("Programming Skills:", "").trim()+"\n");
+		                     else if (line.contains("Indust")||line.contains("]"))
+		                     {
+		                    	 if(line.contains("Indust"))
+		                    		 textIS.append(line.replace("Industrial Skills:", "").trim()+"\n");
+		                    	 else if(line.contains("]"))
+		                    		 textIS.append(line.replace("]", "").trim()+"\n");
+		                     }
+			                    //textIS.append(line.replace("Industrial Skills", "").trim()+"\n");
+		                     else if (line.contains("Experiences")||line.contains(";"))
+		                     {
+		                    	 if(line.contains("Experiences"))
+		                    		 textExp.append(line.replace("Experiences:", "").trim()+"\n");
+		                    	 else if(line.contains(";"))
+		                    		 textExp.append(line.replace(";", "").trim()+"\n");
+		                     }
+			                    //textExp.append(line.replace("Experiences:", "").trim()+"\n");
+						}	
+					}
+					 catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
@@ -261,7 +287,7 @@ public class HRStaffAdd extends JPanel {
                 }
             }
         });
-        btnReader.setBounds(578, 84, 86, 49);
+        btnReader.setBounds(578, 113, 86, 49);
         add(btnReader);
 
         // Button to add an image for the applicant
@@ -277,15 +303,23 @@ public class HRStaffAdd extends JPanel {
                 if (chooser.getSelectedFile() == null)
                     return;
                 imagePath = chooser.getSelectedFile().getAbsolutePath(); // Store the image path
-                img = new ImageIcon(imagePath);
-                Image prof = img.getImage();
-                Image resizedImg = prof.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+                imgI = new ImageIcon(imagePath);
+                img = imgI.getImage();
+                Image resizedImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
                 // Resize the image
-                img = new ImageIcon(resizedImg);
-                label.setIcon(img);
+                imgI = new ImageIcon(resizedImg);
+                label.setIcon(imgI);
             }
         });
-        btnAddImage.setBounds(464, 144, 200, 49);
+        btnAddImage.setBounds(464, 195, 200, 49);
         add(btnAddImage);
+        
+        JLabel lblExperience = new JLabel("Experience:");
+        lblExperience.setBounds(423, 334, 98, 14);
+        add(lblExperience);
+        
+        textExp = new JTextArea();
+        textExp.setBounds(422, 350, 256, 78);
+        add(textExp);
     }
 }

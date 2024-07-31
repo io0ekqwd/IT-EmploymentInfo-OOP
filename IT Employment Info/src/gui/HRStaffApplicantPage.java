@@ -99,6 +99,7 @@ public class HRStaffApplicantPage extends JPanel {
                 if (opt == 0) {
                     ApplicantDetails det = AppD[index];
                     main.getController().deleteProf(det);
+                    main.getController().writeFile(); // Write applicant profile to json file
                     populateAppDList(); // Refresh the applicant list
                 } else {
                     return;

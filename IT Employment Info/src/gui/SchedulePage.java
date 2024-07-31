@@ -108,6 +108,7 @@ public class SchedulePage extends JPanel {
 
                 // Save scheduling details through the controller
                 main.getController().scheInte(ind, det, d, m, v, y, h, min);
+                main.getController().writeFile(); // Write applicant profile to json file
                 main.showHRStaffShortlisted(); // Navigate back to the shortlisted applicants page
             }
         });

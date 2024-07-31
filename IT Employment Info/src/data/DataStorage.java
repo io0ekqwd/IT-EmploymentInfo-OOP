@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
+import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,6 +35,23 @@ public class DataStorage {
         }
     }
     
+    public void writeFile() {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			mapper.writerWithDefaultPrettyPrinter().writeValue(new File("json//user.json"), this.loginInfo);
+			mapper.writerWithDefaultPrettyPrinter().writeValue(new File("json//applicant.json"), this.aList);
+		} catch (StreamWriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DatabindException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
     // Method to get the list of all applicants
     public ApplicantDetails[] getAppList() {
         ApplicantDetails[] opArr = new ApplicantDetails[this.aList.size()];
@@ -149,4 +167,6 @@ public class DataStorage {
     public int getProfIndex(ApplicantDetails det) {
         return this.aList.indexOf(det);
     }
+
+	
 }

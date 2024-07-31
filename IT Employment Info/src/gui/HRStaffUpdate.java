@@ -33,9 +33,12 @@ public class HRStaffUpdate extends JPanel {
     private JTextArea textISkills; // Text area for industry skills
     private JTextArea textAddress; // Text area for applicant's address
     private int index; // Index of the applicant being updated
+    private JTextArea textExp;
     private ApplicantDetails det; // Applicant details to be updated
     private JLabel imageLabel; // Label to display the applicant's image
     private File imageFile; // File object for the new image
+    private Image img;
+    private String image;
 
     // Constructor to initialize the panel and set up components
     public HRStaffUpdate(MainFrame main, int ind, ApplicantDetails det) {
@@ -117,10 +120,16 @@ public class HRStaffUpdate extends JPanel {
                 String ps = textPSkills.getText();
                 String is = textISkills.getText();
                 String status = textStatus.getText();
-                String imagePath = imageFile != null ? imageFile.getAbsolutePath() : det.getImagePath();
+                String exp = textExp.getText();
+                if(imageFile != null)
+                	image = imageFile.getAbsolutePath();
+                else
+                	image = det.getImagePath();
                 
+      
                 // Update applicant details through the controller
-                main.getController().editApplicant(index, det, name, age, email, phone, address, position, ps, is, status, imagePath);
+                main.getController().editApplicant(index, det, name, age, email, phone, address, position, ps, is, status, exp, image);
+                main.getController().writeFile(); // Write to json file
                 main.showHRStaffApplicantPage(); // Return to the applicant page
                 
                 // Clear text fields and text areas
@@ -135,7 +144,7 @@ public class HRStaffUpdate extends JPanel {
                 textStatus.setText("");
             }
         });
-        btnUpdate.setBounds(464, 84, 86, 49);
+        btnUpdate.setBounds(464, 100, 200, 49);
         add(btnUpdate);
 
         // Initialize and set values for text fields
@@ -210,9 +219,9 @@ public class HRStaffUpdate extends JPanel {
         add(imageLabel);
 
         // Load and display the existing image
-        String imagePath = det.getImagePath();
-        if (imagePath != null && !imagePath.isEmpty()) {
-            setApplicantImage(imagePath);
+        //String imagePath = det.getImagePath();
+        if (det.getImagePath() != null) {
+            setApplicantImage(det.getImagePath());
         }
 
         // Button to update the applicant's image
@@ -229,21 +238,30 @@ public class HRStaffUpdate extends JPanel {
                     return;
                 imageFile = chooser.getSelectedFile(); // Save the selected image file
                 try {
-                    Image img = ImageIO.read(imageFile);
-                    Image resizedImg = img.getScaledInstance(150, 150, Image.SCALE_SMOOTH); // Resize the image
+                    img = ImageIO.read(imageFile);
+                    Image resizedImg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH); // Resize the image
                     imageLabel.setIcon(new ImageIcon(resizedImg)); // Update the image label
                 } catch (IOException ex) {
                     System.out.println("Error loading image: " + ex.getMessage());
                 }
             }
         });
-        btnAddImage.setBounds(464, 144, 200, 49);
+        btnAddImage.setBounds(464, 179, 200, 49);
         add(btnAddImage);
+        
+        JLabel label_5 = new JLabel("Experience:");
+        label_5.setBounds(437, 334, 98, 14);
+        add(label_5);
+        
+        textExp = new JTextArea();
+        textExp.setBounds(436, 350, 182, 69);
+        add(textExp);
+        textExp.setText(det.getExp());
     }
 
     // Method to set the applicant's image in the label
     private void setApplicantImage(String imagePath) {
-        if (imagePath != null && !imagePath.isEmpty()) {
+        if (imagePath != null) {
             try {
                 Image img = ImageIO.read(new File(imagePath));
                 Image resizedImg = img.getScaledInstance(150, 150, Image.SCALE_SMOOTH);

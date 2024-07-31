@@ -83,7 +83,6 @@ public class ManagerJob extends JPanel{
 		btnViewProfile.setBackground(SystemColor.controlHighlight);
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.getController().addID(p);
 				int pIndex = appList.getSelectedIndex();
 				if (pIndex == -1)
 					return;
@@ -118,6 +117,7 @@ public class ManagerJob extends JPanel{
 				if(opt==0)
 				{
 					main.getController().undoJob(det);
+					main.getController().writeFile(); // Write applicant profile to json file
 					populateAppDList();
 				}
 				else
@@ -152,6 +152,7 @@ public class ManagerJob extends JPanel{
 				{
 					sal = Integer.valueOf(textField.getText());
 			        main.getController().addSalary(app, sal);
+			        main.getController().writeFile(); // Write applicant profile to json file
 				    textField.setText("");
 				}
 					
@@ -190,8 +191,9 @@ public class ManagerJob extends JPanel{
 				{
 					String hp = textField_1.getText();
 			        main.getController().addHPos(app, hp);
+			        main.getController().writeFile(); // Write applicant profile to json file
+			        populateAppDList();
 				}
-			populateAppDList();   
 			}
 		});
 		btnAdd.setBackground(SystemColor.controlHighlight);

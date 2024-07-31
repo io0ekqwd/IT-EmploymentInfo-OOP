@@ -1,5 +1,7 @@
 package data;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 public class ApplicantDetails {
@@ -18,18 +20,19 @@ public class ApplicantDetails {
     private int salary;
     private boolean shortlist; // Indicates if the applicant is shortlisted
     private boolean job; // Indicates if the applicant got the job
-    private ImageIcon pImg; // Profile image
+    private String exp;
+   // private Image pImg; // Profile image
     private String imagePath; // Path to the profile image
 
     // Getter and setter for the profile image
-    public ImageIcon getImage() {
+   /* public Image getImage() {
         return pImg;
     }
 
-    public void setImage(ImageIcon pImg) {
+    public void setImage(Image pImg) {
         this.pImg = pImg;
-    }
-
+    }*/
+    
     // Getter and setter for the status
     public String getStatus() {
         return status;
@@ -37,6 +40,14 @@ public class ApplicantDetails {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    //Getter and setter for experience
+    public String getExp() {
+        return exp;
+    }
+
+    public void setExp(String exp) {
+        this.exp = exp;
     }
 
     // Getter and setter for the address

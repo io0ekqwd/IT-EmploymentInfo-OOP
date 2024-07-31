@@ -72,6 +72,7 @@ public class ManagerApplicant extends JPanel{
 				if(opt == 0)
 				{
 					main.getController().shortlistApp(det);
+					 main.getController().writeFile(); // Write applicant profile to json file
 					populateAppDList();
 				}
 				else
@@ -119,6 +120,7 @@ public class ManagerApplicant extends JPanel{
 				if(opt==0)
 				{
 					main.getController().deleteProf(det);
+				    main.getController().writeFile(); // Write applicant profile to json file
 					populateAppDList();
 				}
 				else

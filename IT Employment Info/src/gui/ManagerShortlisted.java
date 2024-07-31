@@ -26,12 +26,11 @@ public class ManagerShortlisted extends JPanel{
 	private ApplicantDetails[] AppD;
 	private MainFrame main;
 	private JList appList;
-	private int index;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
-	private JButton btnScheduleInterview;
 	private String p = "p2";
 	private JLabel lblNewLabel_2;
+	private int index;
 
 	public ManagerShortlisted(MainFrame main) {
 		setLayout(null);
@@ -52,14 +51,14 @@ public class ManagerShortlisted extends JPanel{
 					ApplicantDetails app = AppD[index];
 					if(app.getInterviewDetails()!=null)
 					{
-						btnScheduleInterview.setText("Reschedule Interview");
+						//btnScheduleInterview.setText("Reschedule Interview");
 						lblNewLabel.setText(app.getInterviewDetails().getDay()+" "+app.getInterviewDetails().getMonth()+" "+app.getInterviewDetails().getYear());
 					    lblNewLabel_1.setText(app.getInterviewDetails().getVenue());
 					    lblNewLabel_2.setText(String.valueOf(app.getInterviewDetails().getHour())+":"+String.valueOf(app.getInterviewDetails().getMin()));
 					}
 					else 
 					{
-						btnScheduleInterview.setText("Schedule Interview");
+						//btnScheduleInterview.setText("Schedule Interview");
 						lblNewLabel.setText("(Please schedule date)");
 						lblNewLabel_1.setText("(Please schedule venue)");
 						lblNewLabel_2.setText("(Please schedule date)");
@@ -113,7 +112,8 @@ public class ManagerShortlisted extends JPanel{
 				{
 					ApplicantDetails det = AppD[index];
 					main.getController().giveJob(det);
-					btnScheduleInterview.setText("Schedule Interview");
+					main.getController().writeFile(); // Write applicant profile to json file
+					//btnScheduleInterview.setText("Schedule Interview");
 					lblNewLabel.setText("(Please schedule date)");
 					lblNewLabel_1.setText("(Please schedule venue)");
 					lblNewLabel_2.setText("(Please schedule date)");
@@ -125,22 +125,6 @@ public class ManagerShortlisted extends JPanel{
 		});
 		btnGiveOffer.setBounds(476, 384, 203, 62);
 		add(btnGiveOffer);
-		
-		this.btnScheduleInterview = new JButton("Schedule Interview");
-		btnScheduleInterview.setBackground(SystemColor.controlHighlight);
-		btnScheduleInterview.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				main.getController().addID(p);
-				int pIndex = appList.getSelectedIndex();
-				if (pIndex == -1)
-					return;
-				ApplicantDetails app = AppD[pIndex];
-				index = main.getController().getProfIndex(app);
-				main.showSchedulePage(index, app);
-			}
-		});
-		this.btnScheduleInterview.setBounds(508, 253, 166, 23);
-		add(this.btnScheduleInterview);
 		
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.setBackground(SystemColor.controlHighlight);
@@ -190,7 +174,8 @@ public class ManagerShortlisted extends JPanel{
 				if(opt==0)
 				{
 					main.getController().undoShort(det);
-					btnScheduleInterview.setText("Schedule Interview");
+					main.getController().writeFile(); // Write applicant profile to json file
+					//btnScheduleInterview.setText("Schedule Interview");
 					lblNewLabel.setText("(Please schedule date)");
 					lblNewLabel_1.setText("(Please schedule venue)");
 					lblNewLabel_2.setText("(Please schedule date)");

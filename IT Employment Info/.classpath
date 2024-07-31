@@ -4,10 +4,10 @@
 	<classpathentry kind="src" path="images"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jorda/git/IT-EmploymentInfo-OOP/IT Employment Info/miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
-	<classpathentry kind="lib" path="C:/Users/jorda/git/IT-EmploymentInfo-OOP/IT Employment Info/jackson-annotations-2.17.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jorda/git/IT-EmploymentInfo-OOP/IT Employment Info/jackson-core-2.17.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jorda/git/IT-EmploymentInfo-OOP/IT Employment Info/jackson-databind-2.17.2.jar"/>
+	<classpathentry kind="lib" path="D:/GitRepo/IT-EmploymentInfo-OOP/IT Employment Info/miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
+	<classpathentry kind="lib" path="D:/GitRepo/IT-EmploymentInfo-OOP/IT Employment Info/jackson-annotations-2.17.2.jar"/>
+	<classpathentry kind="lib" path="D:/GitRepo/IT-EmploymentInfo-OOP/IT Employment Info/jackson-core-2.17.2.jar"/>
+	<classpathentry kind="lib" path="D:/GitRepo/IT-EmploymentInfo-OOP/IT Employment Info/jackson-databind-2.17.2.jar"/>
 	<classpathentry kind="src" path="json"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 
 import controller.MainFrame;
@@ -63,7 +65,7 @@ public class Login extends JPanel{
 		this.rdbtnManager.setOpaque(false);
 		add(this.rdbtnManager);*/
 		
-		this.img = new ImageIcon("images/gradient3.jpg");
+		this.img = new ImageIcon("images/Gradient.png");
 		this.img2 = new ImageIcon("images/user.png");
 		this.img3 = new ImageIcon("images/lock.png");
 		
@@ -150,9 +152,12 @@ public class Login extends JPanel{
 		lblNewLabel_2.setBounds(41, 186, 46, 32);
 		panel.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel = new JLabel(this.img);
+		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(-14, -35, 797, 631);
 		add(lblNewLabel);
+		Image image = this.img.getImage();
+		Image resizedImg = image.getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH);
+		lblNewLabel.setIcon(new ImageIcon(resizedImg));
 		
 		this.main.getController().readFile();
 	}

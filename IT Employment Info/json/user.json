@@ -1,18 +1,13 @@
-[
-    {
-        "username": "HR",
-        "password": "PHR",
-        "role": "Staff"
-    },
-    {
-        "username": "M",
-        "password": "PM",
-        "role": "Manager"
-    },
-    {
-        "username": "A",
-        "password": "PA",
-        "role": "Admin"
-    }
-]
-
+[ {
+  "username" : "HR",
+  "password" : "PHR",
+  "role" : "Staff"
+}, {
+  "username" : "M",
+  "password" : "PM",
+  "role" : "Manager"
+}, {
+  "username" : "A",
+  "password" : "PA",
+  "role" : "Admin"
+} ]

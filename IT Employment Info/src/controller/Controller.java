@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
 import data.ApplicantDetails;
@@ -13,17 +15,22 @@ public class Controller {
     private DataStorage ds = new DataStorage();
     private String tt = "";
 
-    /* Method to read data from a file using DataStorage */
+    //Read from json files
     public void readFile() {
         this.ds.readFile();
     }
+    
+    //Write to json files
+    public void writeFile() {
+    	this.ds.writeFile();
+    }
 
     /* Method to add a new applicant with provided details */
-    public void addApplicant(String n, int a, String em, String ph, String ad, String pos, String ps, String is, String status, String imagePath) { 
+    public void addApplicant(String n, int a, String em, String ph, String ad, String pos, String ps, String is, String status,
+    		String exp, String img) { 
         Skills skill = new Skills();
         skill.setPskills(ps);
         skill.setIskills(is);
-        
         ApplicantDetails z = new ApplicantDetails();
         z.setName(n);
         z.setAge(a);
@@ -35,8 +42,8 @@ public class Controller {
         z.setStatus(status);
         z.setShortlist(false);
         z.setJob(false);
-        z.setImagePath(imagePath);
-        
+        z.setImagePath(img);
+        z.setExp(exp);
         this.ds.addApplicant(z);    
     }
     
@@ -149,7 +156,7 @@ public class Controller {
 
     /* Method to edit an applicant's details */
     public void editApplicant(int index, ApplicantDetails det, String name, int age, String email, String phone, String address, String position,
-            String ps, String is, String status, String imagePath) {
+            String ps, String is, String status, String exp, String image) {
         det.setName(name);
         det.setAge(age);
         det.setEmail(email);
@@ -159,7 +166,8 @@ public class Controller {
         det.getSkills().setIskills(is);
         det.getSkills().setPskills(ps);
         det.setStatus(status);
-        det.setImagePath(imagePath);
+        det.setImagePath(image);
+        det.setExp(exp);
         this.ds.editApplicant(index, det);    
     }
 

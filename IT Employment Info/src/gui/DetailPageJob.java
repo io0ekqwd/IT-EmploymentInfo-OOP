@@ -6,14 +6,20 @@ import controller.MainFrame;
 import data.ApplicantDetails;
 
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JTextArea;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.SystemColor;
 import java.awt.Color;
 
@@ -26,100 +32,104 @@ public class DetailPageJob extends JPanel {
 		this.main = main;
 		this.index = ind;
 		this.det = det;
-		main.setSize(600,400);
 		setLayout(null);
 		
 		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(174, 58, 46, 14);
+		lblName.setBounds(267, 70, 46, 14);
 		add(lblName);
 		
 		JLabel lblAge = new JLabel("Age:");
-		lblAge.setBounds(174, 83, 46, 14);
+		lblAge.setBounds(273, 100, 46, 14);
 		add(lblAge);
 		
 		JLabel lblPhone = new JLabel("Phone Number:");
-		lblPhone.setBounds(174, 108, 102, 14);
+		lblPhone.setBounds(216, 129, 98, 16);
 		add(lblPhone);
 		
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(174, 133, 46, 14);
+		lblEmail.setBounds(225, 165, 46, 14);
 		add(lblEmail);
 		
 		JLabel lblAddress = new JLabel("Address:");
-		lblAddress.setBounds(174, 208, 102, 14);
+		lblAddress.setBounds(462, 70, 102, 14);
 		add(lblAddress);
 		
 		JLabel lblPosition = new JLabel("Applied Position:");
-		lblPosition.setBounds(174, 183, 115, 14);
+		lblPosition.setBounds(210, 195, 116, 16);
 		add(lblPosition);
 		
 		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setBounds(174, 158, 46, 14);
+		lblStatus.setBounds(257, 228, 56, 16);
 		add(lblStatus);
 		
 		JLabel lblPSkills = new JLabel("Programming Skills:");
-		lblPSkills.setBounds(10, 273, 115, 14);
+		lblPSkills.setBounds(23, 273, 126, 14);
 		add(lblPSkills);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			String p = main.getController().getID();
-			if (p.equals("p1"))
-				main.showManagerGUI();
-			if (p.equals("p2"))
-				main.showShortGUI();
-			main.getController().clearID();
+			main.showJobGUI();
 			}
 			});
 		
 		btnBack.setBounds(10, 11, 89, 23);
 		add(btnBack);
 		
+
 		JLabel lblNameL = new JLabel("");
-		lblNameL.setBounds(215, 58, 115, 14);
+		lblNameL.setBounds(310, 67, 115, 20);
 		add(lblNameL);
 		lblNameL.setText(det.getName());
 		
 		JLabel lblAgeL = new JLabel("");
-		lblAgeL.setBounds(225, 83, 46, 14);
+		lblAgeL.setBounds(310, 98, 46, 20);
 		add(lblAgeL);
 		lblAgeL.setText(String.valueOf(det.getAge()));
 		
 		JLabel lblPhoneL = new JLabel("");
-		lblPhoneL.setBounds(281, 108, 74, 14);
+		lblPhoneL.setBounds(310, 127, 143, 20);
 		add(lblPhoneL);
 		lblPhoneL.setText(det.getPhone());
 		
 		JLabel lblEmailL = new JLabel("");
-		lblEmailL.setBounds(212, 133, 143, 14);
+		lblEmailL.setBounds(267, 161, 221, 22);
 		add(lblEmailL);
 		lblEmailL.setText(det.getEmail());
 		
 		JLabel lblPosL = new JLabel("");
-		lblPosL.setBounds(286, 183, 143, 14);
+		lblPosL.setBounds(310, 192, 143, 22);
 		add(lblPosL);
 		lblPosL.setText(det.getAPosition());
 		
 		JLabel lblStatusL = new JLabel("");
-		lblStatusL.setBounds(222, 158, 153, 14);
+		lblStatusL.setBounds(298, 225, 153, 22);
 		add(lblStatusL);
 		lblStatusL.setText(det.getStatus());
 		
 		JLabel lblIndustrialSkills = new JLabel("Industrial Skills:");
-		lblIndustrialSkills.setBounds(158, 273, 126, 14);
+		lblIndustrialSkills.setBounds(219, 273, 126, 14);
 		add(lblIndustrialSkills);
 		
 		JLabel label = new JLabel("             <image here>");
-		label.setBounds(10, 45, 154, 154);
+		label.setBounds(31, 69, 150, 150);
 		add(label);
+		if(det.getImagePath()!=null){
+			try {
+                Image img = ImageIO.read(new File(det.getImagePath()));
+                Image resizedImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+                label.setIcon(new ImageIcon(resizedImg)); // Display the image
+            } catch (IOException ex) {
+                System.out.println("Error loading image: " + ex.getMessage());
+            }
+		}
 		
 		JTextArea textAddress = new JTextArea();
 		textAddress.setForeground(SystemColor.desktop);
 		textAddress.setEditable(false);
 		textAddress.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textAddress.setBounds(222, 206, 133, 56);
+		textAddress.setBounds(520, 70, 133, 56);
 		textAddress.setOpaque(false);
 		add(textAddress);
 		textAddress.setText(det.getAddress());
@@ -127,7 +137,7 @@ public class DetailPageJob extends JPanel {
 		JTextArea textPSkills = new JTextArea();
 		textPSkills.setEditable(false);
 		textPSkills.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textPSkills.setBounds(10, 289, 126, 56);
+		textPSkills.setBounds(25, 286, 181, 108);
 		textPSkills.setOpaque(false);
 		add(textPSkills);
 		textPSkills.setText(det.getSkills().getPskills());
@@ -135,40 +145,41 @@ public class DetailPageJob extends JPanel {
 		JTextArea textISkills = new JTextArea();
 		textISkills.setEditable(false);
 		textISkills.setFont(new Font("Tahoma", Font.BOLD, 11));
-		textISkills.setBounds(156, 289, 133, 56);
+		textISkills.setBounds(216, 286, 196, 108);
 		textISkills.setOpaque(false);
 		add(textISkills);
 		textISkills.setText(det.getSkills().getIskills());
 		
 		JLabel lblExperience = new JLabel("Experience:");
-		lblExperience.setBounds(281, 273, 102, 14);
+		lblExperience.setBounds(429, 273, 102, 14);
 		add(lblExperience);
 		
 		JTextArea textExp = new JTextArea();
-		textExp.setEditable(false);
-		textExp.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textExp.setText((String) null);
 		textExp.setOpaque(false);
-		textExp.setBounds(281, 286, 115, 59);
+		textExp.setFont(new Font("Tahoma", Font.BOLD, 11));
+		textExp.setEditable(false);
+		textExp.setBounds(425, 286, 181, 108);
 		add(textExp);
-		//textExp.setText(det.getExp());
+		textExp.setText(det.getExp());
 		
 		JLabel lblHiredPosition = new JLabel("Hired Position:");
-		lblHiredPosition.setBounds(337, 58, 92, 14);
+		lblHiredPosition.setBounds(462, 130, 92, 14);
 		add(lblHiredPosition);
 		
-		JLabel lblSalary = new JLabel("Salary:");
-		lblSalary.setBounds(372, 83, 46, 14);
-		add(lblSalary);
+		JLabel Salary = new JLabel("Annual Salary:");
+		Salary.setBounds(462, 165, 92, 14);
+		add(Salary);
 		
 		JLabel lblHPos = new JLabel("New label");
-		lblHPos.setBounds(439, 58, 46, 14);
+		lblHPos.setBounds(564, 130, 126, 14);
 		add(lblHPos);
 		lblHPos.setText(det.getHPosition());
 		
 		JLabel lblSal = new JLabel("New label");
-		lblSal.setBounds(439, 83, 46, 14);
+		lblSal.setBounds(563, 165, 46, 14);
 		add(lblSal);
-		lblSal.setText(String.valueOf(det.getSalary()));
+		lblSal.setText("$"+ String.valueOf(det.getSalary()));
 		
 		
 	}
