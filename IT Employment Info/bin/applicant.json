@@ -9,12 +9,13 @@
     "pskills" : "Java\nPython\nC++",
     "iskills" : "Leadership\nResilience"
   },
-  "salary" : 90000,
+  "salary" : 300000,
   "shortlist" : true,
   "job" : false,
   "exp" : "Microsoft 5 years",
   "imagePath" : "C:\\Users\\User\\Downloads\\dsadas.png",
-  "hposition" : "Backend Developer",
+  "aposition" : "Software Engineer",
+  "hposition" : "CFO",
   "interviewDetails" : {
     "venue" : "Company Main Office",
     "day" : 1,
@@ -22,8 +23,7 @@
     "year" : 2024,
     "hour" : 18,
     "min" : 10
-  },
-  "aposition" : "Software Engineer"
+  }
 }, {
   "name" : "Jane Smith",
   "age" : 28,
@@ -35,12 +35,13 @@
     "pskills" : "2024-08-01",
     "iskills" : "10:00 AM"
   },
-  "salary" : 105000,
-  "shortlist" : false,
+  "salary" : 400000,
+  "shortlist" : true,
   "job" : false,
   "exp" : " No prior experience\nddddd",
   "imagePath" : null,
-  "hposition" : "Senior Product Manager",
+  "aposition" : "Product Manager",
+  "hposition" : "CEO",
   "interviewDetails" : {
     "venue" : "Office",
     "day" : 2,
@@ -48,8 +49,7 @@
     "year" : 2024,
     "hour" : 20,
     "min" : 10
-  },
-  "aposition" : "Product Manager"
+  }
 }, {
   "name" : "Emily Johnson",
   "age" : 35,
@@ -63,19 +63,19 @@
   },
   "salary" : 120000,
   "shortlist" : true,
-  "job" : true,
+  "job" : false,
   "exp" : "Assistant at ... - 5 years\nLead at 5 t",
   "imagePath" : null,
+  "aposition" : "Data Scientist",
   "hposition" : "Lead Data Scientist",
   "interviewDetails" : {
     "venue" : "Company HQ",
     "day" : 3,
-    "month" : null,
-    "year" : 0,
-    "hour" : 0,
-    "min" : 1
-  },
-  "aposition" : "Data Scientist"
+    "month" : "January",
+    "year" : 2024,
+    "hour" : 10,
+    "min" : 30
+  }
 }, {
   "name" : "dog",
   "age" : 22,
@@ -88,11 +88,18 @@
     "iskills" : "Leadership\nTeamwork\n"
   },
   "salary" : 0,
-  "shortlist" : false,
+  "shortlist" : true,
   "job" : false,
   "exp" : "5 year experiences in office\n7 Year experience in creation\n",
   "imagePath" : null,
+  "aposition" : "eee",
   "hposition" : null,
-  "interviewDetails" : null,
-  "aposition" : "eee"
+  "interviewDetails" : {
+    "venue" : "Health Manager Office",
+    "day" : 24,
+    "month" : "June",
+    "year" : 2024,
+    "hour" : 15,
+    "min" : 30
+  }
 } ]

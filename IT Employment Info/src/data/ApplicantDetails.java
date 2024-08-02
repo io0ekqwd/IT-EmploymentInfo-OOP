@@ -6,32 +6,23 @@ import javax.swing.ImageIcon;
 
 public class ApplicantDetails {
 
-    // Attributes of the applicant
+    //Attributes of applicant
     private String name;
     private int age;
     private String email;
     private String phone;
     private String address;
-    private String Aposition; // Applied position
-    private String Hposition; // Hired position
+    private String Aposition; //Applied position
+    private String Hposition; //Hired position
     private String status;
     private Skills skills;
-    private InterviewDetails intDet; // Interview details
+    private InterviewDetails intDet; //Interview Details
     private int salary;
-    private boolean shortlist; // Indicates if the applicant is shortlisted
-    private boolean job; // Indicates if the applicant got the job
+    private boolean shortlist; // Indicates applicant's shortlist status
+    private boolean job; // Indicates applicant's hired status
     private String exp;
-   // private Image pImg; // Profile image
-    private String imagePath; // Path to the profile image
+    private String imagePath; // Path for image
 
-    // Getter and setter for the profile image
-   /* public Image getImage() {
-        return pImg;
-    }
-
-    public void setImage(Image pImg) {
-        this.pImg = pImg;
-    }*/
     
     // Getter and setter for the status
     public String getStatus() {
@@ -41,6 +32,7 @@ public class ApplicantDetails {
     public void setStatus(String status) {
         this.status = status;
     }
+    
     //Getter and setter for experience
     public String getExp() {
         return exp;

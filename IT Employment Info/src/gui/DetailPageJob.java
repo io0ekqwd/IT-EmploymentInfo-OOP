@@ -34,6 +34,7 @@ public class DetailPageJob extends JPanel {
 		this.det = det;
 		setLayout(null);
 		
+		//Labels for various applicant profile details
 		JLabel lblName = new JLabel("Name:");
 		lblName.setBounds(267, 70, 46, 14);
 		add(lblName);
@@ -66,6 +67,19 @@ public class DetailPageJob extends JPanel {
 		lblPSkills.setBounds(23, 273, 126, 14);
 		add(lblPSkills);
 		
+		JLabel lblExperience = new JLabel("Experience:");
+		lblExperience.setBounds(429, 273, 102, 14);
+		add(lblExperience);
+		
+		JLabel lblHiredPosition = new JLabel("Hired Position:");
+		lblHiredPosition.setBounds(462, 130, 92, 14);
+		add(lblHiredPosition);
+		
+		JLabel Salary = new JLabel("Annual Salary:");
+		Salary.setBounds(462, 165, 92, 14);
+		add(Salary);
+		
+		//Button to return to Manager Job Offer Page
 		JButton btnBack = new JButton("Back");
 		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
@@ -78,6 +92,7 @@ public class DetailPageJob extends JPanel {
 		add(btnBack);
 		
 
+		//Labels to display the various applicant details
 		JLabel lblNameL = new JLabel("");
 		lblNameL.setBounds(310, 67, 115, 20);
 		add(lblNameL);
@@ -150,9 +165,7 @@ public class DetailPageJob extends JPanel {
 		add(textISkills);
 		textISkills.setText(det.getSkills().getIskills());
 		
-		JLabel lblExperience = new JLabel("Experience:");
-		lblExperience.setBounds(429, 273, 102, 14);
-		add(lblExperience);
+		
 		
 		JTextArea textExp = new JTextArea();
 		textExp.setText((String) null);
@@ -163,13 +176,9 @@ public class DetailPageJob extends JPanel {
 		add(textExp);
 		textExp.setText(det.getExp());
 		
-		JLabel lblHiredPosition = new JLabel("Hired Position:");
-		lblHiredPosition.setBounds(462, 130, 92, 14);
-		add(lblHiredPosition);
 		
-		JLabel Salary = new JLabel("Annual Salary:");
-		Salary.setBounds(462, 165, 92, 14);
-		add(Salary);
+		
+		
 		
 		JLabel lblHPos = new JLabel("New label");
 		lblHPos.setBounds(564, 130, 126, 14);

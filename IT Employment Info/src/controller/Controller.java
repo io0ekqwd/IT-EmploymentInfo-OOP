@@ -25,15 +25,15 @@ public class Controller {
     	this.ds.writeFile();
     }
 
-    /* Method to add a new applicant with provided details */
-    public void addApplicant(String n, int a, String em, String ph, String ad, String pos, String ps, String is, String status,
+    //Add applicant into datastorage
+    public void addApplicant(String n, String a, String em, String ph, String ad, String pos, String ps, String is, String status,
     		String exp, String img) { 
         Skills skill = new Skills();
         skill.setPskills(ps);
         skill.setIskills(is);
         ApplicantDetails z = new ApplicantDetails();
         z.setName(n);
-        z.setAge(a);
+        z.setAge(Integer.valueOf(a));
         z.setEmail(em);
         z.setPhone(ph);
         z.setAddress(ad);
@@ -47,51 +47,56 @@ public class Controller {
         this.ds.addApplicant(z);    
     }
     
-    /* Method to get the list of all applicants */
+    //Get list of applicants
     public ApplicantDetails[] getAppList() {
         return this.ds.getAppList();
     }
     
-    /* Method to get the list of shortlisted applicants */
+    //Get list of fresh applicants
     public ApplicantDetails[] getMAppList() {
         return this.ds.getMAppList();
     }
     
-    /* Method to get the list of applicants for a specific position */
+    //Get list of shortlisted applicants
     public ApplicantDetails[] getSAppList() {
         return this.ds.getSAppList();
     }
     
-    /* Method to get the list of applicants who have been offered a job */
+    //Get list of users
+    public User[] getUserList() {
+		return this.ds.getUserList();
+	}
+    
+    //Get list of applicants with job offer
     public ApplicantDetails[] getJAppList() {
         return this.ds.getJAppList();
     }
 
-    /* Method to mark an applicant as shortlisted */
+    //Set shortlist status for applicant
     public void shortlistApp(ApplicantDetails det) {
         det.setShortlist(true);
         this.ds.managerEditApp(det);    
     }
     
-    /* Method to mark an applicant as having been offered a job */
+    //Set job status for applicant
     public void giveJob(ApplicantDetails det) {
         det.setJob(true);
         this.ds.managerEditApp(det);    
     }
     
-    /* Method to undo the job offer to an applicant */
+    //Undo Job Offer
     public void undoJob(ApplicantDetails det) {
         det.setJob(false);
         this.ds.managerEditApp(det);
     }
     
-    /* Method to undo the shortlisting of an applicant */
+    //Undo shortlisting
     public void undoShort(ApplicantDetails det) {
         det.setShortlist(false);
         this.ds.managerEditApp(det);
     }
     
-    /* Method to verify the user credentials */
+    //Verify user credientials for login
     public boolean verifyUser(String n, String pwd) {
         String real = pwd;
         String cc = "";
@@ -108,12 +113,12 @@ public class Controller {
         return false;
     }
 
-    /* Method to get the role of the current user */
+    //Get role of user
     public String getRole() {
         return tt;
     }
 
-    /* Method to schedule an interview for an applicant */
+    //Schedule interview date for shortlisted applicants
     public void scheInte(int index, ApplicantDetails det, int d, String m, String v, int y, int h, int min) {
         InterviewDetails intdet = new InterviewDetails();
         intdet.setDay(d);
@@ -122,39 +127,38 @@ public class Controller {
         intdet.setVenue(v);
         intdet.setHour(h);
         intdet.setMin(min);
-        // intdet.setAmpm(ap);
         det.setInterviewDetails(intdet);
         this.ds.editApplicant(index, det);
     }
 
-    /* Method to store an ID */
+    //Store pageID into datastorage
     public void addID(String p) {
         this.ds.storeID(p);
     }
     
-    /* Method to get the stored ID */
+    //Retrieve pageID from datastorage
     public String getID(){
         return this.ds.getID();
     }
 
-    /* Method to clear the stored ID */
+    //Remove pageID from datastorage
     public void clearID() {
         this.ds.removeID();
     }
 
-    /* Method to delete an applicant profile */
+    //Delete profile from datastorage
     public void deleteProf(ApplicantDetails det) {
         this.ds.deleteProf(det);
     }
 
-    /* Method to add a salary to an applicant's profile */
+    //Add Salary for new hires
     public void addSalary(ApplicantDetails det, int s) {
         det.setSalary(s);
         int index = this.ds.getProfIndex(det);
         this.ds.editApplicant(index, det);
     }
 
-    /* Method to edit an applicant's details */
+    //Edit applicant profile for HR Staff
     public void editApplicant(int index, ApplicantDetails det, String name, int age, String email, String phone, String address, String position,
             String ps, String is, String status, String exp, String image) {
         det.setName(name);
@@ -171,20 +175,41 @@ public class Controller {
         this.ds.editApplicant(index, det);    
     }
 
-    /* Method to get the count of applicants who have been offered a job */
+    //Get count for new hires
     public int getCount() {
         return this.ds.getJobCount();
     }
 
-    /* Method to add a hired position to an applicant's profile */
+    //Add hired position to new hires
     public void addHPos(ApplicantDetails det, String hp) {
         det.setHPosition(hp);
         int index = this.ds.getProfIndex(det);
         this.ds.editApplicant(index, det);
     }
 
-    /* Method to get the index of an applicant's profile */
+    //Retrieve index of applicant profile within aList vector
     public int getProfIndex(ApplicantDetails det) {
         return this.ds.getProfIndex(det);
     }
+
+    //Delete user from datastorage
+	public void deleteUser(int index, User u) {
+		this.ds.deleteUser(index, u);
+	}
+
+	//Add user into datastorage
+	public void addUser(String username, String pwd, String role) {
+		User u = new User();
+		u.setUsername(username);
+		u.setPassword(pwd);
+		u.setRole(role);
+		this.ds.addUser(u);
+	}
+
+	public void editUser(int index, User user, String username, String pwd, String role) {
+		user.setUsername(username);
+		user.setPassword(pwd);
+		user.setRole(role);
+		this.ds.editUser(index, user);
+	}
 }

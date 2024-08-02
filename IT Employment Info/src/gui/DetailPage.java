@@ -34,6 +34,7 @@ public class DetailPage extends JPanel {
 		this.det = det;
 		setLayout(null);
 		
+		//Labels for various applicant profile details
 		JLabel lblName = new JLabel("Name:");
 		lblName.setBounds(267, 70, 46, 14);
 		add(lblName);
@@ -66,6 +67,11 @@ public class DetailPage extends JPanel {
 		lblPSkills.setBounds(31, 273, 126, 14);
 		add(lblPSkills);
 		
+		JLabel lblExperience = new JLabel("Experience:");
+		lblExperience.setBounds(450, 273, 102, 14);
+		add(lblExperience);
+		
+		//Button to return back to previous page
 		JButton btnBack = new JButton("Back");
 		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
@@ -82,6 +88,7 @@ public class DetailPage extends JPanel {
 		btnBack.setBounds(10, 11, 89, 23);
 		add(btnBack);
 		
+		//Labels to display the applicant profile
 		JLabel lblNameL = new JLabel("");
 		lblNameL.setBounds(310, 67, 115, 20);
 		add(lblNameL);
@@ -155,9 +162,7 @@ public class DetailPage extends JPanel {
 		add(textISkills);
 		textISkills.setText(det.getSkills().getIskills());
 		
-		JLabel lblExperience = new JLabel("Experience:");
-		lblExperience.setBounds(450, 273, 102, 14);
-		add(lblExperience);
+		
 		
 		JTextArea textExp = new JTextArea();
 		textExp.setText((String) null);

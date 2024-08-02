@@ -8,6 +8,7 @@ import java.awt.Image;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -17,6 +18,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import controller.MainFrame;
 
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,7 +31,7 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class HRStaffAdd extends JPanel {
-    private MainFrame main; // Reference to the main frame
+    private MainFrame main; // Reference to MainFrame
     private JTextField textName;
     private JTextField textAge;
     private JTextField textPhone;
@@ -44,19 +46,19 @@ public class HRStaffAdd extends JPanel {
     private Image img;
     private String imagePath; // Path to the applicant's photo
 
-    // Constructor to initialize the panel
+    //Initialise panel
     public HRStaffAdd(MainFrame main) {
         setLayout(null);
         this.main = main;
 
-        // Add button to add applicant details
+        //Button to add applicant details
         JButton btnAdd = new JButton("Add");
         btnAdd.setBackground(SystemColor.controlHighlight);
         btnAdd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Collect data from text fields
+                //Collect details from textfields and textareas
                 String name = textName.getText();
-                int age = Integer.valueOf(textAge.getText());
+                String age = textAge.getText();
                 String email = textEmail.getText();
                 String phone = textPhone.getText();
                 String address = textAddress.getText();
@@ -65,16 +67,40 @@ public class HRStaffAdd extends JPanel {
                 String is = textIS.getText();
                 String status = textStatus.getText();
                 String exp = textExp.getText();
-                // Call controller to add applicant
-                main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status, exp, imagePath);
-                main.getController().writeFile(); // Write applicant profile to json file
-                main.showHRStaffApplicantPage(); // Show applicant page after adding
+                //Get empty status of textfields and textareas
+                JTextField[] textFields = {textName, textAge, textEmail, textPhone, textPosition, textStatus};
+                JTextArea[] textAreas = {textPS, textAddress, textPS, textExp};
+                boolean textFieldsEmpty = false;
+                boolean textAreasEmpty = false;
+                for(int i=0;i<textFields.length;i++){
+                	JTextField textField = textFields[i];
+                	if(textField.getText().isEmpty()){
+                		textFieldsEmpty = true;
+                		break;
+                	}	
+                }
+                for(int i=0;i<textAreas.length;i++){
+                	JTextArea textArea = textAreas[i];
+                	if(textArea.getText().isEmpty()){
+                		textAreasEmpty = true;
+                		break;
+                	}	
+                }
+                //Verify empty status of textfields and textareas to block or allow add
+                if(textAreasEmpty != true || textFieldsEmpty != true){
+                	// Call controller to add applicant
+                    main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status, exp, imagePath);
+                    main.getController().writeFile(); // Write applicant profile to json file
+                    main.showHRStaffApplicantPage(); // Show applicant page after adding
+                }
+                else
+                	JOptionPane.showMessageDialog(main, "Please Fill in all details.");
             }
         });
         btnAdd.setBounds(464, 113, 86, 49);
         add(btnAdd);
 
-        // Logout button
+        //Button to logout
         JButton btnLogout = new JButton("Logout");
         btnLogout.setBackground(SystemColor.controlHighlight);
         btnLogout.addActionListener(new ActionListener() {
@@ -89,7 +115,7 @@ public class HRStaffAdd extends JPanel {
         btnLogout.setBounds(570, 9, 108, 49);
         add(btnLogout);
 
-        // Back button
+        //Button to return to applicant page
         JButton btnBack = new JButton("Back");
         btnBack.setBackground(SystemColor.controlHighlight);
         btnBack.addActionListener(new ActionListener() {
@@ -100,13 +126,13 @@ public class HRStaffAdd extends JPanel {
         btnBack.setBounds(10, 9, 116, 49);
         add(btnBack);
 
-        // Label for the page title
+        //Label for applicant page
         JLabel lblAddApplicantPage = new JLabel("Add Applicant Page");
         lblAddApplicantPage.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblAddApplicantPage.setBounds(285, 9, 141, 25);
         add(lblAddApplicantPage);
 
-        // Text fields for applicant details
+        //Textfields and textareas for applicant details
         textName = new JTextField();
         textName.setBounds(310, 67, 116, 20);
         add(textName);
@@ -116,8 +142,44 @@ public class HRStaffAdd extends JPanel {
         textAge.setBounds(310, 98, 116, 20);
         add(textAge);
         textAge.setColumns(10);
+        
+        textPhone = new JTextField();
+        textPhone.setBounds(310, 127, 116, 20);
+        add(textPhone);
+        textPhone.setColumns(10);
+        
+        textEmail = new JTextField();
+        textEmail.setBounds(310, 158, 116, 22);
+        add(textEmail);
+        textEmail.setColumns(10);
+        
+        textPosition = new JTextField();
+        textPosition.setBounds(310, 192, 116, 22);
+        add(textPosition);
+        textPosition.setColumns(10);
+        
+        textStatus = new JTextField();
+        textStatus.setBounds(310, 225, 116, 22);
+        add(textStatus);
+        textStatus.setColumns(10);
+       
+        textPS = new JTextArea();
+        textPS.setBounds(10, 350, 182, 78);
+        add(textPS);
+        
+        textIS = new JTextArea();
+        textIS.setBounds(216, 350, 182, 78);
+        add(textIS);
+        
+        textAddress = new JTextArea();
+        textAddress.setBounds(10, 244, 182, 78);
+        add(textAddress);
+        
+        textExp = new JTextArea();
+        textExp.setBounds(422, 350, 256, 78);
+        add(textExp);
 
-        // Labels for text fields
+        //Labels for textfields
         JLabel lblName = new JLabel("Name:");
         lblName.setBounds(267, 70, 46, 14);
         add(lblName);
@@ -126,19 +188,9 @@ public class HRStaffAdd extends JPanel {
         lblAge.setBounds(273, 100, 27, 16);
         add(lblAge);
 
-        textPhone = new JTextField();
-        textPhone.setBounds(310, 127, 116, 20);
-        add(textPhone);
-        textPhone.setColumns(10);
-
         JLabel lblPhoneNo = new JLabel("Phone Number:");
         lblPhoneNo.setBounds(216, 129, 98,16);
         add(lblPhoneNo);
-
-        textEmail = new JTextField();
-        textEmail.setBounds(310, 158, 116, 22);
-        add(textEmail);
-        textEmail.setColumns(10);
 
         JLabel lblEmail = new JLabel("Email:");
         lblEmail.setBounds(267, 161, 46, 16);
@@ -152,11 +204,6 @@ public class HRStaffAdd extends JPanel {
         lblPosition.setBounds(210, 195, 116, 16);
         add(lblPosition);
 
-        textPosition = new JTextField();
-        textPosition.setBounds(310, 192, 116, 22);
-        add(textPosition);
-        textPosition.setColumns(10);
-
         JLabel lblSkills = new JLabel("Programming skills:");
         lblSkills.setBounds(10, 333, 161, 16);
         add(lblSkills);
@@ -165,26 +212,13 @@ public class HRStaffAdd extends JPanel {
         lblStatus.setBounds(257, 228, 56, 16);
         add(lblStatus);
 
-        textStatus = new JTextField();
-        textStatus.setBounds(310, 225, 116, 22);
-        add(textStatus);
-        textStatus.setColumns(10);
-
         JLabel lblIndustrySkills = new JLabel("Industry skills:");
         lblIndustrySkills.setBounds(216, 333, 82, 16);
         add(lblIndustrySkills);
-
-        textPS = new JTextArea();
-        textPS.setBounds(10, 350, 182, 78);
-        add(textPS);
-
-        textIS = new JTextArea();
-        textIS.setBounds(216, 350, 182, 78);
-        add(textIS);
-
-        textAddress = new JTextArea();
-        textAddress.setBounds(10, 244, 182, 78);
-        add(textAddress);
+        
+        JLabel lblExperience = new JLabel("Experience:");
+        lblExperience.setBounds(423, 334, 98, 14);
+        add(lblExperience);
 
         // Label to display the image
         JLabel label = new JLabel(imgI);
@@ -265,23 +299,9 @@ public class HRStaffAdd extends JPanel {
 						}	
 					}
 					 catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-                    /*Scanner scanner = new Scanner(file);
-                    String name = scanner.next();
-                    String age = scanner.next();
-                    String phone = scanner.next();
-                    String email = scanner.next();
-                    String pos = scanner.next();
-                    String status = scanner.next();
-                    scanner.close();
-                    textName.setText(name);
-                    textAge.setText(age);
-                    textPhone.setText(phone);
-                    textEmail.setText(email);
-                    textPosition.setText(pos);
-                    textStatus.setText(status);*/
+                
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -290,7 +310,7 @@ public class HRStaffAdd extends JPanel {
         btnReader.setBounds(578, 113, 86, 49);
         add(btnReader);
 
-        // Button to add an image for the applicant
+        //Add image to applicant profile
         JButton btnAddImage = new JButton("Add Image");
         btnAddImage.setBackground(SystemColor.controlHighlight);
         btnAddImage.addActionListener(new ActionListener() {
@@ -302,7 +322,7 @@ public class HRStaffAdd extends JPanel {
                 chooser.setVisible(true);
                 if (chooser.getSelectedFile() == null)
                     return;
-                imagePath = chooser.getSelectedFile().getAbsolutePath(); // Store the image path
+                imagePath = chooser.getSelectedFile().getAbsolutePath(); //Get image path on PC
                 imgI = new ImageIcon(imagePath);
                 img = imgI.getImage();
                 Image resizedImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
@@ -314,12 +334,6 @@ public class HRStaffAdd extends JPanel {
         btnAddImage.setBounds(464, 195, 200, 49);
         add(btnAddImage);
         
-        JLabel lblExperience = new JLabel("Experience:");
-        lblExperience.setBounds(423, 334, 98, 14);
-        add(lblExperience);
         
-        textExp = new JTextArea();
-        textExp.setBounds(422, 350, 256, 78);
-        add(textExp);
     }
 }

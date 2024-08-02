@@ -13,19 +13,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DataStorage {
     
-    // Vectors to store user login information, applicant details, and page IDs
+    //Vectors to store user login info, applicant profile and page ID
     private Vector<User> loginInfo = new Vector<User>();
     private Vector<ApplicantDetails> aList = new Vector<ApplicantDetails>();
     private Vector<String> pageID = new Vector<String>(1);
     
-    // Method to read user and applicant data from JSON files
+    //Read user data and applicant profile from their json files
     public void readFile() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            // Reading user information from user.json
-            this.loginInfo = mapper.readValue(new File("json//user.json"), new TypeReference<Vector<User>>(){});
-            // Reading applicant details from applicant.json
-            this.aList = mapper.readValue(new File("json//applicant.json"), new TypeReference<Vector<ApplicantDetails>>(){});
+            //Reading user information from user.json
+            loginInfo = mapper.readValue(new File("json//user.json"), new TypeReference<Vector<User>>(){});
+            //Reading applicant details from applicant.json
+            aList = mapper.readValue(new File("json//applicant.json"), new TypeReference<Vector<ApplicantDetails>>(){});
         } catch (StreamReadException e) {
             e.printStackTrace();
         } catch (DatabindException e) {
@@ -34,32 +34,31 @@ public class DataStorage {
             e.printStackTrace();
         }
     }
-    
+    //Write data into the json files
     public void writeFile() {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			mapper.writerWithDefaultPrettyPrinter().writeValue(new File("json//user.json"), this.loginInfo);
-			mapper.writerWithDefaultPrettyPrinter().writeValue(new File("json//applicant.json"), this.aList);
+			//Writing user data into user.json
+			mapper.writerWithDefaultPrettyPrinter().writeValue(new File("json//user.json"), loginInfo);
+			//Write applicant profile into applicant.json
+			mapper.writerWithDefaultPrettyPrinter().writeValue(new File("json//applicant.json"), aList);
 		} catch (StreamWriteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (DatabindException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
-    // Method to get the list of all applicants
+    //Get Applicant List for HR Staff
     public ApplicantDetails[] getAppList() {
         ApplicantDetails[] opArr = new ApplicantDetails[this.aList.size()];
         this.aList.toArray(opArr);
         return opArr;
     }
     
-    // Method to get the list of applicants who are neither shortlisted nor given a job
+    //Get list of fresh applicants
     public ApplicantDetails[] getMAppList() {
         ArrayList<ApplicantDetails> arr = new ArrayList<ApplicantDetails>();
         for (int i = 0; i < aList.size(); i++) {
@@ -73,7 +72,7 @@ public class DataStorage {
         return opArr;
     }
     
-    // Method to get the list of shortlisted applicants who have not been given a job
+    //Get list of shortlisted applicants
     public ApplicantDetails[] getSAppList() {
         ArrayList<ApplicantDetails> arr = new ArrayList<ApplicantDetails>();
         for (int i = 0; i < aList.size(); i++) {
@@ -87,7 +86,7 @@ public class DataStorage {
         return opArr;
     }
     
-    // Method to get the list of applicants who have been given a job
+    //Get lists of applicants who have gotten job offer
     public ApplicantDetails[] getJAppList() {
         ArrayList<ApplicantDetails> arr = new ArrayList<ApplicantDetails>();
         for (int i = 0; i < aList.size(); i++) {
@@ -101,17 +100,24 @@ public class DataStorage {
         return opArr;
     }
     
-    // Method to add a new applicant to the list
+    //Get list of users
+    public User[] getUserList() {
+    	User[] opArr = new User[this.loginInfo.size()];
+    	this.loginInfo.toArray(opArr);
+    	return opArr;
+	}
+    
+    //Add applicant profile to aList vector
     public void addApplicant(ApplicantDetails z) {
         this.aList.add(z);
     }
     
-    // Method to add a new user to the login information
+    //Add user info into loginInfo vector
     public void addUser(User u) {
         this.loginInfo.add(u);
     }
     
-    // Method to get a user by username
+    //Check for username
     public User getUser(String n) {
         for (int i = 0; i < loginInfo.size(); i++) {
             User temp = loginInfo.get(i);
@@ -122,31 +128,31 @@ public class DataStorage {
         return null;
     }
     
-    // Methods to manage the page ID
+    //Add pageID in vector
     public void storeID(String p) {
         this.pageID.add(p);
     }
-
+    //Get pageID from vector
     public String getID() {
         return pageID.elementAt(0);
     }
-
+    //Remove the ID from vector
     public void removeID() {
         this.pageID.clear();
     }
     
-    // Method to delete an applicant profile
+    //Delete applicant profile from vector
     public void deleteProf(ApplicantDetails det) {
         int index = this.aList.indexOf(det);
         this.aList.remove(index);
     }
     
-    // Method to edit an applicant's details
+    //Edit applicant profile in vector
     public void editApplicant(int index, ApplicantDetails det) {
         this.aList.set(index, det);
     }
     
-    // Method to get the count of applicants who have been given a job
+    //Get count of applicants with job offer
     public int getJobCount() {
         int cnt = 0;
         for (int i = 0; i < aList.size(); i++) {
@@ -157,16 +163,25 @@ public class DataStorage {
         return cnt;
     }
     
-    // Method to edit applicant details managed by a manager
+    //Edit applicant profile for shortlisting, giving job offer, hired position and salary
     public void managerEditApp(ApplicantDetails det) {
         int index = this.aList.indexOf(det);
         this.aList.set(index, det);
     }
     
-    // Method to get the index of an applicant in the list
+    //Get index of object within aList vector
     public int getProfIndex(ApplicantDetails det) {
         return this.aList.indexOf(det);
     }
+    //Delete user from loginInfo
+	public void deleteUser(int index, User u) {
+		this.loginInfo.remove(index);
+		this.loginInfo.remove(u);
+	}
+	//Edit user details
+	public void editUser(int index, User user) {
+		this.loginInfo.set(index, user);
+	}
 
 	
 }

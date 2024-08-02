@@ -23,10 +23,14 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class ManagerJob extends JPanel{
 	private JButton btnAddSalary;
 	private ApplicantDetails AppD[];
+	private ApplicantDetails AppDFiltered[];
 	private MainFrame main;
 	private JList appList;
 	private String p = "p3";
@@ -35,14 +39,17 @@ public class ManagerJob extends JPanel{
 	private int sal;
 	private JLabel lblNewLabel;
 	private JTextField textField_1;
+	private JTextField searchBox;
+	private DefaultListModel model;
 	
 	public ManagerJob(MainFrame main) {
 		setLayout(null);
 		this.main = main;
+		this.model = new DefaultListModel();
 		main.setSize(700,500);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(20, 52, 646, 189);
+		scrollPane.setBounds(99, 52, 470, 165);
 		add(scrollPane);
 		
 		this.appList = new JList();
@@ -61,7 +68,7 @@ public class ManagerJob extends JPanel{
 					return;
 			}
 		});
-		btnLogout.setBounds(577, 8, 89, 33);
+		btnLogout.setBounds(559, 8, 99, 33);
 		add(btnLogout);
 		
 		JLabel lblJobOfferPage = new JLabel("Job Offer Page");
@@ -76,7 +83,7 @@ public class ManagerJob extends JPanel{
 				main.showMMainGUI();
 			}
 		});
-		btnBack.setBounds(20, 8, 114, 33);
+		btnBack.setBounds(10, 8, 114, 33);
 		add(btnBack);
 		
 		JButton btnViewProfile = new JButton("View Profile");
@@ -86,7 +93,7 @@ public class ManagerJob extends JPanel{
 				int pIndex = appList.getSelectedIndex();
 				if (pIndex == -1)
 					return;
-				ApplicantDetails app = AppD[pIndex];
+				ApplicantDetails app = AppDFiltered[pIndex];
 				index = main.getController().getProfIndex(app);
 				main.showDetailPageJob(index, app);
 			}
@@ -112,7 +119,7 @@ public class ManagerJob extends JPanel{
 				index = appList.getSelectedIndex();
 				if(index == -1)
 					return;
-				ApplicantDetails det = AppD[index];
+				ApplicantDetails det = AppDFiltered[index];
 				int opt = JOptionPane.showConfirmDialog(main, "Do you want to undo?","Undo", JOptionPane.YES_NO_OPTION);
 				if(opt==0)
 				{
@@ -145,7 +152,7 @@ public class ManagerJob extends JPanel{
 				int pIndex = appList.getSelectedIndex();
 				if(pIndex == -1)
 					return;
-				ApplicantDetails app = AppD[pIndex];
+				ApplicantDetails app = AppDFiltered[pIndex];
 				if(textField.getText().isEmpty() == true)
 					JOptionPane.showMessageDialog(main, "Please add salary");
 				else
@@ -155,9 +162,12 @@ public class ManagerJob extends JPanel{
 			        main.getController().writeFile(); // Write applicant profile to json file
 				    textField.setText("");
 				}
-					
-				
-			populateAppDList();   
+				if(textField_1.getText().isEmpty()&&textField.getText().isEmpty()){
+		        	populateAppDList();
+			        searchBox.setText("");
+		        }
+		        else
+		        	populateSearchedAppDList();  
 			}
 		});
 		this.btnAddSalary.setBounds(328, 296, 241, 50);
@@ -184,7 +194,7 @@ public class ManagerJob extends JPanel{
 				int pIndex = appList.getSelectedIndex();
 				if(pIndex == -1)
 					return;
-				ApplicantDetails app = AppD[pIndex];
+				ApplicantDetails app = AppDFiltered[pIndex];
 				if(textField_1.getText().isEmpty() == true)
 					JOptionPane.showMessageDialog(main, "Please add hired position");
 				else
@@ -192,22 +202,91 @@ public class ManagerJob extends JPanel{
 					String hp = textField_1.getText();
 			        main.getController().addHPos(app, hp);
 			        main.getController().writeFile(); // Write applicant profile to json file
-			        populateAppDList();
+			        textField_1.setText("");
+			        if(textField_1.getText().isEmpty()&&textField.getText().isEmpty()){
+			        	populateAppDList();
+				        searchBox.setText("");
+			        }
+			        else
+			        	populateSearchedAppDList();
 				}
 			}
 		});
 		btnAdd.setBackground(SystemColor.controlHighlight);
 		btnAdd.setBounds(328, 350, 241, 50);
 		add(btnAdd);
+		
+		JLabel lblSearch = new JLabel("Search:");
+		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblSearch.setBounds(233, 228, 46, 14);
+		add(lblSearch);
+		
+		searchBox = new JTextField();
+		searchBox.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				searchFilter();
+			}
+		});
+		searchBox.setBounds(289, 225, 148, 20);
+		add(searchBox);
+		searchBox.setColumns(10);
 		this.populateAppDList();
 	}
-	//Test
+	
+	private void searchFilter() {
+		String search = searchBox.getText();
+		DefaultListModel filter = new DefaultListModel();
+		ArrayList<ApplicantDetails> items =  new ArrayList<ApplicantDetails>();
+		ArrayList<ApplicantDetails> filteredItems =  new ArrayList<ApplicantDetails>();
+		for(int i=0;i<AppD.length;i++)
+			items.add(AppD[i]);
+		for(int i=0;i<items.size();i++){
+			ApplicantDetails op = items.get(i);
+			String listItem = "";
+			if(op.getSalary() == 0 && op.getHPosition() == null)
+				listItem = op.getName();
+		    else if(op.getHPosition() == null && op.getSalary() != 0)
+				listItem = op.getName()+"          "+op.getSalary();
+		    else if(op.getSalary() == 0 && op.getHPosition() != null)
+		    	listItem = op.getName()+"          "+op.getHPosition();
+		    else
+		    	listItem = op.getName()+"          "+op.getHPosition()+"          "+"$"+op.getSalary();
+			
+			if(listItem.toLowerCase().contains(search.toLowerCase())){
+				filter.addElement(listItem);
+				filteredItems.add(op);
+			}
+			AppDFiltered = filteredItems.toArray(new ApplicantDetails[filteredItems.size()]);
+			this.appList.setModel(filter);
+		}
+	}
+	
 	private void populateAppDList() {
 		this.AppD = this.main.getController().getJAppList();
-		DefaultListModel model = new DefaultListModel();
+		this.AppDFiltered = this.AppD;
+		model.clear();
 		for (int i=0; i<AppD.length;i++)
 		{
 			ApplicantDetails op = AppD[i];
+			if(op.getSalary() == 0 && op.getHPosition() == null)
+				model.addElement(op.getName());
+		    else if(op.getHPosition() == null && op.getSalary() != 0)
+				model.addElement(op.getName()+"          "+op.getSalary());
+		    else if(op.getSalary() == 0 && op.getHPosition() != null)
+		    	model.addElement(op.getName()+"          "+op.getHPosition());
+		    else
+		    	model.addElement(op.getName()+"          "+op.getHPosition()+"          "+"$"+op.getSalary());
+			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
+		}
+		this.appList.setModel(model);
+	} 
+	
+	private void populateSearchedAppDList() {
+		model.clear();
+		for (int i=0; i<AppDFiltered.length;i++)
+		{
+			ApplicantDetails op = AppDFiltered[i];
 			if(op.getSalary() == 0 && op.getHPosition() == null)
 				model.addElement(op.getName());
 		    else if(op.getHPosition() == null && op.getSalary() != 0)

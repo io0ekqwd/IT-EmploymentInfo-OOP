@@ -31,22 +31,22 @@ public class SchedulePage extends JPanel {
         this.index = ind;
         this.det = det;
         this.main = main;
-        main.setSize(450, 350); // Set size of the main frame
         setLayout(null); // Use absolute layout for positioning components
 
         // Label for the scheduling page title
         JLabel lblSchedulingPage = new JLabel("Scheduling Page");
         lblSchedulingPage.setFont(new Font("Tahoma", Font.BOLD, 16));
-        lblSchedulingPage.setBounds(155, 50, 145, 25);
+        lblSchedulingPage.setBounds(276, 51, 145, 33);
         add(lblSchedulingPage);
 
         // Label and text field for the day of the interview
         JLabel lblDate = new JLabel("Date:");
-        lblDate.setBounds(73, 126, 56, 14);
+        lblDate.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        lblDate.setBounds(206, 180, 56, 25);
         add(lblDate);
 
         textFieldDay = new JTextField();
-        textFieldDay.setBounds(117, 123, 56, 20);
+        textFieldDay.setBounds(252, 183, 56, 20);
         add(textFieldDay);
         textFieldDay.setColumns(10);
         if (det.getInterviewDetails() != null) {
@@ -55,7 +55,7 @@ public class SchedulePage extends JPanel {
 
         // ComboBox for selecting the month
         this.comboBoxMonth = new JComboBox(this.monthArr);
-        this.comboBoxMonth.setBounds(183, 123, 111, 20);
+        this.comboBoxMonth.setBounds(318, 183, 111, 20);
         add(this.comboBoxMonth);
         if (det.getInterviewDetails() != null) {
             comboBoxMonth.setSelectedItem(det.getInterviewDetails().getMonth()); // Set existing month value if available
@@ -63,7 +63,7 @@ public class SchedulePage extends JPanel {
 
         // Text field for the year of the interview
         textFieldYear = new JTextField();
-        textFieldYear.setBounds(304, 123, 56, 20);
+        textFieldYear.setBounds(439, 183, 56, 20);
         add(textFieldYear);
         textFieldYear.setColumns(10);
         if (det.getInterviewDetails() != null) {
@@ -72,11 +72,12 @@ public class SchedulePage extends JPanel {
 
         // Text field for the venue of the interview
         JLabel lblVenue = new JLabel("Venue:");
-        lblVenue.setBounds(73, 154, 46, 14);
+        lblVenue.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        lblVenue.setBounds(196, 216, 46, 17);
         add(lblVenue);
 
         textField = new JTextField();
-        textField.setBounds(117, 151, 86, 20);
+        textField.setBounds(252, 215, 188, 20);
         add(textField);
         textField.setColumns(10);
         if (det.getInterviewDetails() != null) {
@@ -91,7 +92,7 @@ public class SchedulePage extends JPanel {
                 main.showHRStaffShortlisted(); // Show the shortlisted applicants page
             }
         });
-        btnBack.setBounds(26, 243, 125, 43);
+        btnBack.setBounds(117, 318, 125, 43);
         add(btnBack);
 
         // Save button to save the scheduling details
@@ -112,16 +113,17 @@ public class SchedulePage extends JPanel {
                 main.showHRStaffShortlisted(); // Navigate back to the shortlisted applicants page
             }
         });
-        btnSave.setBounds(272, 243, 125, 43);
+        btnSave.setBounds(436, 318, 125, 43);
         add(btnSave);
 
         // Label and text fields for the time of the interview
         JLabel lblTime = new JLabel("Time:");
-        lblTime.setBounds(73, 186, 46, 14);
+        lblTime.setFont(new Font("Tahoma", Font.PLAIN, 13));
+        lblTime.setBounds(206, 244, 46, 25);
         add(lblTime);
 
         textField_1 = new JTextField();
-        textField_1.setBounds(117, 183, 39, 20);
+        textField_1.setBounds(252, 246, 39, 23);
         add(textField_1);
         textField_1.setColumns(10);
         if (det.getInterviewDetails() != null) {
@@ -129,11 +131,11 @@ public class SchedulePage extends JPanel {
         }
 
         JLabel label = new JLabel("  :");
-        label.setBounds(155, 186, 46, 14);
+        label.setBounds(289, 250, 46, 14);
         add(label);
 
         textField_2 = new JTextField();
-        textField_2.setBounds(167, 182, 46, 21);
+        textField_2.setBounds(304, 246, 46, 23);
         add(textField_2);
         textField_2.setColumns(10);
         if (det.getInterviewDetails() != null) {

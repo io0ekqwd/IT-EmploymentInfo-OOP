@@ -40,14 +40,14 @@ public class HRStaffUpdate extends JPanel {
     private Image img;
     private String image;
 
-    // Constructor to initialize the panel and set up components
+    //Initalise panel
     public HRStaffUpdate(MainFrame main, int ind, ApplicantDetails det) {
         setLayout(null);
         this.index = ind;
         this.det = det;
         this.main = main;
 
-        // Logout button
+        //Logout button
         JButton button = new JButton("Logout");
         button.setBackground(SystemColor.controlHighlight);
         button.addActionListener(new ActionListener() {
@@ -63,7 +63,7 @@ public class HRStaffUpdate extends JPanel {
         button.setBounds(570, 9, 108, 49);
         add(button);
 
-        // Back button to return to the applicant page
+        //Button to return to the applicant page
         JButton button_1 = new JButton("Back");
         button_1.setBackground(SystemColor.controlHighlight);
         button_1.addActionListener(new ActionListener() {
@@ -74,13 +74,13 @@ public class HRStaffUpdate extends JPanel {
         button_1.setBounds(10, 9, 116, 49);
         add(button_1);
 
-        // Label for the page title
+        //Label for the page title
         JLabel lblUpdateApplicantPage = new JLabel("Update Applicant Page");
         lblUpdateApplicantPage.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblUpdateApplicantPage.setBounds(285, 9, 161, 25);
         add(lblUpdateApplicantPage);
 
-        // Labels and text fields for applicant details
+        //Labels for applicant details
         JLabel label = new JLabel("Name:");
         label.setBounds(267, 70, 46, 14);
         add(label);
@@ -100,17 +100,29 @@ public class HRStaffUpdate extends JPanel {
         JLabel label_4 = new JLabel("Address:");
         label_4.setBounds(10, 228, 56, 16);
         add(label_4);
+       
+        JLabel label_6 = new JLabel("Programming skills:");
+        label_6.setBounds(10, 333, 161, 16);
+        add(label_6);
+        
+        JLabel lblIndustrySkills = new JLabel("Industry skills:");
+        lblIndustrySkills.setBounds(216, 333, 116, 16);
+        add(lblIndustrySkills);
+        
+        JLabel label_7 = new JLabel("Status:");
+        label_7.setBounds(257, 228, 56, 16);
+        add(label_7);
 
         JLabel lblAppliedPosition = new JLabel("Applied Position:");
         lblAppliedPosition.setBounds(210, 195, 116, 16);
         add(lblAppliedPosition);
 
-        // Update button to save changes
+        //Update button to save changes
         JButton btnUpdate = new JButton("Update");
         btnUpdate.setBackground(SystemColor.controlHighlight);
         btnUpdate.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Collect data from text fields and text areas
+                //Collect updated details
                 String name = textName.getText();
                 int age = Integer.valueOf(textAge.getText());
                 String email = textEmail.getText();
@@ -125,29 +137,16 @@ public class HRStaffUpdate extends JPanel {
                 	image = imageFile.getAbsolutePath();
                 else
                 	image = det.getImagePath();
-                
-      
-                // Update applicant details through the controller
+                //Update applicant profile
                 main.getController().editApplicant(index, det, name, age, email, phone, address, position, ps, is, status, exp, image);
                 main.getController().writeFile(); // Write to json file
                 main.showHRStaffApplicantPage(); // Return to the applicant page
-                
-                // Clear text fields and text areas
-                textName.setText("");
-                textAge.setText("");
-                textEmail.setText("");
-                textPhone.setText("");
-                textAddress.setText("");
-                textPosition.setText("");
-                textPSkills.setText("");
-                textISkills.setText("");
-                textStatus.setText("");
             }
         });
         btnUpdate.setBounds(464, 100, 200, 49);
         add(btnUpdate);
 
-        // Initialize and set values for text fields
+        //Initialise textfields and textareas with data for applicant details
         textName = new JTextField();
         textName.setColumns(10);
         textName.setBounds(310, 67, 116, 20);
@@ -178,26 +177,13 @@ public class HRStaffUpdate extends JPanel {
         add(textPosition);
         textPosition.setText(det.getAPosition());
 
-        JLabel label_7 = new JLabel("Status:");
-        label_7.setBounds(257, 228, 56, 16);
-        add(label_7);
 
         textStatus = new JTextField();
         textStatus.setColumns(10);
         textStatus.setBounds(310, 225, 116, 22);
         add(textStatus);
         textStatus.setText(det.getStatus());
-
-        // Labels for skills and address
-        JLabel label_6 = new JLabel("Programming skills:");
-        label_6.setBounds(10, 333, 161, 16);
-        add(label_6);
-
-        JLabel lblIndustrySkills = new JLabel("Industry skills:");
-        lblIndustrySkills.setBounds(216, 333, 116, 16);
-        add(lblIndustrySkills);
-
-        // Initialize and set values for text areas
+        
         textPSkills = new JTextArea();
         textPSkills.setBounds(10, 350, 182, 70);
         add(textPSkills);
@@ -213,18 +199,17 @@ public class HRStaffUpdate extends JPanel {
         add(textAddress);
         textAddress.setText(det.getAddress());
 
-        // Label to display applicant's image
+        //Label to display applicant image
         imageLabel = new JLabel("<Image>");
         imageLabel.setBounds(31, 69, 161, 159); // Adjust size as needed
         add(imageLabel);
 
-        // Load and display the existing image
-        //String imagePath = det.getImagePath();
+        //Load and display the existing image
         if (det.getImagePath() != null) {
             setApplicantImage(det.getImagePath());
         }
 
-        // Button to update the applicant's image
+        //Button to update the applicant image
         JButton btnAddImage = new JButton("Update Image");
         btnAddImage.setBackground(SystemColor.controlHighlight);
         btnAddImage.addActionListener(new ActionListener() {
@@ -259,7 +244,7 @@ public class HRStaffUpdate extends JPanel {
         textExp.setText(det.getExp());
     }
 
-    // Method to set the applicant's image in the label
+    //Method to set the applicant's image in the label
     private void setApplicantImage(String imagePath) {
         if (imagePath != null) {
             try {

@@ -34,6 +34,7 @@ public class Login extends JPanel{
 	private JRadioButton rdbtnManager;
 	private ImageIcon img, img2, img3;
 	
+	//Initialise panel
 	public Login(MainFrame main) {
 		setForeground(SystemColor.desktop);
 		setBackground(SystemColor.textHighlight);
@@ -41,40 +42,18 @@ public class Login extends JPanel{
 		this.setSize(700,500);
 		setLayout(null);
 		
-		/*this.rdbtnStaff = new JRadioButton("Staff");
-		rdbtnStaff.setBackground(Color.WHITE);
-		rdbtnStaff.setBounds(100, 70, 109, 23);
-		rdbtnStaff.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(rdbtnStaff.isSelected())
-					rdbtnManager.setSelected(false);
-			}
-		});
-		this.rdbtnStaff.setOpaque(false);
-		add(this.rdbtnStaff);
+		this.img = new ImageIcon("images/Gradient.png");//Set background image
+		this.img2 = new ImageIcon("images/user.png");//Username field image
+		this.img3 = new ImageIcon("images/lock.png");//Password field image
 		
-		this.rdbtnManager = new JRadioButton("Manager");
-		rdbtnManager.setBackground(Color.WHITE);
-		rdbtnManager.setBounds(272, 70, 109, 23);
-		rdbtnManager.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(rdbtnManager.isSelected())
-					rdbtnStaff.setSelected(false);
-			}
-		});
-		this.rdbtnManager.setOpaque(false);
-		add(this.rdbtnManager);*/
-		
-		this.img = new ImageIcon("images/Gradient.png");
-		this.img2 = new ImageIcon("images/user.png");
-		this.img3 = new ImageIcon("images/lock.png");
-		
+		//Panel to contain gui components
 		Panel panel = new Panel();
 		panel.setBackground(new Color(255, 255, 255, 255));
 		panel.setBounds(141, 37, 402, 382);
 		add(panel);
 		panel.setLayout(null);
 		
+		//Labels for username and password
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setBounds(103, 89, 58, 16);
 		panel.add(lblUsername);
@@ -85,11 +64,13 @@ public class Login extends JPanel{
 		panel.add(lblPassword);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
+		//Title of login page
 		JLabel lblLoginScreen = new JLabel("Login");
 		lblLoginScreen.setBounds(172, 32, 55, 25);
 		panel.add(lblLoginScreen);
 		lblLoginScreen.setFont(new Font("Franklin Gothic Book", Font.BOLD, 20));
 		
+		//Checkbox to display password
 		JCheckBox chckbxShowPassword = new JCheckBox("Show Password");
 		chckbxShowPassword.setFont(new Font("Open Sans", Font.PLAIN, 11));
 		chckbxShowPassword.setBounds(142, 225, 159, 23);
@@ -105,6 +86,7 @@ public class Login extends JPanel{
 		});
 		chckbxShowPassword.setOpaque(false);
 		
+		//Button to allow login
 		JButton btnLogin = new JButton("LOGIN");
 		btnLogin.setBounds(142, 256, 110, 32);
 		btnLogin.setForeground(Color.BLACK);
@@ -123,7 +105,7 @@ public class Login extends JPanel{
 					else if (r.equals("Manager"))
 						main.showMMainGUI();
 					else if (r.equals("Admin"))
-						System.out.println("Admin");//Placeholder
+						main.showAdminPage();
 					else
 						JOptionPane.showMessageDialog(main, "Invalid Role.");
 				}
@@ -131,9 +113,9 @@ public class Login extends JPanel{
 					JOptionPane.showMessageDialog(main, "Invalid Username and Password. Please try again.");
 			}
 		});
-		
 			btnLogin.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
+		//Textfields to fill in login info
 		textField = new JTextField();
 		textField.setBounds(103, 116, 209, 32);
 		panel.add(textField);
@@ -144,6 +126,7 @@ public class Login extends JPanel{
 		panel.add(passwordField);
 		passwordField.setEchoChar('*');
 		
+		//Load images beside the textfields
 		JLabel lblNewLabel_1 = new JLabel(this.img2);
 		lblNewLabel_1.setBounds(41, 116, 46, 32);
 		panel.add(lblNewLabel_1);
@@ -152,6 +135,7 @@ public class Login extends JPanel{
 		lblNewLabel_2.setBounds(41, 186, 46, 32);
 		panel.add(lblNewLabel_2);
 		
+		//Set background image
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(-14, -35, 797, 631);
 		add(lblNewLabel);
@@ -159,6 +143,7 @@ public class Login extends JPanel{
 		Image resizedImg = image.getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH);
 		lblNewLabel.setIcon(new ImageIcon(resizedImg));
 		
+		//Read json files to preload data
 		this.main.getController().readFile();
 	}
 }
