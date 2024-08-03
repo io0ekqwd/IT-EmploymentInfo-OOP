@@ -119,14 +119,14 @@ public class Controller {
     }
 
     //Schedule interview date for shortlisted applicants
-    public void scheInte(int index, ApplicantDetails det, int d, String m, String v, int y, int h, int min) {
+    public void scheInte(int index, ApplicantDetails det, String d, String m, String v, String y, String h, String min) {
         InterviewDetails intdet = new InterviewDetails();
-        intdet.setDay(d);
+        intdet.setDay(Integer.valueOf(d));
         intdet.setMonth(m);
-        intdet.setYear(y);
+        intdet.setYear(Integer.valueOf(y));
         intdet.setVenue(v);
-        intdet.setHour(h);
-        intdet.setMin(min);
+        intdet.setHour(Integer.valueOf(h));
+        intdet.setMin(Integer.valueOf(min));
         det.setInterviewDetails(intdet);
         this.ds.editApplicant(index, det);
     }

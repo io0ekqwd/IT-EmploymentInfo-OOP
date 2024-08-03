@@ -153,7 +153,7 @@ public class HRStaffApplicantPage extends JPanel {
         model.clear();
         for (int i = 0; i < AppDFiltered.length; i++) {
             ApplicantDetails det = AppDFiltered[i];
-            model.addElement(det.getName()); // Add applicant names to the model
+            model.addElement(det.getName()+"          "+det.getAPosition()); // Add applicant names to the model
         }
         this.appList.setModel(model); // Set the model for the JList
     } 
@@ -169,7 +169,7 @@ public class HRStaffApplicantPage extends JPanel {
 		for(int i=0;i<items.size();i++){
 			ApplicantDetails op = items.get(i);
 			String listItem = "";
-			listItem = op.getName();
+			listItem = op.getName() +"          "+op.getAPosition();
 			if(listItem.toLowerCase().contains(search.toLowerCase())){
 				filter.addElement(listItem);
 				filteredItems.add(op);

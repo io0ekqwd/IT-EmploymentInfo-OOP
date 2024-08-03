@@ -137,11 +137,35 @@ public class HRStaffUpdate extends JPanel {
                 	image = imageFile.getAbsolutePath();
                 else
                 	image = det.getImagePath();
+                //Get empty status of textfields and textareas
+                JTextField[] textFields = {textName, textAge, textEmail, textPhone, textPosition, textStatus};
+                JTextArea[] textAreas = {textPSkills, textAddress, textISkills, textExp};
+                boolean textFieldsEmpty = false;
+                boolean textAreasEmpty = false;
+                for(int i=0;i<textFields.length;i++){
+                	JTextField textField = textFields[i];
+                	if(textField.getText().isEmpty()){
+                		textFieldsEmpty = true;
+                		break;
+                	}	
+                }
+                for(int i=0;i<textAreas.length;i++){
+                	JTextArea textArea = textAreas[i];
+                	if(textArea.getText().isEmpty()){
+                		textAreasEmpty = true;
+                		break;
+                	}	
+                }
+                //Verify empty status of textfields and textareas to block or allow add
+                if(textAreasEmpty != true || textFieldsEmpty != true){
                 //Update applicant profile
                 main.getController().editApplicant(index, det, name, age, email, phone, address, position, ps, is, status, exp, image);
                 main.getController().writeFile(); // Write to json file
                 main.showHRStaffApplicantPage(); // Return to the applicant page
             }
+                else
+                	JOptionPane.showMessageDialog(main, "Please Fill in all details.");
+          }
         });
         btnUpdate.setBounds(464, 100, 200, 49);
         add(btnUpdate);
@@ -226,8 +250,8 @@ public class HRStaffUpdate extends JPanel {
                     img = ImageIO.read(imageFile);
                     Image resizedImg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH); // Resize the image
                     imageLabel.setIcon(new ImageIcon(resizedImg)); // Update the image label
-                } catch (IOException ex) {
-                    System.out.println("Error loading image: " + ex.getMessage());
+                } catch (IOException arg0) {
+                	 arg0.printStackTrace();
                 }
             }
         });
@@ -251,8 +275,8 @@ public class HRStaffUpdate extends JPanel {
                 Image img = ImageIO.read(new File(imagePath));
                 Image resizedImg = img.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
                 imageLabel.setIcon(new ImageIcon(resizedImg)); // Display the image
-            } catch (IOException ex) {
-                System.out.println("Error loading image: " + ex.getMessage());
+            } catch (IOException e) {
+            	 e.printStackTrace();
             }
         }
     }

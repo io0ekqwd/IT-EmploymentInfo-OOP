@@ -55,6 +55,7 @@ public class ManagerJob extends JPanel{
 		this.appList = new JList();
 		scrollPane.setViewportView(appList);
 		
+		//Button to logout
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setBackground(SystemColor.controlHighlight);
 		btnLogout.addActionListener(new ActionListener() {
@@ -76,6 +77,7 @@ public class ManagerJob extends JPanel{
 		lblJobOfferPage.setBounds(304, 16, 99, 14);
 		add(lblJobOfferPage);
 		
+		//Button to return to menu
 		JButton btnBack = new JButton("Back");
 		btnBack.setBackground(SystemColor.controlHighlight);
 		btnBack.addActionListener(new ActionListener() {
@@ -86,6 +88,7 @@ public class ManagerJob extends JPanel{
 		btnBack.setBounds(10, 8, 114, 33);
 		add(btnBack);
 		
+		//View profile
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.setBackground(SystemColor.controlHighlight);
 		btnViewProfile.addActionListener(new ActionListener() {
@@ -105,13 +108,14 @@ public class ManagerJob extends JPanel{
 		btnCountApplicants.setBackground(SystemColor.controlHighlight);
 		btnCountApplicants.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int cnt = main.getController().getCount();
+				int cnt = main.getController().getCount(); //Get count of new hires from datastorage
 				JOptionPane.showMessageDialog(main, "Number of new hires: " + cnt);
 			}
 		});
 		btnCountApplicants.setBounds(99, 402, 219, 56);
 		add(btnCountApplicants);
 		
+		//Undo job offer
 		JButton btnUndo = new JButton("Undo");
 		btnUndo.setBackground(SystemColor.controlHighlight);
 		btnUndo.addActionListener(new ActionListener() {
@@ -149,7 +153,7 @@ public class ManagerJob extends JPanel{
 		btnAddSalary.setBackground(SystemColor.controlHighlight);
 		btnAddSalary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int pIndex = appList.getSelectedIndex();
+				int pIndex = appList.getSelectedIndex();//Find index of applicant within list
 				if(pIndex == -1)
 					return;
 				ApplicantDetails app = AppDFiltered[pIndex];
@@ -203,6 +207,7 @@ public class ManagerJob extends JPanel{
 			        main.getController().addHPos(app, hp);
 			        main.getController().writeFile(); // Write applicant profile to json file
 			        textField_1.setText("");
+			        //Prevents search reset until salary and hired position is filled
 			        if(textField_1.getText().isEmpty()&&textField.getText().isEmpty()){
 			        	populateAppDList();
 				        searchBox.setText("");
@@ -216,6 +221,7 @@ public class ManagerJob extends JPanel{
 		btnAdd.setBounds(328, 350, 241, 50);
 		add(btnAdd);
 		
+		//Search bar
 		JLabel lblSearch = new JLabel("Search:");
 		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblSearch.setBounds(233, 228, 46, 14);
@@ -234,6 +240,7 @@ public class ManagerJob extends JPanel{
 		this.populateAppDList();
 	}
 	
+	//Method to execute search
 	private void searchFilter() {
 		String search = searchBox.getText();
 		DefaultListModel filter = new DefaultListModel();
@@ -262,6 +269,7 @@ public class ManagerJob extends JPanel{
 		}
 	}
 	
+	//Populate JList with profiles
 	private void populateAppDList() {
 		this.AppD = this.main.getController().getJAppList();
 		this.AppDFiltered = this.AppD;
@@ -282,6 +290,7 @@ public class ManagerJob extends JPanel{
 		this.appList.setModel(model);
 	} 
 	
+	//Populate JList with filtered results when still adding salary and hired position
 	private void populateSearchedAppDList() {
 		model.clear();
 		for (int i=0; i<AppDFiltered.length;i++)

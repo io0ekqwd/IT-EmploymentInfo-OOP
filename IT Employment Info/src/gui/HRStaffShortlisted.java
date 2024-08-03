@@ -189,6 +189,7 @@ public class HRStaffShortlisted extends JPanel {
 					lblNewLabel.setText("");
 					lblNewLabel_1.setText("");
 					lblNewLabel_2.setText("");
+					btnScheduleInterview.setText("Schedule Interview");
 				}
 			}
 		});
@@ -206,7 +207,7 @@ public class HRStaffShortlisted extends JPanel {
         model.clear();
         for (int i = 0; i < AppD.length; i++) {
             ApplicantDetails op = AppD[i];
-            model.addElement(op.getName());
+            model.addElement(op.getName()+"          "+op.getAPosition());
         }
         this.appList.setModel(model);
     }
@@ -216,6 +217,7 @@ public class HRStaffShortlisted extends JPanel {
 		lblNewLabel.setText("");
 		lblNewLabel_1.setText("");
 		lblNewLabel_2.setText("");
+		btnScheduleInterview.setText("Schedule Interview");
 		DefaultListModel filter = new DefaultListModel();
 		ArrayList<ApplicantDetails> items =  new ArrayList<ApplicantDetails>();
 		ArrayList<ApplicantDetails> filteredItems =  new ArrayList<ApplicantDetails>();
@@ -224,7 +226,7 @@ public class HRStaffShortlisted extends JPanel {
 		for(int i=0;i<items.size();i++){
 			ApplicantDetails op = items.get(i);
 			String listItem = "";
-			listItem = op.getName();
+			listItem = op.getName() +"          "+op.getAPosition();
 			if(listItem.toLowerCase().contains(search.toLowerCase())){
 				filter.addElement(listItem);
 				filteredItems.add(op);

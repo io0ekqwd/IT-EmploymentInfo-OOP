@@ -175,7 +175,6 @@ public class DataStorage {
     }
     //Delete user from loginInfo
 	public void deleteUser(int index, User u) {
-		this.loginInfo.remove(index);
 		this.loginInfo.remove(u);
 	}
 	//Edit user details

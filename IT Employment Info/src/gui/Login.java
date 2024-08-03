@@ -39,7 +39,6 @@ public class Login extends JPanel{
 		setForeground(SystemColor.desktop);
 		setBackground(SystemColor.textHighlight);
 		this.main = main;
-		this.setSize(700,500);
 		setLayout(null);
 		
 		this.img = new ImageIcon("images/Gradient.png");//Set background image
@@ -95,8 +94,8 @@ public class Login extends JPanel{
 		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String n = textField.getText();
-				String pwd = String.valueOf(passwordField.getPassword()) ;
+				String n = textField.getText().trim();
+				String pwd = String.valueOf(passwordField.getPassword()).trim() ;
 				boolean validity = main.getController().verifyUser(n, pwd);
 				if (validity == true) {
 					String r = main.getController().getRole();

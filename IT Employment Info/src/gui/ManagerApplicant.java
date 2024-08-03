@@ -25,12 +25,12 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class ManagerApplicant extends JPanel{
-	private ApplicantDetails[] AppD;
-	private MainFrame main;
+	private ApplicantDetails[] AppD;//Array to hold object from vector
+	private MainFrame main; //Reference to MainFrame
 	private JList appList;
 	private int index;
-	private String p="p1";
-	private ApplicantDetails[] AppDFiltered;
+	private String p="p1";//Page identifier
+	private ApplicantDetails[] AppDFiltered;//Array to 
 	private JTextField searchBox;
 	private DefaultListModel model;
 	
@@ -39,7 +39,6 @@ public class ManagerApplicant extends JPanel{
 		setLayout(null);
 		this.main = main;
 		this.model = new DefaultListModel();
-		main.setSize(700, 500);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(112, 54, 463, 217);
@@ -57,10 +56,10 @@ public class ManagerApplicant extends JPanel{
 		btnLogout.setBackground(SystemColor.controlHighlight);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to logout?","Logout", JOptionPane.YES_NO_OPTION);//Confirm whether to logout
 				if(opt==0)
 				{
-					main.showLogin();
+					main.showLogin();//Go back to login page
 				}
 				else
 					return;
@@ -73,14 +72,14 @@ public class ManagerApplicant extends JPanel{
 		btnShortlist.setBackground(SystemColor.controlHighlight);
 		btnShortlist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				index = appList.getSelectedIndex();
+				index = appList.getSelectedIndex();//Get index of applicant within list
 				if (index == -1)
-					return;
-				ApplicantDetails det = AppDFiltered[index];
-				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to shortlist?","Shortlist", JOptionPane.YES_NO_OPTION);
+					return; //Blocks null selection
+				ApplicantDetails det = AppDFiltered[index];//Find profile from filtered AppD
+				int opt = JOptionPane.showConfirmDialog(main, "Are you sure to shortlist?","Shortlist", JOptionPane.YES_NO_OPTION); //Confirm whether to shortlist or not
 				if(opt == 0)
 				{
-					main.getController().shortlistApp(det);
+					main.getController().shortlistApp(det);//Shortlist applicant
 					 main.getController().writeFile(); // Write applicant profile to json file
 					populateAppDList();//Refresh applicant list
 				}
@@ -107,7 +106,7 @@ public class ManagerApplicant extends JPanel{
 		btnViewProfile.setBackground(SystemColor.controlHighlight);
 		btnViewProfile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				main.getController().addID(p);
+				main.getController().addID(p);//Add page identifier to datastorage
 				int pIndex = appList.getSelectedIndex();
 				if (pIndex == -1)
 					return;
@@ -170,7 +169,7 @@ public class ManagerApplicant extends JPanel{
 		for (int i=0; i<AppDFiltered.length;i++)
 		{
 			ApplicantDetails det = AppDFiltered[i];
-		    model.addElement(det.getName());
+		    model.addElement(det.getName() + "          " + det.getAPosition());
 		}
 		this.appList.setModel(model);
 	} 
@@ -185,7 +184,7 @@ public class ManagerApplicant extends JPanel{
 		for(int i=0;i<items.size();i++){
 			ApplicantDetails op = items.get(i);
 			String listItem = "";
-			listItem = op.getName();
+			listItem = op.getName() +"          "+op.getAPosition();
 			if(listItem.toLowerCase().contains(search.toLowerCase())){
 				filter.addElement(listItem);
 				filteredItems.add(op);

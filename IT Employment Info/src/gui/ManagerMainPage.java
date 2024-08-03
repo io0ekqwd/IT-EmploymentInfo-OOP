@@ -48,6 +48,7 @@ public class ManagerMainPage extends JPanel {
 		btnLogout.setBounds(248, 308, 207, 60);
 		add(btnLogout);
 		
+		//Go to applicant page
 		JButton btnApplicantPage = new JButton("Applicant Page");
 		btnApplicantPage.setBackground(SystemColor.controlHighlight);
 		btnApplicantPage.addActionListener(new ActionListener() {
@@ -58,6 +59,7 @@ public class ManagerMainPage extends JPanel {
 		btnApplicantPage.setBounds(43, 56, 164, 38);
 		add(btnApplicantPage);
 		
+		//Go to shortlist page
 		JButton btnShortlistPage = new JButton("Shortlist Page");
 		btnShortlistPage.setBackground(SystemColor.controlHighlight);
 		btnShortlistPage.addActionListener(new ActionListener() {
@@ -68,6 +70,7 @@ public class ManagerMainPage extends JPanel {
 		btnShortlistPage.setBounds(275, 56, 155, 38);
 		add(btnShortlistPage);
 		
+		//Go to job page
 		JButton btnJobPage = new JButton("Job Page");
 		btnJobPage.setBackground(SystemColor.controlHighlight);
 		btnJobPage.addActionListener(new ActionListener() {
@@ -78,16 +81,19 @@ public class ManagerMainPage extends JPanel {
 		btnJobPage.setBounds(493, 56, 170, 38);
 		add(btnJobPage);
 		
+		//Set image for applicant page indication
 		this.img1 = new ImageIcon("images/icons8-profile-100.png");
 		JLabel lblNewLabel = new JLabel(this.img1);
 		lblNewLabel.setBounds(65, 116, 119, 156);
 		add(lblNewLabel);
 		
+		//Set image for shortlist page indication
 		this.img2 = new ImageIcon("images/icons8-shortlist-64.png");
 		JLabel lblNewLabel_1 = new JLabel(this.img2);
 		lblNewLabel_1.setBounds(286, 128, 135, 142);
 		add(lblNewLabel_1);
 		
+		//Set image for job page indication
 		this.img3 = new ImageIcon("images/icons8-job-100.png");
 		JLabel lblNewLabel_2 = new JLabel(this.img3);
 		lblNewLabel_2.setBounds(505, 128, 155, 142);

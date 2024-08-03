@@ -51,6 +51,7 @@ public class ManagerShortlisted extends JPanel{
 		
 		this.appList = new JList();
 		appList.addListSelectionListener(new ListSelectionListener() {
+			//Allow interview detail display depending on profile selected 
 			public void valueChanged(ListSelectionEvent e) {
 				if(e.getValueIsAdjusting()){
 					index = appList.getSelectedIndex();
@@ -106,6 +107,7 @@ public class ManagerShortlisted extends JPanel{
 		lblShortlistPage.setBounds(286, 11, 120, 25);
 		add(lblShortlistPage);
 		
+		//Give offer to successful applicants
 		JButton btnGiveOffer = new JButton("Give Offer");
 		btnGiveOffer.setBackground(SystemColor.controlHighlight);
 		btnGiveOffer.addActionListener(new ActionListener() {
@@ -128,6 +130,7 @@ public class ManagerShortlisted extends JPanel{
 		btnGiveOffer.setBounds(476, 384, 203, 62);
 		add(btnGiveOffer);
 		
+	    //View selected applicant profile
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.setBackground(SystemColor.controlHighlight);
 		btnViewProfile.addActionListener(new ActionListener() {
@@ -144,6 +147,7 @@ public class ManagerShortlisted extends JPanel{
 		btnViewProfile.setBounds(10, 384, 191, 62);
 		add(btnViewProfile);
 		
+		//Labels to display interview details
 		JLabel lblDate = new JLabel("Date:");
 		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDate.setBounds(207, 282, 52, 23);
@@ -164,6 +168,18 @@ public class ManagerShortlisted extends JPanel{
 		lblNewLabel_1.setBounds(273, 316, 195, 23);
 		add(lblNewLabel_1);
 		
+		JLabel lblTime = new JLabel("Time:");
+		lblTime.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTime.setBounds(207, 350, 46, 23);
+		add(lblTime);
+		
+		this.lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_2.setBounds(273, 349, 195, 24);
+		add(lblNewLabel_2);
+		
+		
+		//Undo shortlisting
 		JButton btnUndo = new JButton("Undo");
 		btnUndo.setBackground(SystemColor.controlHighlight);
 		btnUndo.addActionListener(new ActionListener() {
@@ -190,16 +206,7 @@ public class ManagerShortlisted extends JPanel{
 		btnUndo.setBounds(226, 384, 228, 62);
 		add(btnUndo);
 		
-		JLabel lblTime = new JLabel("Time:");
-		lblTime.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblTime.setBounds(207, 350, 46, 23);
-		add(lblTime);
-		
-		this.lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_2.setBounds(273, 349, 195, 24);
-		add(lblNewLabel_2);
-		
+		//Search bar
 		JLabel lblSearch = new JLabel("Search:");
 		lblSearch.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblSearch.setBounds(226, 253, 46, 14);
@@ -223,6 +230,7 @@ public class ManagerShortlisted extends JPanel{
 		this.populateSAppDList();
 	}
 	
+	//Populate JList with Shortlisted applicants
 	private void populateSAppDList() {
 		this.AppD = this.main.getController().getSAppList();
 		this.AppDFiltered = this.AppD;
@@ -230,12 +238,11 @@ public class ManagerShortlisted extends JPanel{
 		for (int i=0; i<AppDFiltered.length;i++)
 		{
 			ApplicantDetails op = AppDFiltered[i];
-			model.addElement(op.getName());
-			//model.addElement(op.getAge()+op.getName()+op.getStatus()+op.getAddress()+op.getEmail()+op.getPhone()+op.getPosition()+op.getSkills());
+			model.addElement(op.getName() +"          "+op.getAPosition());
 		}
 		this.appList.setModel(model);
 	}
-	
+	//Method to execute search
 	private void searchFilter() {
 		String search = searchBox.getText();
 		lblNewLabel.setText("");
@@ -249,7 +256,7 @@ public class ManagerShortlisted extends JPanel{
 		for(int i=0;i<items.size();i++){
 			ApplicantDetails op = items.get(i);
 			String listItem = "";
-			listItem = op.getName();
+			listItem = op.getName() +"          "+op.getAPosition();
 			if(listItem.toLowerCase().contains(search.toLowerCase())){
 				filter.addElement(listItem);
 				filteredItems.add(op);

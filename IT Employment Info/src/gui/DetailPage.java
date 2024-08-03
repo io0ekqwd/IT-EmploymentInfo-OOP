@@ -131,8 +131,8 @@ public class DetailPage extends JPanel {
                 Image img = ImageIO.read(new File(det.getImagePath()));
                 Image resizedImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
                 label.setIcon(new ImageIcon(resizedImg)); // Display the image
-            } catch (IOException ex) {
-                System.out.println("Error loading image: " + ex.getMessage());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 		}
 		

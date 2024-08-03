@@ -5,6 +5,8 @@ import javax.swing.JToggleButton;
 import controller.MainFrame;
 import data.ApplicantDetails;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -25,6 +27,7 @@ public class SchedulePage extends JPanel {
     private String[] monthArr = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}; // Array for month names
     private JTextField textField_1; // Text field for hour of the interview
     private JTextField textField_2; // Text field for minutes of the interview
+  
 
     // Constructor to initialize the panel and set up components
     public SchedulePage(MainFrame main, int ind, ApplicantDetails det) {
@@ -100,18 +103,30 @@ public class SchedulePage extends JPanel {
         btnSave.setBackground(SystemColor.controlHighlight);
         btnSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int d = Integer.valueOf(textFieldDay.getText()); // Get the day
+                String d = textFieldDay.getText(); // Get the day
                 String m = String.valueOf(comboBoxMonth.getSelectedItem()); // Get the selected month
-                int y = Integer.valueOf(textFieldYear.getText()); // Get the year
+                String y = textFieldYear.getText(); // Get the year
                 String v = textField.getText(); // Get the venue
-                int h = Integer.valueOf(textField_1.getText()); // Get the hour
-                int min = Integer.valueOf(textField_2.getText()); // Get the minutes
-
-                // Save scheduling details through the controller
-                main.getController().scheInte(ind, det, d, m, v, y, h, min);
-                main.getController().writeFile(); // Write applicant profile to json file
-                main.showHRStaffShortlisted(); // Navigate back to the shortlisted applicants page
-            }
+                String h = textField_1.getText(); // Get the hour
+                String min = textField_2.getText(); // Get the minutes
+                JTextField[] textFields = {textFieldDay, textFieldYear, textField, textField_1, textField_2};
+                boolean emptyStatus = false;
+                for(int i=0;i<textFields.length;i++){
+                	JTextField textField = textFields[i];
+                	if(textField.getText().isEmpty()){
+                		emptyStatus = true;
+                		break;
+                	}
+                }
+                if(emptyStatus != true){
+                	//Save interview details
+                    main.getController().scheInte(ind, det, d, m, v, y, h, min);
+                    main.getController().writeFile(); // Write applicant profile to json file
+                    main.showHRStaffShortlisted(); // Navigate back to the shortlisted applicants page
+                }
+                else
+                	JOptionPane.showMessageDialog(main, "Please fill in all interview details.");
+             }
         });
         btnSave.setBounds(436, 318, 125, 43);
         add(btnSave);

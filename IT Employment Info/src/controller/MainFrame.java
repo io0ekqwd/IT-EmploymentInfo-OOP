@@ -4,6 +4,9 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 
 import data.ApplicantDetails;
+import data.User;
+import gui.AdminAdd;
+import gui.AdminEdit;
 import gui.AdminPage;
 import gui.DetailPage;
 import gui.DetailPageJob;
@@ -139,8 +142,25 @@ public class MainFrame extends JFrame {
         this.card.show(this.getContentPane(), "Panel 14");
     }
     
+    //Show AdminAdd panel
+    public void showAdminAdd() {
+    	AdminAdd p15 = new AdminAdd(this);
+        this.add(p15, "Panel 15");
+        this.card.show(this.getContentPane(), "Panel 15");
+    }
+    
+    //Show AdminEdit panel
+    public void showAdminEdit(int ind, User u) {
+    	AdminEdit p16 = new AdminEdit(this, ind, u);
+        this.add(p16, "Panel 16");
+        this.card.show(this.getContentPane(), "Panel 16");
+	}
     //Run the application
     public static void main(String[] args) {
         MainFrame ex = new MainFrame();
     }
+
+	
+
+
 }

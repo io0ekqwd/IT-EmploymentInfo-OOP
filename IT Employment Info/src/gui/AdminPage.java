@@ -12,12 +12,16 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AdminPage extends JPanel{
 	private JTable table;
@@ -51,28 +55,30 @@ public class AdminPage extends JPanel{
 		btnAddUser.setBackground(SystemColor.controlHighlight);
 		btnAddUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AdminAdd addWindow = new AdminAdd(main);
+				main.showAdminAdd();
 			}
 		});
 		btnAddUser.setBounds(122, 366, 109, 35);
 		add(btnAddUser);
 		
+		//Delete User
 		JButton btnDeleteUser = new JButton("Delete");
 		btnDeleteUser.setBackground(SystemColor.controlHighlight);
 		btnDeleteUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				index = table.getSelectedRow();
+				index = table.getSelectedRow();//Get the row index
 				if(index == -1)
 					return;
-				model.removeRow(index);
-				User u = users[index];
-				main.getController().deleteUser(index, u);
-				main.getController().writeFile();
+				model.removeRow(index);//Remove row from table
+				User u = users[index];//Find user in array
+				main.getController().deleteUser(index, u);//Delete User
+				main.getController().writeFile();//Write changes to json
 			}
 		});
 		btnDeleteUser.setBounds(456, 366, 109, 35);
 		add(btnDeleteUser);
 		
+		//Edit user
 		JButton btnEdit = new JButton("Manage");
 		btnEdit.setBackground(SystemColor.controlHighlight);
 		btnEdit.addActionListener(new ActionListener() {
@@ -81,7 +87,7 @@ public class AdminPage extends JPanel{
 				if(index == -1)
 					return;
 				User u = users[index];
-				AdminEdit editWindow = new AdminEdit(main, index, u);
+				main.showAdminEdit(index, u);
 			}
 		});
 		btnEdit.setBounds(287, 366, 109, 35);
@@ -105,11 +111,12 @@ public class AdminPage extends JPanel{
 		this.populateUserList();
 	}
 	
+	//Populate list with user profiles
 	public void populateUserList(){
 		this.users = main.getController().getUserList();
 		for(int i=0;i<users.length;i++){
 			User op = users[i];
-			model.insertRow(table.getRowCount(), new Object[]{op.getUsername(), op.getRole()});
+			model.addRow(new Object[]{op.getUsername(), op.getRole()});
 		}
 		this.table.setModel(model);
 	}

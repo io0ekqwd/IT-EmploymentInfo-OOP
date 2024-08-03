@@ -1,10 +1,13 @@
 package gui;
 
-import javax.swing.JFrame;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.MainFrame;
+import data.ApplicantDetails;
 import data.User;
 
 import javax.swing.JComboBox;
@@ -13,88 +16,109 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import java.awt.Panel;
+import java.awt.Color;
 
 
-public class AdminEdit {
-	JFrame frame = new JFrame();
+public class AdminEdit extends JPanel {
 	private JTextField textUser;
 	private JTextField textPwd;
 	private JComboBox cbRole;
 	private String[] role = {"Staff", "Manager"};
 	private MainFrame main;
-	private User user;
 	private int index;
+	private User user;
 	
 	public AdminEdit(MainFrame main, int index, User user){
 		this.main = main;
-		this.index = index;
 		this.user = user;
-		frame.getContentPane().setLayout(null);
-		frame.setVisible(true);
-		frame.setSize(450,300);
-		frame.setTitle("Add User");
-		frame.setLocationRelativeTo(main);
-		
-		
-		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(132, 60, 73, 24);
-		frame.getContentPane().add(lblUsername);
-		
-		textUser = new JTextField();
-		textUser.setBounds(200, 62, 86, 20);
-		frame.getContentPane().add(textUser);
-		textUser.setColumns(10);
-		textUser.setText(user.getUsername());
-		
-		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(134, 91, 71, 25);
-		frame.getContentPane().add(lblPassword);
-		
-		textPwd = new JTextField();
-		textPwd.setBounds(200, 93, 86, 20);
-		frame.getContentPane().add(textPwd);
-		textPwd.setColumns(10);
-		textPwd.setText(user.getPassword());
-		
-		JLabel lblRole = new JLabel("Role:");
-		lblRole.setBounds(160, 127, 46, 14);
-		frame.getContentPane().add(lblRole);
-		
-		this.cbRole = new JComboBox(role);
-		cbRole.setBounds(200, 124, 86, 20);
-		frame.getContentPane().add(cbRole);
-		cbRole.setSelectedItem(user.getRole());
-		
-		JButton btnAdd = new JButton("Edit");
-		btnAdd.setBackground(SystemColor.controlHighlight);
-		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String username = textUser.getText();
-				String pwd = textPwd.getText();
-				String role = String.valueOf(cbRole.getSelectedItem());
-				main.getController().editUser(index, user, username, pwd, role);
-				main.getController().writeFile();
-				frame.dispose();
-				main.showAdminPage();
-			}
-		});
-		btnAdd.setBounds(101, 164, 89, 23);
-		frame.getContentPane().add(btnAdd);
-		
-		JButton btnBack = new JButton("Back");
-		btnBack.setBackground(SystemColor.controlHighlight);
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-			}
-		});
-		btnBack.setBounds(237, 164, 89, 23);
-		frame.getContentPane().add(btnBack);
-		
-		JLabel lblAddUser = new JLabel("Edit User");
-		lblAddUser.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblAddUser.setBounds(186, 11, 86, 24);
-		frame.getContentPane().add(lblAddUser);
+	    this.index = index;
+		setLayout(null);
+			
+			JLabel lblAddUser = new JLabel("Edit User");
+			lblAddUser.setBounds(301, 45, 121, 48);
+			add(lblAddUser);
+			lblAddUser.setFont(new Font("Tahoma", Font.BOLD, 18));
+			
+				JLabel lblUsername = new JLabel("Username:");
+				lblUsername.setBounds(229, 143, 76, 30);
+				add(lblUsername);
+				lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				
+				textUser = new JTextField();
+				textUser.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				textUser.setBounds(315, 144, 121, 30);
+				add(textUser);
+				textUser.setBackground(Color.WHITE);
+				textUser.setColumns(10);
+				textUser.setText(user.getUsername());
+				
+				textPwd = new JTextField();
+				textPwd.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				textPwd.setBounds(315, 195, 121, 30);
+				add(textPwd);
+				textPwd.setColumns(10);
+				textPwd.setText(user.getPassword());
+				
+				JLabel lblPassword = new JLabel("Password:");
+				lblPassword.setBounds(229, 194, 76, 30);
+				add(lblPassword);
+				lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				
+				JButton btnEdit = new JButton("Edit");
+				btnEdit.setFont(new Font("Tahoma", Font.PLAIN, 12));
+				btnEdit.setBounds(179, 321, 81, 37);
+				add(btnEdit);
+				btnEdit.setBackground(SystemColor.controlHighlight);
+				
+				this.cbRole = new JComboBox(this.role);
+				cbRole.setBackground(Color.WHITE);
+				cbRole.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				cbRole.setBounds(313, 250, 86, 30);
+				add(cbRole);
+				cbRole.setSelectedItem(user.getRole());
+				
+				JLabel lblRole = new JLabel("Role:");
+				lblRole.setBounds(255, 250, 49, 30);
+				add(lblRole);
+				lblRole.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				
+				JButton btnBack = new JButton("Back");
+				btnBack.setFont(new Font("Tahoma", Font.PLAIN, 12));
+				btnBack.setBounds(425, 321, 81, 37);
+				add(btnBack);
+				btnBack.setBackground(SystemColor.controlHighlight);
+				btnBack.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						main.showAdminPage();
+					}
+				});
+				btnEdit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						String username = textUser.getText();
+						String pwd = textPwd.getText();
+						String role = String.valueOf(cbRole.getSelectedItem());
+						//Loops through array to check status of each textfield
+						JTextField[] textFields = {textUser, textPwd};
+						boolean emptyStatus = false;
+						for(int i=0;i<textFields.length;i++){
+							JTextField textField = textFields[i];
+							if(textField.getText().isEmpty()){
+								emptyStatus = true;
+								break;
+							}
+						}
+						//Blocks saving of incomplete details
+						if(emptyStatus!=true){
+						main.getController().editUser(index, user, username, pwd, role);
+						main.getController().writeFile();
+						main.showAdminPage();
+					}
+						else
+							JOptionPane.showMessageDialog(main, "Please fill in all user details.");
+					}
+					
+				});
 		
 	}
 }

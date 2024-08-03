@@ -45,6 +45,7 @@ public class HRStaffAdd extends JPanel {
     private ImageIcon imgI; // Image icon for the applicant's photo
     private Image img;
     private String imagePath; // Path to the applicant's photo
+     
 
     //Initialise panel
     public HRStaffAdd(MainFrame main) {
@@ -69,7 +70,7 @@ public class HRStaffAdd extends JPanel {
                 String exp = textExp.getText();
                 //Get empty status of textfields and textareas
                 JTextField[] textFields = {textName, textAge, textEmail, textPhone, textPosition, textStatus};
-                JTextArea[] textAreas = {textPS, textAddress, textPS, textExp};
+                JTextArea[] textAreas = {textPS, textAddress, textIS, textExp};
                 boolean textFieldsEmpty = false;
                 boolean textAreasEmpty = false;
                 for(int i=0;i<textFields.length;i++){
@@ -237,7 +238,6 @@ public class HRStaffAdd extends JPanel {
                 chooser.setVisible(true);
                 if (chooser.getSelectedFile() == null)
                     return;
-                //File file = new File(chooser.getSelectedFile().toString());
                 try {
                 	BufferedReader in = new BufferedReader(new FileReader(chooser.getSelectedFile()));
                 	String line;
@@ -265,18 +265,13 @@ public class HRStaffAdd extends JPanel {
 		                        textPosition.setText(line.replace("Position:", "").trim());
 		                     else if (line.contains("Status")) 
 		                        textStatus.setText(line.replace("Status:", "").trim());
-		                     else if (line.contains("Address")||line.contains("."))
-		                     {
-		                    	 if(line.contains("Address"))
-		                    	     textAddress.append(line.replace("Address:", "").trim()+"\n");
-		                    	 else if(line.contains("."))
-		                    		 textAddress.append(line.replace(".", "").trim()+"\n");
-		                     }
+		                     else if (line.contains("Address"))
+		                        textAddress.append(line.replace("Address:", "").trim()+"\n");
 		                     else if (line.contains("Programming")||line.contains(",")) 
 		                     {
 		                    	 if(line.contains("Programming"))
 		                    		 textPS.append(line.replace("Programming Skills:", "").trim()+"\n");
-		                    	 else if(line.contains(","))
+		                    	 else
 		                    		 textPS.append(line.replace(",", "").trim()+"\n");
 		                     }
 			                    //textPS.append(line.replace("Programming Skills:", "").trim()+"\n");
@@ -284,7 +279,7 @@ public class HRStaffAdd extends JPanel {
 		                     {
 		                    	 if(line.contains("Indust"))
 		                    		 textIS.append(line.replace("Industrial Skills:", "").trim()+"\n");
-		                    	 else if(line.contains("]"))
+		                    	 else
 		                    		 textIS.append(line.replace("]", "").trim()+"\n");
 		                     }
 			                    //textIS.append(line.replace("Industrial Skills", "").trim()+"\n");
@@ -292,7 +287,7 @@ public class HRStaffAdd extends JPanel {
 		                     {
 		                    	 if(line.contains("Experiences"))
 		                    		 textExp.append(line.replace("Experiences:", "").trim()+"\n");
-		                    	 else if(line.contains(";"))
+		                    	 else
 		                    		 textExp.append(line.replace(";", "").trim()+"\n");
 		                     }
 			                    //textExp.append(line.replace("Experiences:", "").trim()+"\n");
@@ -322,6 +317,7 @@ public class HRStaffAdd extends JPanel {
                 chooser.setVisible(true);
                 if (chooser.getSelectedFile() == null)
                     return;
+                //Fix???
                 imagePath = chooser.getSelectedFile().getAbsolutePath(); //Get image path on PC
                 imgI = new ImageIcon(imagePath);
                 img = imgI.getImage();

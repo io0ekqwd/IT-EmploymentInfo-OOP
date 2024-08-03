@@ -14,8 +14,6 @@
   "job" : false,
   "exp" : "Microsoft 5 years",
   "imagePath" : "C:\\Users\\User\\Downloads\\dsadas.png",
-  "aposition" : "Software Engineer",
-  "hposition" : "CFO",
   "interviewDetails" : {
     "venue" : "Company Main Office",
     "day" : 1,
@@ -23,7 +21,9 @@
     "year" : 2024,
     "hour" : 18,
     "min" : 10
-  }
+  },
+  "hposition" : "CFO",
+  "aposition" : "Software Engineer"
 }, {
   "name" : "Jane Smith",
   "age" : 28,
@@ -40,8 +40,6 @@
   "job" : false,
   "exp" : " No prior experience\nddddd",
   "imagePath" : null,
-  "aposition" : "Product Manager",
-  "hposition" : "CEO",
   "interviewDetails" : {
     "venue" : "Office",
     "day" : 2,
@@ -49,7 +47,9 @@
     "year" : 2024,
     "hour" : 20,
     "min" : 10
-  }
+  },
+  "hposition" : "CEO",
+  "aposition" : "Product Manager"
 }, {
   "name" : "Emily Johnson",
   "age" : 35,
@@ -63,11 +63,9 @@
   },
   "salary" : 120000,
   "shortlist" : true,
-  "job" : false,
+  "job" : true,
   "exp" : "Assistant at ... - 5 years\nLead at 5 t",
   "imagePath" : null,
-  "aposition" : "Data Scientist",
-  "hposition" : "Lead Data Scientist",
   "interviewDetails" : {
     "venue" : "Company HQ",
     "day" : 3,
@@ -75,31 +73,111 @@
     "year" : 2024,
     "hour" : 10,
     "min" : 30
-  }
-}, {
-  "name" : "dog",
-  "age" : 22,
-  "email" : "ddd",
-  "phone" : "823232",
-  "address" : "21 Street\nHomie\n",
-  "status" : "fsfa",
-  "skills" : {
-    "pskills" : "Java\nC++\nPython\n",
-    "iskills" : "Leadership\nTeamwork\n"
   },
-  "salary" : 0,
+  "hposition" : "Lead Data Scientist",
+  "aposition" : "Data Scientist"
+}, {
+  "name" : "Michael Brown",
+  "age" : 32,
+  "email" : "michaelbrown@example.com",
+  "phone" : "321-654-9870",
+  "address" : "123 Maple St, Anothertown, USA",
+  "status" : "Active",
+  "skills" : {
+    "pskills" : "JavaScript\nReact\nNode.js",
+    "iskills" : "Problem-Solving\nCommunication"
+  },
+  "salary" : 250000,
+  "shortlist" : true,
+  "job" : true,
+  "exp" : "Google 4 years\nAmazon 2 years",
+  "imagePath" : "C:\\Users\\User\\Downloads\\michael.png",
+  "interviewDetails" : {
+    "venue" : "Company Branch Office",
+    "day" : 5,
+    "month" : "April",
+    "year" : 2024,
+    "hour" : 14,
+    "min" : 45
+  },
+  "hposition" : "Tech Lead",
+  "aposition" : "Full Stack Developer"
+}, {
+  "name" : "Sarah Connor",
+  "age" : 29,
+  "email" : "sarahconnor@example.com",
+  "phone" : "654-789-0123",
+  "address" : "456 Birch St, Somecity, USA",
+  "status" : "Inactive",
+  "skills" : {
+    "pskills" : "SQL\nPython\nR",
+    "iskills" : "Analytical Thinking\nAttention to Detail"
+  },
+  "salary" : 280000,
+  "shortlist" : false,
+  "job" : false,
+  "exp" : "Facebook 3 years\nApple 2 years",
+  "imagePath" : "C:\\Users\\User\\Downloads\\sarah.png",
+  "interviewDetails" : {
+    "venue" : "Headquarters",
+    "day" : 12,
+    "month" : "August",
+    "year" : 2024,
+    "hour" : 9,
+    "min" : 30
+  },
+  "hposition" : "Senior Data Analyst",
+  "aposition" : "Data Analyst"
+}, {
+  "name" : "David Wilson",
+  "age" : 45,
+  "email" : "davidwilson@example.com",
+  "phone" : "789-012-3456",
+  "address" : "789 Pine St, Anycity, USA",
+  "status" : "Active",
+  "skills" : {
+    "pskills" : "AWS\nDocker\nKubernetes",
+    "iskills" : "Leadership\nStrategic Planning"
+  },
+  "salary" : 500000,
   "shortlist" : true,
   "job" : false,
-  "exp" : "5 year experiences in office\n7 Year experience in creation\n",
-  "imagePath" : null,
-  "aposition" : "eee",
-  "hposition" : null,
+  "exp" : "IBM 10 years\nOracle 5 years",
+  "imagePath" : "C:\\Users\\User\\Downloads\\david.png",
   "interviewDetails" : {
-    "venue" : "Health Manager Office",
-    "day" : 24,
-    "month" : "June",
+    "venue" : "Remote",
+    "day" : 18,
+    "month" : "March",
     "year" : 2024,
-    "hour" : 15,
-    "min" : 30
-  }
+    "hour" : 11,
+    "min" : 0
+  },
+  "hposition" : "VP of Engineering",
+  "aposition" : "DevOps Engineer"
+}, {
+  "name" : "Laura Davis",
+  "age" : 27,
+  "email" : "lauradavis@example.com",
+  "phone" : "012-345-6789",
+  "address" : "123 Cedar St, Newtown, USA",
+  "status" : "Inactive",
+  "skills" : {
+    "pskills" : "Ruby on Rails\nPostgreSQL\nHTML/CSS",
+    "iskills" : "Creativity\nCollaboration"
+  },
+  "salary" : 220000,
+  "shortlist" : false,
+  "job" : false,
+  "exp" : "Shopify 3 years\nSlack 2 years",
+  "imagePath" : "C:\\Users\\User\\Downloads\\laura.png",
+  "interviewDetails" : {
+    "venue" : "Company Campus",
+    "day" : 25,
+    "month" : "May",
+    "year" : 2024,
+    "hour" : 16,
+    "min" : 15
+  },
+  "hposition" : "Principal Engineer",
+  "aposition" : "Backend Developer"
 } ]

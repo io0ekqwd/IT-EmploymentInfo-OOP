@@ -186,7 +186,7 @@ public class DetailPageJob extends JPanel {
 		lblHPos.setText(det.getHPosition());
 		
 		JLabel lblSal = new JLabel("New label");
-		lblSal.setBounds(563, 165, 46, 14);
+		lblSal.setBounds(563, 165, 90, 14);
 		add(lblSal);
 		lblSal.setText("$"+ String.valueOf(det.getSalary()));
 		
