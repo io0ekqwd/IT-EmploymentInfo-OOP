@@ -27,6 +27,10 @@ public class SchedulePage extends JPanel {
     private String[] monthArr = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}; // Array for month names
     private JTextField textField_1; // Text field for hour of the interview
     private JTextField textField_2; // Text field for minutes of the interview
+	private int y;
+	private int d;
+	private int h;
+	private int min;
   
 
     // Constructor to initialize the panel and set up components
@@ -103,12 +107,18 @@ public class SchedulePage extends JPanel {
         btnSave.setBackground(SystemColor.controlHighlight);
         btnSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String d = textFieldDay.getText(); // Get the day
+            	try{
+            	    d = Integer.valueOf(textFieldDay.getText()); // Get the day
+            	    y = Integer.valueOf(textFieldYear.getText()); // Get the year
+            	    h = Integer.valueOf(textField_1.getText()); // Get the hour
+                    min = Integer.valueOf(textField_2.getText()); // Get the minutes
+                }
+                catch(NumberFormatException e1){ //Catch instance of NumberFormatException to block non integer inputs
+                     JOptionPane.showMessageDialog(main, "Please enter valid interview details.");//Error message popup
+                     return;
+                }
                 String m = String.valueOf(comboBoxMonth.getSelectedItem()); // Get the selected month
-                String y = textFieldYear.getText(); // Get the year
                 String v = textField.getText(); // Get the venue
-                String h = textField_1.getText(); // Get the hour
-                String min = textField_2.getText(); // Get the minutes
                 JTextField[] textFields = {textFieldDay, textFieldYear, textField, textField_1, textField_2};
                 boolean emptyStatus = false;
                 for(int i=0;i<textFields.length;i++){

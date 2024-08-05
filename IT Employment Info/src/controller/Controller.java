@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.Image;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 
@@ -26,14 +27,14 @@ public class Controller {
     }
 
     //Add applicant into datastorage
-    public void addApplicant(String n, String a, String em, String ph, String ad, String pos, String ps, String is, String status,
+    public void addApplicant(String n, int a, String em, String ph, String ad, String pos, String ps, String is, String status,
     		String exp, String img) { 
         Skills skill = new Skills();
         skill.setPskills(ps);
         skill.setIskills(is);
         ApplicantDetails z = new ApplicantDetails();
         z.setName(n);
-        z.setAge(Integer.valueOf(a));
+        z.setAge(a);
         z.setEmail(em);
         z.setPhone(ph);
         z.setAddress(ad);
@@ -119,14 +120,14 @@ public class Controller {
     }
 
     //Schedule interview date for shortlisted applicants
-    public void scheInte(int index, ApplicantDetails det, String d, String m, String v, String y, String h, String min) {
+    public void scheInte(int index, ApplicantDetails det, int d, String m, String v, int y, int h, int min) {
         InterviewDetails intdet = new InterviewDetails();
-        intdet.setDay(Integer.valueOf(d));
+        intdet.setDay(d);
         intdet.setMonth(m);
-        intdet.setYear(Integer.valueOf(y));
+        intdet.setYear(y);
         intdet.setVenue(v);
-        intdet.setHour(Integer.valueOf(h));
-        intdet.setMin(Integer.valueOf(min));
+        intdet.setHour(h);
+        intdet.setMin(min);
         det.setInterviewDetails(intdet);
         this.ds.editApplicant(index, det);
     }
@@ -148,6 +149,8 @@ public class Controller {
 
     //Delete profile from datastorage
     public void deleteProf(ApplicantDetails det) {
+    	File toDelete = new File(det.getImagePath());//Find image file
+    	toDelete.delete();//Delete image file
         this.ds.deleteProf(det);
     }
 

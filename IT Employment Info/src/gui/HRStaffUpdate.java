@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import controller.MainFrame;
 import data.ApplicantDetails;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.Color;
@@ -17,28 +18,30 @@ import java.awt.SystemColor;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class HRStaffUpdate extends JPanel {
     private MainFrame main; // Reference to the main frame
-    private JTextField textName; // Text field for applicant's name
-    private JTextField textAge; // Text field for applicant's age
-    private JTextField textPhone; // Text field for applicant's phone number
-    private JTextField textEmail; // Text field for applicant's email
+    private JTextField textName; // Text field for name
+    private JTextField textAge; // Text field for age
+    private JTextField textPhone; // Text field for phone number
+    private JTextField textEmail; // Text field for email
     private JTextField textPosition; // Text field for applied position
     private JTextField textStatus; // Text field for applicant's status
     private JTextArea textPSkills; // Text area for programming skills
-    private JTextArea textISkills; // Text area for industry skills
-    private JTextArea textAddress; // Text area for applicant's address
+    private JTextArea textISkills; // Text area for industrial skills
+    private JTextArea textAddress; // Text area for address
     private int index; // Index of the applicant being updated
-    private JTextArea textExp;
+    private JTextArea textExp;//Text area for experience
     private ApplicantDetails det; // Applicant details to be updated
     private JLabel imageLabel; // Label to display the applicant's image
-    private File imageFile; // File object for the new image
+    private String imagePath; // File object for the new image
     private Image img;
-    private String image;
+	private int age;
 
     //Initalise panel
     public HRStaffUpdate(MainFrame main, int ind, ApplicantDetails det) {
@@ -124,7 +127,13 @@ public class HRStaffUpdate extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 //Collect updated details
                 String name = textName.getText();
-                int age = Integer.valueOf(textAge.getText());
+                try{
+                    age = Integer.valueOf(textAge.getText());
+                }
+                catch(NumberFormatException e1){ //Catch instance of NumberFormatException to block non integer inputs
+                    JOptionPane.showMessageDialog(main, "Please enter a valid age.");//Error message popup
+                    return;
+                }
                 String email = textEmail.getText();
                 String phone = textPhone.getText();
                 String address = textAddress.getText();
@@ -133,10 +142,7 @@ public class HRStaffUpdate extends JPanel {
                 String is = textISkills.getText();
                 String status = textStatus.getText();
                 String exp = textExp.getText();
-                if(imageFile != null)
-                	image = imageFile.getAbsolutePath();
-                else
-                	image = det.getImagePath();
+
                 //Get empty status of textfields and textareas
                 JTextField[] textFields = {textName, textAge, textEmail, textPhone, textPosition, textStatus};
                 JTextArea[] textAreas = {textPSkills, textAddress, textISkills, textExp};
@@ -159,7 +165,7 @@ public class HRStaffUpdate extends JPanel {
                 //Verify empty status of textfields and textareas to block or allow add
                 if(textAreasEmpty != true || textFieldsEmpty != true){
                 //Update applicant profile
-                main.getController().editApplicant(index, det, name, age, email, phone, address, position, ps, is, status, exp, image);
+                main.getController().editApplicant(index, det, name, age, email, phone, address, position, ps, is, status, exp, imagePath);
                 main.getController().writeFile(); // Write to json file
                 main.showHRStaffApplicantPage(); // Return to the applicant page
             }
@@ -225,7 +231,7 @@ public class HRStaffUpdate extends JPanel {
 
         //Label to display applicant image
         imageLabel = new JLabel("<Image>");
-        imageLabel.setBounds(31, 69, 161, 159); // Adjust size as needed
+        imageLabel.setBounds(31, 69, 161, 159); 
         add(imageLabel);
 
         //Load and display the existing image
@@ -245,13 +251,28 @@ public class HRStaffUpdate extends JPanel {
                 chooser.setVisible(true);
                 if (chooser.getSelectedFile() == null)
                     return;
-                imageFile = chooser.getSelectedFile(); // Save the selected image file
+                imagePath = chooser.getSelectedFile().getAbsolutePath(); // Save the selected image file
+                File open = new File(imagePath);//Open image file
+                BufferedImage image = null;
                 try {
-                    img = ImageIO.read(imageFile);
+				    image = ImageIO.read(open);//Read image file
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+                if(image!=null){
+                	File output = new File(det.getImagePath());//Find image file
+                	try {
+                	    ImageIO.write(image, "png", output);//Override image file
+                	}	
+					catch (IOException e1) {
+						e1.printStackTrace();
+					}
+                	imagePath = output.getAbsolutePath();
+                	ImageIcon imgI = new ImageIcon(imagePath);
+                	img = imgI.getImage();
                     Image resizedImg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH); // Resize the image
-                    imageLabel.setIcon(new ImageIcon(resizedImg)); // Update the image label
-                } catch (IOException arg0) {
-                	 arg0.printStackTrace();
+                    imgI = new ImageIcon(resizedImg);
+                    imageLabel.setIcon(imgI);
                 }
             }
         });
@@ -273,7 +294,7 @@ public class HRStaffUpdate extends JPanel {
         if (imagePath != null) {
             try {
                 Image img = ImageIO.read(new File(imagePath));
-                Image resizedImg = img.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                Image resizedImg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
                 imageLabel.setIcon(new ImageIcon(resizedImg)); // Display the image
             } catch (IOException e) {
             	 e.printStackTrace();

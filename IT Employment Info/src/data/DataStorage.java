@@ -181,6 +181,4 @@ public class DataStorage {
 	public void editUser(int index, User user) {
 		this.loginInfo.set(index, user);
 	}
-
-	
 }

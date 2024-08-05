@@ -19,12 +19,14 @@ import controller.MainFrame;
 
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.UUID;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.Color;
@@ -45,6 +47,7 @@ public class HRStaffAdd extends JPanel {
     private ImageIcon imgI; // Image icon for the applicant's photo
     private Image img;
     private String imagePath; // Path to the applicant's photo
+    private int age;
      
 
     //Initialise panel
@@ -59,7 +62,13 @@ public class HRStaffAdd extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 //Collect details from textfields and textareas
                 String name = textName.getText();
-                String age = textAge.getText();
+                try{
+                   age = Integer.valueOf(textAge.getText());
+                }
+                catch(NumberFormatException e1){ //Catch instance of NumberFormatException to block non integer inputs
+                	JOptionPane.showMessageDialog(main, "Please enter a valid age.");//Error message popup
+                	return;
+                }
                 String email = textEmail.getText();
                 String phone = textPhone.getText();
                 String address = textAddress.getText();
@@ -87,15 +96,35 @@ public class HRStaffAdd extends JPanel {
                 		break;
                 	}	
                 }
+     
                 //Verify empty status of textfields and textareas to block or allow add
                 if(textAreasEmpty != true || textFieldsEmpty != true){
-                	// Call controller to add applicant
+                // Call controller to add applicant
+                	File open = new File(imagePath);//Open image file
+                    BufferedImage image = null;
+                    try {
+    					image = ImageIO.read(open);//Read image file
+    				} catch (IOException e1) {
+    					e1.printStackTrace();
+    				}
+                    if(image!=null){
+                    	String path = "profileimages/";//Set save location of image file
+                    	String imageid = UUID.randomUUID().toString();//Generate unique id for image
+                    	File output = new File(path, "image"+imageid+".png");//Set output and name of image
+                    	try {
+                    	    ImageIO.write(image, "png", output);//Create image file in save location
+                    	    imagePath = output.getAbsolutePath();
+                    	}	
+    					catch (IOException e1) {
+    						e1.printStackTrace();
+    					}
+                    }
                     main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status, exp, imagePath);
                     main.getController().writeFile(); // Write applicant profile to json file
                     main.showHRStaffApplicantPage(); // Show applicant page after adding
                 }
                 else
-                	JOptionPane.showMessageDialog(main, "Please Fill in all details.");
+                    JOptionPane.showMessageDialog(main, "Please Fill in all details.");
             }
         });
         btnAdd.setBounds(464, 113, 86, 49);
@@ -267,30 +296,12 @@ public class HRStaffAdd extends JPanel {
 		                        textStatus.setText(line.replace("Status:", "").trim());
 		                     else if (line.contains("Address"))
 		                        textAddress.append(line.replace("Address:", "").trim()+"\n");
-		                     else if (line.contains("Programming")||line.contains(",")) 
-		                     {
-		                    	 if(line.contains("Programming"))
-		                    		 textPS.append(line.replace("Programming Skills:", "").trim()+"\n");
-		                    	 else
-		                    		 textPS.append(line.replace(",", "").trim()+"\n");
-		                     }
-			                    //textPS.append(line.replace("Programming Skills:", "").trim()+"\n");
-		                     else if (line.contains("Indust")||line.contains("]"))
-		                     {
-		                    	 if(line.contains("Indust"))
-		                    		 textIS.append(line.replace("Industrial Skills:", "").trim()+"\n");
-		                    	 else
-		                    		 textIS.append(line.replace("]", "").trim()+"\n");
-		                     }
-			                    //textIS.append(line.replace("Industrial Skills", "").trim()+"\n");
-		                     else if (line.contains("Experiences")||line.contains(";"))
-		                     {
-		                    	 if(line.contains("Experiences"))
-		                    		 textExp.append(line.replace("Experiences:", "").trim()+"\n");
-		                    	 else
-		                    		 textExp.append(line.replace(";", "").trim()+"\n");
-		                     }
-			                    //textExp.append(line.replace("Experiences:", "").trim()+"\n");
+		                     else if (line.contains("Programming")) 
+			                    textPS.append(line.replace("Programming Skills:", "").trim()+"\n");
+		                     else if (line.contains("Indust"))
+			                    textIS.append(line.replace("Industrial Skills", "").trim()+"\n");
+		                     else if (line.contains("Experiences"))
+			                    textExp.append(line.replace("Experiences:", "").trim()+"\n");
 						}	
 					}
 					 catch (IOException e) {
@@ -316,13 +327,12 @@ public class HRStaffAdd extends JPanel {
                 chooser.showOpenDialog(chooser);
                 chooser.setVisible(true);
                 if (chooser.getSelectedFile() == null)
-                    return;
-                //Fix???
+                    return; 
                 imagePath = chooser.getSelectedFile().getAbsolutePath(); //Get image path on PC
+                //Set the image 
                 imgI = new ImageIcon(imagePath);
                 img = imgI.getImage();
-                Image resizedImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
-                // Resize the image
+                Image resizedImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH); // Resize the image
                 imgI = new ImageIcon(resizedImg);
                 label.setIcon(imgI);
             }

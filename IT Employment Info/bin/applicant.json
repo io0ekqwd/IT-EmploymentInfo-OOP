@@ -180,4 +180,23 @@
   },
   "hposition" : "Principal Engineer",
   "aposition" : "Backend Developer"
+}, {
+  "name" : "dog",
+  "age" : 22,
+  "email" : "ddd",
+  "phone" : "823232",
+  "address" : "21 Street ddddddd\n",
+  "status" : "fsfa",
+  "skills" : {
+    "pskills" : "Java\n",
+    "iskills" : ": Leadership\n"
+  },
+  "salary" : 0,
+  "shortlist" : false,
+  "job" : false,
+  "exp" : "5 year experiences in office\n",
+  "imagePath" : "D:\\GitRepo\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image46eb350a-536d-4d4e-80bf-b82f11c7edaa.png",
+  "interviewDetails" : null,
+  "hposition" : null,
+  "aposition" : "eee"
 } ]

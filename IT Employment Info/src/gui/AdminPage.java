@@ -3,11 +3,13 @@ package gui;
 import javax.swing.JPanel;
 
 import controller.MainFrame;
+import data.ApplicantDetails;
 import data.User;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import java.awt.Component;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -16,12 +18,14 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.JComboBox;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class AdminPage extends JPanel{
 	private JTable table;
@@ -29,6 +33,7 @@ public class AdminPage extends JPanel{
 	private MainFrame main;
 	private User[] users;
 	private int index;
+
 
 	
 	public AdminPage(MainFrame main){
@@ -107,7 +112,6 @@ public class AdminPage extends JPanel{
 		});
 		btnLogout.setBounds(583, 19, 89, 40);
 		add(btnLogout);
-		
 		this.populateUserList();
 	}
 	
