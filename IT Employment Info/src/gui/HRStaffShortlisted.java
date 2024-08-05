@@ -34,7 +34,7 @@ public class HRStaffShortlisted extends JPanel {
     private JLabel lblNewLabel_1; // Label to display interview venue
     private JLabel lblNewLabel_2; // Label to display interview time
     private JButton btnScheduleInterview; // Button to schedule/reschedule interview
-    private String p = "p2"; // Some identifier (possibly for profile viewing)
+    private String p = "p3"; //ID for profile viewing
 	private JTextField searchBox;
 	private ApplicantDetails[] AppDFiltered;
 	private DefaultListModel model;

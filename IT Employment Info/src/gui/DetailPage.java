@@ -79,8 +79,10 @@ public class DetailPage extends JPanel {
 			String p = main.getController().getID();
 			if (p.equals("p1"))
 				main.showManagerGUI();
-			if (p.equals("p2"))
+			else if (p.equals("p2"))
 				main.showShortGUI();
+			else if(p.equals("p3"))
+				main.showHRStaffShortlisted();
 			main.getController().clearID();
 			}
 			});
