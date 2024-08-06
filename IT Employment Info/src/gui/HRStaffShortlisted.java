@@ -160,18 +160,18 @@ public class HRStaffShortlisted extends JPanel {
         //Labels to show date, venue and time
         this.lblNewLabel = new JLabel("");
         lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        lblNewLabel.setBounds(268, 301, 173, 29);
+        lblNewLabel.setBounds(268, 301, 349, 29);
         add(lblNewLabel);
         
         this.lblNewLabel_1 = new JLabel("");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        lblNewLabel_1.setBounds(268, 341, 173, 22);
+        lblNewLabel_1.setBounds(268, 341, 376, 22);
         add(lblNewLabel_1);
         
         
         this.lblNewLabel_2 = new JLabel("");
         lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        lblNewLabel_2.setBounds(268, 374, 161, 22);
+        lblNewLabel_2.setBounds(268, 374, 322, 22);
         add(lblNewLabel_2);
         
         JLabel lblSearch = new JLabel("Search:");

@@ -160,12 +160,12 @@ public class ManagerShortlisted extends JPanel{
 		
 		this.lblNewLabel = new JLabel("");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(269, 282, 199, 23);
+		lblNewLabel.setBounds(269, 282, 391, 23);
 		add(lblNewLabel);
 		
 		this.lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(273, 316, 195, 23);
+		lblNewLabel_1.setBounds(273, 316, 406, 23);
 		add(lblNewLabel_1);
 		
 		JLabel lblTime = new JLabel("Time:");
@@ -175,7 +175,7 @@ public class ManagerShortlisted extends JPanel{
 		
 		this.lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_2.setBounds(273, 349, 195, 24);
+		lblNewLabel_2.setBounds(269, 349, 391, 24);
 		add(lblNewLabel_2);
 		
 		

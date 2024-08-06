@@ -105,11 +105,12 @@ public class HRStaffAdd extends JPanel {
                 // Call controller to add applicant
                 	 try {
                 	    open = new File(imagePath);//Open image file
-                	    BufferedImage image = null;
+                	    BufferedImage image = null;//Initialise image variable
                         try {
         					image = ImageIO.read(open);//Read image file
         				} catch (IOException e1) {
         					System.out.println("Error");
+        					return;
         				}
                         if(image!=null){
                         	String path = "profileimages/";//Set save location of image file
@@ -308,7 +309,7 @@ public class HRStaffAdd extends JPanel {
 		                     else if (line.contains("Programming")) 
 			                    textPS.append(line.replace("Programming Skills:", "").trim()+"\n");
 		                     else if (line.contains("Indust"))
-			                    textIS.append(line.replace("Industrial Skills", "").trim()+"\n");
+			                    textIS.append(line.replace("Industrial Skills:", "").trim()+"\n");
 		                     else if (line.contains("Experiences"))
 			                    textExp.append(line.replace("Experiences:", "").trim()+"\n");
 						}	

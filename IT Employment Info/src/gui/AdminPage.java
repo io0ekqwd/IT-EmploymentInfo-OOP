@@ -40,7 +40,8 @@ public class AdminPage extends JPanel{
 		setLayout(null);
 		this.main = main;
 		
-		this.model = new DefaultTableModel();
+		this.model = new DefaultTableModel();//Initialise the model
+		//Add the columns 
 		model.addColumn("Username");
 		model.addColumn("Role");
 		
@@ -56,6 +57,7 @@ public class AdminPage extends JPanel{
 		this.table = new JTable(model);
 		scrollPane.setViewportView(table);
 		
+		//Button to go to add user page
 		JButton btnAddUser = new JButton("Add");
 		btnAddUser.setBackground(SystemColor.controlHighlight);
 		btnAddUser.addActionListener(new ActionListener() {

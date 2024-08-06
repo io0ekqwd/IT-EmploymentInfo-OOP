@@ -254,7 +254,7 @@ public class ManagerJob extends JPanel{
 			if(op.getSalary() == 0 && op.getHPosition() == null)
 				listItem = op.getName();
 		    else if(op.getHPosition() == null && op.getSalary() != 0)
-				listItem = op.getName()+"          "+op.getSalary();
+				listItem = op.getName()+"          "+"$"+op.getSalary();
 		    else if(op.getSalary() == 0 && op.getHPosition() != null)
 		    	listItem = op.getName()+"          "+op.getHPosition();
 		    else

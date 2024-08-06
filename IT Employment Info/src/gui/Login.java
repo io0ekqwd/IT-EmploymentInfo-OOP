@@ -94,7 +94,7 @@ public class Login extends JPanel{
 		
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String n = textField.getText();
+				String n = textField.getText().trim();
 				String pwd = String.valueOf(passwordField.getPassword());
 				boolean validity = main.getController().verifyUser(n, pwd);
 				if (validity == true) {

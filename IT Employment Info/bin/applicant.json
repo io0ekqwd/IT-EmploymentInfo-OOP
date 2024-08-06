@@ -10,13 +10,13 @@
     "iskills" : "Leadership \nActive listening"
   },
   "salary" : 0,
-  "shortlist" : false,
+  "shortlist" : true,
   "job" : false,
   "exp" : "Microsoft - 5 Years\n",
   "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image60d6526d-5196-4598-9d98-516ef1574f1b.png",
+  "interviewDetails" : null,
   "aposition" : "Data Analyst",
-  "hposition" : null,
-  "interviewDetails" : null
+  "hposition" : null
 }, {
   "name" : "John Doe",
   "age" : 32,
@@ -29,13 +29,20 @@
     "iskills" : "Leadership\nTeamwork"
   },
   "salary" : 0,
-  "shortlist" : false,
+  "shortlist" : true,
   "job" : false,
   "exp" : "Microsoft - 5 Years\nValve - 2 Years",
   "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image163e3f84-1c4e-4470-9958-b9786635129e.png",
+  "interviewDetails" : {
+    "venue" : "Manager Office",
+    "day" : 24,
+    "month" : "August",
+    "year" : 2024,
+    "hour" : 12,
+    "min" : 30
+  },
   "aposition" : "Lead Developer",
-  "hposition" : null,
-  "interviewDetails" : null
+  "hposition" : null
 }, {
   "name" : "Emily Johnson",
   "age" : 22,
@@ -47,14 +54,14 @@
     "pskills" : "Java",
     "iskills" : "Leadership"
   },
-  "salary" : 0,
-  "shortlist" : false,
-  "job" : false,
+  "salary" : 150000,
+  "shortlist" : true,
+  "job" : true,
   "exp" : "Google - 7 Years",
   "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\imagef7804c03-ab66-4e1b-8207-27ea808a53da.png",
+  "interviewDetails" : null,
   "aposition" : "Programmer",
-  "hposition" : null,
-  "interviewDetails" : null
+  "hposition" : "Lead Programmer"
 }, {
   "name" : "John Frank",
   "age" : 23,
@@ -67,13 +74,20 @@
     "iskills" : "None"
   },
   "salary" : 0,
-  "shortlist" : false,
+  "shortlist" : true,
   "job" : false,
   "exp" : "None",
   "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image914e6aa8-7970-4310-9518-402fafe95819.png",
+  "interviewDetails" : {
+    "venue" : "MAIN OFFICE",
+    "day" : 23,
+    "month" : "January",
+    "year" : 2323,
+    "hour" : 14,
+    "min" : 30
+  },
   "aposition" : "Technician",
-  "hposition" : null,
-  "interviewDetails" : null
+  "hposition" : null
 }, {
   "name" : "Frank P",
   "age" : 74,
@@ -85,12 +99,31 @@
     "pskills" : "None",
     "iskills" : "None"
   },
+  "salary" : 44848,
+  "shortlist" : true,
+  "job" : true,
+  "exp" : "Microsoft - 5 years\nGoogle - 7 years",
+  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\imagefcd6b70d-815a-4198-bf17-01deecd8c461.png",
+  "interviewDetails" : null,
+  "aposition" : "Cleaner",
+  "hposition" : "CEO"
+}, {
+  "name" : "John Doe",
+  "age" : 30,
+  "email" : "someone@gmail.com",
+  "phone" : "9419321",
+  "address" : "Geylang Lorong 1, Singapore 203130, #18-2332\n",
+  "status" : "Employed at OOP LLC",
+  "skills" : {
+    "pskills" : "Java, Tableau\n",
+    "iskills" : "Leadership, Teamwork\n"
+  },
   "salary" : 0,
   "shortlist" : false,
   "job" : false,
-  "exp" : "Microsoft - 5 years\nGoogle - 7 years",
-  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\imagefcd6b70d-815a-4198-bf17-01deecd8c461.png",
-  "aposition" : "Cleaner",
-  "hposition" : null,
-  "interviewDetails" : null
+  "exp" : "Lead Data Scientist at OOP LLC - 7 Years\n",
+  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image5da6b973-2f1a-41e9-bf3d-4c924b19364b.png",
+  "interviewDetails" : null,
+  "aposition" : "Lead Data Scientist",
+  "hposition" : null
 } ]

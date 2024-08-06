@@ -10,4 +10,8 @@
   "username" : "A",
   "password" : "PA",
   "role" : "Admin"
+}, {
+  "username" : "USER",
+  "password" : "PU",
+  "role" : "Staff"
 } ]
