@@ -1,202 +1,96 @@
 [ {
-  "name" : "John Doe",
-  "age" : 30,
-  "email" : "johndoe@example.com",
-  "phone" : "123-456-7890",
-  "address" : "123 Main St, Anytown, USA",
-  "status" : "Active",
-  "skills" : {
-    "pskills" : "Java\nPython\nC++",
-    "iskills" : "Leadership\nResilience"
-  },
-  "salary" : 300000,
-  "shortlist" : true,
-  "job" : false,
-  "exp" : "Microsoft 5 years",
-  "imagePath" : "C:\\Users\\User\\Downloads\\dsadas.png",
-  "interviewDetails" : {
-    "venue" : "Company Main Office",
-    "day" : 1,
-    "month" : "May",
-    "year" : 2024,
-    "hour" : 18,
-    "min" : 10
-  },
-  "hposition" : "CFO",
-  "aposition" : "Software Engineer"
-}, {
   "name" : "Jane Smith",
-  "age" : 28,
-  "email" : "janesmith@example.com",
-  "phone" : "987-654-3210",
-  "address" : "456 Elm St, Othertown, USA",
-  "status" : "Inactive",
+  "age" : 30,
+  "email" : "jane@gmail.com",
+  "phone" : "312314141",
+  "address" : "21 Street\nSingapore 33313\n7-3232",
+  "status" : "Unemployed",
   "skills" : {
-    "pskills" : "2024-08-01",
-    "iskills" : "10:00 AM"
-  },
-  "salary" : 400000,
-  "shortlist" : true,
-  "job" : false,
-  "exp" : " No prior experience\nddddd",
-  "imagePath" : null,
-  "interviewDetails" : {
-    "venue" : "Office",
-    "day" : 2,
-    "month" : "July",
-    "year" : 2024,
-    "hour" : 20,
-    "min" : 10
-  },
-  "hposition" : "CEO",
-  "aposition" : "Product Manager"
-}, {
-  "name" : "Emily Johnson",
-  "age" : 35,
-  "email" : "emilyjohnson@example.com",
-  "phone" : "555-123-4567",
-  "address" : "789 Oak St, Newcity, USA",
-  "status" : "Active",
-  "skills" : {
-    "pskills" : "2024-08-01",
-    "iskills" : "10:00 AM"
-  },
-  "salary" : 120000,
-  "shortlist" : true,
-  "job" : true,
-  "exp" : "Assistant at ... - 5 years\nLead at 5 t",
-  "imagePath" : null,
-  "interviewDetails" : {
-    "venue" : "Company HQ",
-    "day" : 3,
-    "month" : "January",
-    "year" : 2024,
-    "hour" : 10,
-    "min" : 30
-  },
-  "hposition" : "Lead Data Scientist",
-  "aposition" : "Data Scientist"
-}, {
-  "name" : "Michael Brown",
-  "age" : 32,
-  "email" : "michaelbrown@example.com",
-  "phone" : "321-654-9870",
-  "address" : "123 Maple St, Anothertown, USA",
-  "status" : "Active",
-  "skills" : {
-    "pskills" : "JavaScript\nReact\nNode.js",
-    "iskills" : "Problem-Solving\nCommunication"
-  },
-  "salary" : 250000,
-  "shortlist" : true,
-  "job" : true,
-  "exp" : "Google 4 years\nAmazon 2 years",
-  "imagePath" : "C:\\Users\\User\\Downloads\\michael.png",
-  "interviewDetails" : {
-    "venue" : "Company Branch Office",
-    "day" : 5,
-    "month" : "April",
-    "year" : 2024,
-    "hour" : 14,
-    "min" : 45
-  },
-  "hposition" : "Tech Lead",
-  "aposition" : "Full Stack Developer"
-}, {
-  "name" : "Sarah Connor",
-  "age" : 29,
-  "email" : "sarahconnor@example.com",
-  "phone" : "654-789-0123",
-  "address" : "456 Birch St, Somecity, USA",
-  "status" : "Inactive",
-  "skills" : {
-    "pskills" : "SQL\nPython\nR",
-    "iskills" : "Analytical Thinking\nAttention to Detail"
-  },
-  "salary" : 280000,
-  "shortlist" : false,
-  "job" : false,
-  "exp" : "Facebook 3 years\nApple 2 years",
-  "imagePath" : "C:\\Users\\User\\Downloads\\sarah.png",
-  "interviewDetails" : {
-    "venue" : "Headquarters",
-    "day" : 12,
-    "month" : "August",
-    "year" : 2024,
-    "hour" : 9,
-    "min" : 30
-  },
-  "hposition" : "Senior Data Analyst",
-  "aposition" : "Data Analyst"
-}, {
-  "name" : "David Wilson",
-  "age" : 45,
-  "email" : "davidwilson@example.com",
-  "phone" : "789-012-3456",
-  "address" : "789 Pine St, Anycity, USA",
-  "status" : "Active",
-  "skills" : {
-    "pskills" : "AWS\nDocker\nKubernetes",
-    "iskills" : "Leadership\nStrategic Planning"
-  },
-  "salary" : 500000,
-  "shortlist" : true,
-  "job" : false,
-  "exp" : "IBM 10 years\nOracle 5 years",
-  "imagePath" : "C:\\Users\\User\\Downloads\\david.png",
-  "interviewDetails" : {
-    "venue" : "Remote",
-    "day" : 18,
-    "month" : "March",
-    "year" : 2024,
-    "hour" : 11,
-    "min" : 0
-  },
-  "hposition" : "VP of Engineering",
-  "aposition" : "DevOps Engineer"
-}, {
-  "name" : "Laura Davis",
-  "age" : 27,
-  "email" : "lauradavis@example.com",
-  "phone" : "012-345-6789",
-  "address" : "123 Cedar St, Newtown, USA",
-  "status" : "Inactive",
-  "skills" : {
-    "pskills" : "Ruby on Rails\nPostgreSQL\nHTML/CSS",
-    "iskills" : "Creativity\nCollaboration"
-  },
-  "salary" : 220000,
-  "shortlist" : false,
-  "job" : false,
-  "exp" : "Shopify 3 years\nSlack 2 years",
-  "imagePath" : "C:\\Users\\User\\Downloads\\laura.png",
-  "interviewDetails" : {
-    "venue" : "Company Campus",
-    "day" : 25,
-    "month" : "May",
-    "year" : 2024,
-    "hour" : 16,
-    "min" : 15
-  },
-  "hposition" : "Principal Engineer",
-  "aposition" : "Backend Developer"
-}, {
-  "name" : "dog",
-  "age" : 22,
-  "email" : "ddd",
-  "phone" : "823232",
-  "address" : "21 Street ddddddd\n",
-  "status" : "fsfa",
-  "skills" : {
-    "pskills" : "Java\n",
-    "iskills" : ": Leadership\n"
+    "pskills" : "Tableau\nKnime",
+    "iskills" : "Leadership \nActive listening"
   },
   "salary" : 0,
   "shortlist" : false,
   "job" : false,
-  "exp" : "5 year experiences in office\n",
-  "imagePath" : "D:\\GitRepo\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image46eb350a-536d-4d4e-80bf-b82f11c7edaa.png",
-  "interviewDetails" : null,
+  "exp" : "Microsoft - 5 Years\n",
+  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image60d6526d-5196-4598-9d98-516ef1574f1b.png",
+  "aposition" : "Data Analyst",
   "hposition" : null,
-  "aposition" : "eee"
+  "interviewDetails" : null
+}, {
+  "name" : "John Doe",
+  "age" : 32,
+  "email" : "john@hotmail.com",
+  "phone" : "7932321",
+  "address" : "757 street\nSingapore 2121\n9-3213",
+  "status" : "Employed at op",
+  "skills" : {
+    "pskills" : "Java\nC++\nPython",
+    "iskills" : "Leadership\nTeamwork"
+  },
+  "salary" : 0,
+  "shortlist" : false,
+  "job" : false,
+  "exp" : "Microsoft - 5 Years\nValve - 2 Years",
+  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image163e3f84-1c4e-4470-9958-b9786635129e.png",
+  "aposition" : "Lead Developer",
+  "hposition" : null,
+  "interviewDetails" : null
+}, {
+  "name" : "Emily Johnson",
+  "age" : 22,
+  "email" : "emily@yahoo.com",
+  "phone" : "222222",
+  "address" : "221 Street\n1-112",
+  "status" : "Unemployed",
+  "skills" : {
+    "pskills" : "Java",
+    "iskills" : "Leadership"
+  },
+  "salary" : 0,
+  "shortlist" : false,
+  "job" : false,
+  "exp" : "Google - 7 Years",
+  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\imagef7804c03-ab66-4e1b-8207-27ea808a53da.png",
+  "aposition" : "Programmer",
+  "hposition" : null,
+  "interviewDetails" : null
+}, {
+  "name" : "John Frank",
+  "age" : 23,
+  "email" : "john@gmail.com",
+  "phone" : "23131",
+  "address" : "4841 street\nSingapore 22222\n8-2322",
+  "status" : "Unemployed",
+  "skills" : {
+    "pskills" : "C++",
+    "iskills" : "None"
+  },
+  "salary" : 0,
+  "shortlist" : false,
+  "job" : false,
+  "exp" : "None",
+  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image914e6aa8-7970-4310-9518-402fafe95819.png",
+  "aposition" : "Technician",
+  "hposition" : null,
+  "interviewDetails" : null
+}, {
+  "name" : "Frank P",
+  "age" : 74,
+  "email" : "frank@gmail.com",
+  "phone" : "441421",
+  "address" : "988 Road\nSingapore 27271\n8-2322",
+  "status" : "Unemployed",
+  "skills" : {
+    "pskills" : "None",
+    "iskills" : "None"
+  },
+  "salary" : 0,
+  "shortlist" : false,
+  "job" : false,
+  "exp" : "Microsoft - 5 years\nGoogle - 7 years",
+  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\imagefcd6b70d-815a-4198-bf17-01deecd8c461.png",
+  "aposition" : "Cleaner",
+  "hposition" : null,
+  "interviewDetails" : null
 } ]

@@ -48,6 +48,7 @@ public class HRStaffAdd extends JPanel {
     private Image img;
     private String imagePath; // Path to the applicant's photo
     private int age;
+    private File open;
      
 
     //Initialise panel
@@ -59,7 +60,9 @@ public class HRStaffAdd extends JPanel {
         JButton btnAdd = new JButton("Add");
         btnAdd.setBackground(SystemColor.controlHighlight);
         btnAdd.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            private File open;
+
+			public void actionPerformed(ActionEvent e) {
                 //Collect details from textfields and textareas
                 String name = textName.getText();
                 try{
@@ -100,28 +103,34 @@ public class HRStaffAdd extends JPanel {
                 //Verify empty status of textfields and textareas to block or allow add
                 if(textAreasEmpty != true || textFieldsEmpty != true){
                 // Call controller to add applicant
-                	File open = new File(imagePath);//Open image file
-                    BufferedImage image = null;
-                    try {
-    					image = ImageIO.read(open);//Read image file
-    				} catch (IOException e1) {
-    					e1.printStackTrace();
-    				}
-                    if(image!=null){
-                    	String path = "profileimages/";//Set save location of image file
-                    	String imageid = UUID.randomUUID().toString();//Generate unique id for image
-                    	File output = new File(path, "image"+imageid+".png");//Set output and name of image
-                    	try {
-                    	    ImageIO.write(image, "png", output);//Create image file in save location
-                    	    imagePath = output.getAbsolutePath();
-                    	}	
-    					catch (IOException e1) {
-    						e1.printStackTrace();
-    					}
-                    }
-                    main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status, exp, imagePath);
-                    main.getController().writeFile(); // Write applicant profile to json file
-                    main.showHRStaffApplicantPage(); // Show applicant page after adding
+                	 try {
+                	    open = new File(imagePath);//Open image file
+                	    BufferedImage image = null;
+                        try {
+        					image = ImageIO.read(open);//Read image file
+        				} catch (IOException e1) {
+        					System.out.println("Error");
+        				}
+                        if(image!=null){
+                        	String path = "profileimages/";//Set save location of image file
+                        	String imageid = UUID.randomUUID().toString();//Generate unique id for image
+                        	File output = new File(path, "image"+imageid+".png");//Set output and name of image
+                        	try {
+                        	    ImageIO.write(image, "png", output);//Create image file in save location
+                        	    imagePath = output.getAbsolutePath();
+                        	}	
+        					catch (IOException e1) {
+        						e1.printStackTrace();
+        					}
+                        }
+                        main.getController().addApplicant(name, age, email, phone, address, position, ps, is, status, exp, imagePath);
+                        main.getController().writeFile(); // Write applicant profile to json file
+                        main.showHRStaffApplicantPage(); // Show applicant page after adding
+     				} catch (NullPointerException e1) {
+     					JOptionPane.showMessageDialog(main, "Please add image.");
+     				}
+                    
+                   
                 }
                 else
                     JOptionPane.showMessageDialog(main, "Please Fill in all details.");
