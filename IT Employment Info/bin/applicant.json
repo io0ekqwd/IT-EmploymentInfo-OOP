@@ -13,9 +13,9 @@
   "shortlist" : true,
   "job" : false,
   "exp" : "Microsoft - 5 Years\n",
-  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image60d6526d-5196-4598-9d98-516ef1574f1b.png",
-  "interviewDetails" : null,
+  "imagePath" : "profileimages\\image60d6526d-5196-4598-9d98-516ef1574f1b.png",
   "aposition" : "Data Analyst",
+  "interviewDetails" : null,
   "hposition" : null
 }, {
   "name" : "John Doe",
@@ -32,7 +32,8 @@
   "shortlist" : true,
   "job" : false,
   "exp" : "Microsoft - 5 Years\nValve - 2 Years",
-  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image163e3f84-1c4e-4470-9958-b9786635129e.png",
+  "imagePath" : "profileimages\\image163e3f84-1c4e-4470-9958-b9786635129e.png",
+  "aposition" : "Lead Developer",
   "interviewDetails" : {
     "venue" : "Manager Office",
     "day" : 24,
@@ -41,7 +42,6 @@
     "hour" : 12,
     "min" : 30
   },
-  "aposition" : "Lead Developer",
   "hposition" : null
 }, {
   "name" : "Emily Johnson",
@@ -58,9 +58,9 @@
   "shortlist" : true,
   "job" : true,
   "exp" : "Google - 7 Years",
-  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\imagef7804c03-ab66-4e1b-8207-27ea808a53da.png",
-  "interviewDetails" : null,
+  "imagePath" : "profileimages\\imagef7804c03-ab66-4e1b-8207-27ea808a53da.png",
   "aposition" : "Programmer",
+  "interviewDetails" : null,
   "hposition" : "Lead Programmer"
 }, {
   "name" : "John Frank",
@@ -77,7 +77,8 @@
   "shortlist" : true,
   "job" : false,
   "exp" : "None",
-  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image914e6aa8-7970-4310-9518-402fafe95819.png",
+  "imagePath" : "profileimages\\image914e6aa8-7970-4310-9518-402fafe95819.png",
+  "aposition" : "Technician",
   "interviewDetails" : {
     "venue" : "MAIN OFFICE",
     "day" : 23,
@@ -86,7 +87,6 @@
     "hour" : 14,
     "min" : 30
   },
-  "aposition" : "Technician",
   "hposition" : null
 }, {
   "name" : "Frank P",
@@ -103,9 +103,9 @@
   "shortlist" : true,
   "job" : true,
   "exp" : "Microsoft - 5 years\nGoogle - 7 years",
-  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\imagefcd6b70d-815a-4198-bf17-01deecd8c461.png",
-  "interviewDetails" : null,
+  "imagePath" : "profileimages\\imagefcd6b70d-815a-4198-bf17-01deecd8c461.png",
   "aposition" : "Cleaner",
+  "interviewDetails" : null,
   "hposition" : "CEO"
 }, {
   "name" : "John Doe",
@@ -122,8 +122,8 @@
   "shortlist" : false,
   "job" : false,
   "exp" : "Lead Data Scientist at OOP LLC - 7 Years\n",
-  "imagePath" : "C:\\Users\\jorda\\git\\IT-EmploymentInfo-OOP\\IT Employment Info\\profileimages\\image5da6b973-2f1a-41e9-bf3d-4c924b19364b.png",
-  "interviewDetails" : null,
+  "imagePath" : "profileimages\\imagedba49e49-0b42-4232-8c5c-b2eb246ec38f.png",
   "aposition" : "Lead Data Scientist",
+  "interviewDetails" : null,
   "hposition" : null
 } ]

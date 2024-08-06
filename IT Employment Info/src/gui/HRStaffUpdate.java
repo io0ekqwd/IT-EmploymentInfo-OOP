@@ -267,7 +267,7 @@ public class HRStaffUpdate extends JPanel {
 					catch (IOException e1) {
 						e1.printStackTrace();
 					}
-                	imagePath = output.getAbsolutePath();
+                	imagePath = output.getPath();
                 	ImageIcon imgI = new ImageIcon(imagePath);
                 	img = imgI.getImage();
                     Image resizedImg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH); // Resize the image

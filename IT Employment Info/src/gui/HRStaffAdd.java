@@ -118,7 +118,7 @@ public class HRStaffAdd extends JPanel {
                         	File output = new File(path, "image"+imageid+".png");//Set output and name of image
                         	try {
                         	    ImageIO.write(image, "png", output);//Create image file in save location
-                        	    imagePath = output.getAbsolutePath();
+                        	    imagePath = output.getPath();
                         	}	
         					catch (IOException e1) {
         						e1.printStackTrace();
